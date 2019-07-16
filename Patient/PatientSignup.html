@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+  <title>PateintSignUp</title>
+  	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+		crossorigin="anonymous">
+	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <style>
+  nav{
+	  background-color:#BF9D7A;
+  }
+   body{
+	  font-family:"微軟正黑體";
+	  background-color:#EBF2EA;
+	  margin-top:120px;
+  }
+  .container{
+	   margin:155px;
+	   margin-top:200px;
+  }
+  #top{
+		width:140px;
+		height:75px;
+	}
+  @media (max-width:480px){
+	.container{
+				margin:0px;
+				padding-top: 0px;
+				padding-bottom: 50px;
+			}
+		}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-fixed-top">
+	<ul class="navbar-nav mr-auto">
+		<img src="https://i.imgur.com/pYX0gIi.png" id="top">
+	</ul>
+	<form style="text-align:right">
+		<a href = "Patientlogin.html" style="color:#582A20"><span class="glyphicon glyphicon-arrow-left"></span><strong> 返回</strong></a>
+	</form>
+</nav>
+<div class="container">
+	<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link" style="background-color:#585A56;color:white">身分</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" id="one-tab" data-toggle="tab" href="#patient" role="tab" aria-controls="patient" aria-selected="true" style="color:#272424"><strong>病患</strong></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="two-tab" data-toggle="tab" href="#doctor" role="tab" aria-controls="doctor" aria-selected="false" style="color:#272424"><strong>醫生</strong></a>
+        </li>
+    </ul>
+	<br>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade active in" id="patient" role="tabpanel" aria-labelledby="one-tab">
+            <div class="col-md-6">
+			<form>
+				<div class="form-group">
+					<label>身份證字號</label>
+					<input id="id" class="form-control" placeholder="身份證字號">
+				</div>
+				<div class="form-group">
+					<label>密碼</label>
+					<input id="password" type="password" class="form-control" placeholder="密碼">
+				</div>
+				<div class="form-group">
+					<label>確認密碼</label>
+					<input id="check" type="password" class="form-control" placeholder="確認密碼">
+				</div>
+			</form>
+			</div>
+			<div class="col-md-6">
+			<form>
+				<div class="form-group">
+					<label>姓名</label>
+					<input id="name" class="form-control" placeholder="姓名">
+				</div>
+				<div class="form-group">
+					<label>性別</label>
+					<select style="height:34px;" class="form-control" id="sex">
+						<option selected>男</option>
+						<option value="1">女</option>
+						<option value="2">其他</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label>信箱</label>
+					<input id="mail" class="form-control" placeholder="信箱">
+				</div>
+			</form>
+			</div>
+			<br>
+				<div style="text-align:center"><button style="background-color:#BE9063" class="btn btn-outline-light"  id="patientRegister">Save</button></div>
+			<br>
+        </div>
+        <div class="tab-pane fade" id="doctor" role="tabpanel" aria-labelledby="two-tab">
+            <div class="col-md-6">
+			<form>
+				<div class="form-group">
+					<label>身份證字號</label>
+					<input id="id2" class="form-control" placeholder="身份證字號">
+				</div>
+				<div class="form-group">
+					<label>密碼</label>
+					<input id="password2" type="password" class="form-control" placeholder="密碼">
+				</div>
+				<div class="form-group">
+					<label>確認密碼</label>
+					<input id="check2" type="password" class="form-control" placeholder="確認密碼">
+				</div>
+				<div class="form-group">
+					<label>姓名</label>
+					<input id="name2" class="form-control" placeholder="姓名">
+				</div>
+			</form>
+			</div>
+			<div class="col-md-6">
+			<form>
+				<div class="form-group">
+					<label>性別</label>
+					<select style="height:34px;" class="form-control" id="sex2">
+						<option selected>男</option>
+						<option value="1">女</option>
+						<option value="2">其他</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label>信箱</label>
+					<input id="mail2" class="form-control" placeholder="信箱">
+				</div>
+				<div class="form-group">
+					<label>手機</label>
+					<input id="phone2" class="form-control" placeholder="手機">
+				</div>
+				<div class="form-group">
+					<label>備用手機</label>
+					<input id="backUpPhone2" class="form-control" placeholder="備用手機">
+				</div>
+			</form>
+			</div>
+			<br>
+				<div style="text-align:center"><button style="background-color:#BE9063" class="btn btn-outline-light"  id="doctorRegister">Save</button></div>
+			<br>
+        </div>
+    </div>
+</div>
+<nav style="background-color:#BF9D7A;" class="navbar navbar-default navbar-fixed-bottom">
+    <p style="position:absolute;right:20px;width:150px;">Made By 醫起來聊天</p>
+</nav>
+<script type="text/javascript" src="js/SignUp.js"></script>	<!-- SignUp.js -->
+</body>
+</html>

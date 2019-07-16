@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html> 
+	<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+		crossorigin="anonymous">
+	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	
+			
+	<script>
+		function saveUserID()
+		{
+			var userID;
+			userID = sessionStorage.getItem('msg');
+			var name;
+			name = sessionStorage.getItem('name');
+			if (userID)
+			{
+				console.log(userID);
+				console.log(name);
+			}
+			else
+			{
+				alert("請先登入");
+				window.location.href = 'Patientlogin.html';
+			}
+			document.getElementById('topfont1').innerHTML = name;
+		}
+	</script>
+		<style type = "text/css">
+			nav{
+				background-color:#BF9D7A;
+			}		
+			body { 
+				padding-bottom: 70px;
+				margin-top:70px;
+				font-family:"微軟正黑體";
+				background-color:#EBF2EA;
+			}
+			p {
+				display : inline-block;
+				overflow : hidden;
+				text-overflow : ellipsis;
+				white-space : nowrap;
+				width : 240px;
+			}
+			body { 
+				margin-top:70px;
+				font-family:"微軟正黑體";
+				background-color:#EBF2EA;
+				padding-bottom: 70px;
+			}
+			#logo {
+				width:140px;
+				height:50px;
+			}
+			#topfont1 ,#topfont2, #topfont3{
+				color:#582A20;
+				line-height:40px;
+			}
+			#toplogout{
+				position:absolute;
+				right:270px;
+			}
+			#topsearchicon{
+				position:absolute;
+				top:20px;
+				right:230px;
+			}
+			#topsearchinput{
+				position:absolute;
+				top:10px;
+				right:40px;
+			}
+			#topsearchfont{
+				position:absolute;
+				top:20px;
+				right:10px;
+			}
+			#bottom2{
+				font-size:80px;
+			}
+			@media (max-width:480px){
+				body {
+					padding-bottom: 70px;
+					margin-top:120px;
+				}
+				#logo {
+					width:140px;
+					height:50px;
+				}
+				#bottom1{
+					width:25%;
+				}
+				#font1{
+					font-size:20px;
+				}
+				#top{
+					padding-right:189px;
+					width:375px;
+					height:101px;
+				}
+				#logo{
+					margin-right:200px;
+				}
+				#topfont1{
+					position:absolute;
+					top:0px;
+					left:140px;
+				}
+				#topfont2{
+					position:absolute;
+					top:0px;
+					left:200px;
+				}
+				#topfont3{
+					position:absolute;
+					top:0px;
+					left:260px;
+				}
+				#toplogout{
+					position:absolute;
+					top:10px;
+					right:8px;
+				}
+				#topsearchicon{
+					position:absolute;
+					left:100px;
+					top:50px;
+				}
+				#topsearchinput{
+					position:absolute;
+					top:50px;
+					width:200px;
+				}
+				#topsearchfont{
+					position:absolute;
+					top:55px;
+					right:8px;
+				}
+			}				
+		</style>
+	</head>
+	<body onload="saveUserID();">
+	<nav class="navbar navbar-expand-md navbar-fixed-top" style="background-color:#BF9D7A;" id="top">
+			<img src="https://i.imgur.com/pYX0gIi.png" id = "logo">
+			<div>
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<strong><a href = "Patient.html" onclick="window.location.href='Patient.html'" id="topfont1"></a></strong>
+					</li>
+					&nbsp;
+					<li class="nav-item">
+						<a href = "PatientMakePost.html" onclick="window.location.href='PatientMakePost.html'" id="topfont2"><strong>發佈文章</strong></a>
+					</li>
+					&nbsp;
+					<li class="nav-item">
+						<a href = "#" onclick="history.back()" id="topfont3"><strong>返回</strong></a>
+					</li>
+					&nbsp;
+					<li class="nav-item" id="toplogout">
+						<a style="color:#582A20;line-height:40px;" href = "Patientlogin.html"><strong><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;登出</strong></a>
+					</li>
+				</ul>
+				<form class="form-inline mt-2 mt-md-0">
+					<a class="nav navbar-nav navbar-right" id="topsearchicon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="40" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+					</a>
+					<input class="form-control mr-sm-2" type="text" placeholder="搜尋" aria-label="搜尋" id="topsearchinput">
+					<a href="#" id="topsearchfont"><strong  style="color:#582A20">查詢</strong></a>
+				</form>
+			</div>
+		</nav>   
+		<div class = "container-fluid">
+		<h1 style="text-align:center;color:#582A20"><strong><u>文章分類</u></strong></h1>
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+				<span class="h3 mx-1"><strong style="color:black">熱門文章</strong></span></a>
+			</button>
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+				<span class="h3 mx-1"><strong style="color:black">精華區</strong></span></a>
+			</button>
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+				<span class="h3 mx-1"><strong style="color:black">骨科</strong></span></a>
+			</button>
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+				<span class="h3 mx-1"><strong style="color:black">耳鼻喉科</strong></span></a>
+			</button>
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+				<span class="h3 mx-1"><strong style="color:black">婦產科</strong></span></a>
+			</button>
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+				<span class="h3 mx-1"><strong style="color:black">眼科</strong></span></a>
+			</button>
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+				<span class="h3 mx-1"><strong style="color:black">飲食生活</strong></span></a>
+			</button>
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+				<span class="h3 mx-1"><strong style="color:black">運動健康</strong></span></a>
+			</button>
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+				<span class="h3 mx-1"><strong style="color:black">健康資訊</strong></span></a>
+			</button>
+		</div>
+		<footer>
+		<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color:#BF9D7A;">
+			<div class="container">
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">首頁</strong></span></a>
+				</button>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='PatientClass.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">分類</strong></span>
+				</button>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" href="#">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">通知</strong></span>
+				</button>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='PatientSetting.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">設定</strong></span>
+				</button>
+			</div>
+		</nav>
+		</footer>
+	</body>
+</html>
+
+<!--
+**************************************************************************
+* (C) Copyright 1992-2012 by Deitel & Associates, Inc. and               *
+* Pearson Education, Inc. All Rights Reserved.                           *
+*                                                                        *
+* DISCLAIMER: The authors and publisher of this book have used their     *
+* best efforts in preparing the book. These efforts include the          *
+* development, research, and testing of the theories and programs        *
+* to determine their effectiveness. The authors and publisher make       *
+* no warranty of any kind, expressed or implied, with regard to these    *
+* programs or to the documentation contained in these books. The authors *
+* and publisher shall not be liable in any event for incidental or       *
+* consequential damages in connection with, or arising out of, the       *
+* furnishing, performance, or use of these programs.                     *
+**************************************************************************
+-->

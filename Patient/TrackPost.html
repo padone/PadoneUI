@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html> 
+	<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+		crossorigin="anonymous">
+	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	
+			
+	<script>
+		function saveUserID()
+		{
+			var userID;
+			userID = sessionStorage.getItem('msg');
+			var name;
+			name = sessionStorage.getItem('name');
+			if (userID)
+			{
+				console.log(userID);
+				console.log(name);
+			}
+			else
+			{
+				alert("請先登入");
+				window.location.href = 'Patientlogin.html';
+			}
+			document.getElementById('topfont1').innerHTML = name;
+		}
+	</script>
+		<style type = "text/css">
+			body { 
+				padding-bottom: 70px;
+				margin-top:70px;
+				font-family:"微軟正黑體";
+				background-color:#EBF2EA;
+			}
+			p {
+				display : inline-block;
+				overflow : hidden;
+				text-overflow : ellipsis;
+				white-space : nowrap;
+				width : 240px;
+			}
+			#logo {
+				width:140px;
+				height:50px;
+			}
+			#topfont1 ,#topfont2, #topfont3{
+				color:#582A20;
+				line-height:40px;
+			}
+			#toplogout{
+				position:absolute;
+				right:270px;
+			}
+			#topsearchicon{
+				position:absolute;
+				top:20px;
+				right:230px;
+			}
+			#topsearchinput{
+				position:absolute;
+				top:10px;
+				right:40px;
+			}
+			#topsearchfont{
+				position:absolute;
+				top:20px;
+				right:10px;
+			}
+			@media (max-width:480px){
+				body {
+					padding-bottom: 70px;
+					margin-top:120px;
+				}
+				#logo {
+					width:140px;
+					height:50px;
+				}
+				#bottom1{
+					width:25%;
+				}
+				#font1{
+					font-size:20px;
+				}
+				#top{
+					padding-right:189px;
+					width:375px;
+					height:101px;
+				}
+				#logo{
+					margin-right:200px;
+				}
+				#topfont1{
+					position:absolute;
+					top:0px;
+					left:140px;
+				}
+				#topfont2{
+					position:absolute;
+					top:0px;
+					left:200px;
+				}
+				#topfont3{
+					position:absolute;
+					top:0px;
+					left:260px;
+				}
+				#toplogout{
+					position:absolute;
+					top:10px;
+					right:8px;
+				}
+				#topsearchicon{
+					position:absolute;
+					left:100px;
+					top:50px;
+				}
+				#topsearchinput{
+					position:absolute;
+					top:50px;
+					width:200px;
+				}
+				#topsearchfont{
+					position:absolute;
+					top:55px;
+					right:8px;
+				}
+				#function1{
+					width:25%;
+					font-size:13px;
+				}
+			}
+		</style>
+	</head>
+	<body onload="saveUserID();">
+	<nav class="navbar navbar-expand-md navbar-fixed-top" style="background-color:#BF9D7A;" id="top">
+			<img src="https://i.imgur.com/pYX0gIi.png" id = "logo">
+			<div>
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<strong><a href = "Patient.html" onclick="window.location.href='Patient.html'" id="topfont1"></a></strong>
+					</li>
+					&nbsp;
+					<li class="nav-item">
+						<a href = "PatientMakePost.html" onclick="window.location.href='PatientMakePost.html'" id="topfont2"><strong>發佈文章</strong></a>
+					</li>
+					&nbsp;
+					<li class="nav-item">
+						<a href = "#" onclick="history.back()" id="topfont3"><strong>返回</strong></a>
+					</li>
+					&nbsp;
+					<li class="nav-item" id="toplogout">
+						<a style="color:#582A20;line-height:40px;" href = "Patientlogin.html"><strong><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;登出</strong></a>
+					</li>
+				</ul>
+				<form class="form-inline mt-2 mt-md-0">
+					<a class="nav navbar-nav navbar-right" id="topsearchicon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="40" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+					</a>
+					<input class="form-control mr-sm-2" type="text" placeholder="搜尋" aria-label="搜尋" id="topsearchinput">
+					<a href="#" id="topsearchfont"><strong  style="color:#582A20">查詢</strong></a>
+				</form>
+			</div>
+		</nav>
+		<div class = "container-fluid">
+			<div class="nav-scroller py-1 mb-2">
+				<nav class="nav d-flex justify-content-between">
+					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='Patient.html'"><strong>個人文章</strong></a></button>
+					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='TrackPost.html'"><strong>追蹤文章</strong></a></button>
+					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='Diary.html'"><strong>日記</strong></a></button>
+					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='PatientProfile.html'"><strong>個人資料</strong></a></button>
+				</nav>
+			</div>
+			<button class="btn btn-default btn-sm"><a class="p-2 text-muted">個人追蹤</a></button>
+			<button class="btn btn-default btn-sm"><a class="p-2 text-muted">家屬建議</a></button>
+			<div class="list-group">
+					<a href="#" class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+							<h5 class="mb-1">一周減肥食譜</h5>
+							<small>2小時前</small>
+						</div>
+						<p class="mb-1">繼之前的「三週減肥法」後，韓網最近又有一份一週減肥菜單爆紅，以高蛋白、低脂為主，一天熱量約只有1000卡左右，有網友分享自己照著吃、搭配簡單運動，竟然就瘦了6公斤！下面就是一週7天的菜單： #第一天 第一天以雞胸肉、地瓜為主要搭配，都是減脂、增肌很有幫助的食物！早餐：雞胸肉1片（約100g）上飲食不均、缺乏運動與生活作息型態，也不乏出現年輕型的心血管疾病死亡個案。要預防心臟病必須從作息、飲食兩者同步做起。最新的研究也發現，以核桃代替其他飽和脂肪，有助於降低心血管疾病風險。據國際科學媒體《Sciencedaily》報導，最新一期發表於美國心臟協會期刊的研究中，賓州大學的研究人員宣稱，每天攝取的核桃的受試者，升主動脈的血壓明顯降低，顯著減少了血壓對心臟造成的壓力。該項研究先讓受試者們採取模擬美國人平均飲食型態的膳食計畫，兩周之後再隨機分配進行測試。比較值得注意的是，其中一組測試者有攝取α-亞麻酸（ALA），是植物性Omega3脂肪酸的一種。另一組受試者則攝取整顆核桃。實驗發現攝取整顆核桃的受試者，其升主動脈的收縮壓、舒張壓、膽固醇、動脈硬化程度的改善幅度都最明顯。吃整顆核桃最多攝取植物性脂肪酸賓州大學營養學教授Penny Kris-Etherton表示，這次研究發現受試者以食用整顆核桃帶來的好處，比不吃堅果而攝取其他飽和脂肪酸的飲食效處，來得更有益處。Kris-Etherton教授解釋，核桃本身除了健康脂肪之外，還含有多酚、生物活性化合物以及纖維質等等，會比單獨攝取脂肪酸對人體來說得更健康。Kris-Etherton教授指出，這項實驗結果證明了，用核桃或植物油中的不飽和脂肪酸來替代飽和脂肪，確實對心血管健康有益。此外，要促進心臟健康的飲食原則，還包括了少吃高脂肪的紅肉或將全脂乳製品當作為零食，用脫脂牛奶和核桃來替代。從這方面來看，人體雖然必須攝取飽和脂肪，但核桃會是一個更好的替代品。</p>
+						<div style="text-align:right;"><button style="background-color:#80ADD7" type="button" class="btn btn-dark" onclick="window.location.href='PatientArticleSide.html'">閱讀</button><button style="background-color:#0ABDA0" type="button" class="btn btn-dark" >刪除</button></div>
+					</a>
+					<a href="#" class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+							<h5 class="mb-1">一周減肥食譜</h5>
+							<small>2小時前</small>
+						</div>
+						<p class="mb-1">繼之前的「三週減肥法」後，韓網最近又有一份一週減肥菜單爆紅，以高蛋白、低脂為主，一天熱量約只有1000卡左右，有網友分享自己照著吃、搭配簡單運動，竟然就瘦了6公斤！下面就是一週7天的菜單： #第一天 第一天以雞胸肉、地瓜為主要搭配，都是減脂、增肌很有幫助的食物！早餐：雞胸肉1片（約100g）上飲食不均、缺乏運動與生活作息型態，也不乏出現年輕型的心血管疾病死亡個案。要預防心臟病必須從作息、飲食兩者同步做起。最新的研究也發現，以核桃代替其他飽和脂肪，有助於降低心血管疾病風險。據國際科學媒體《Sciencedaily》報導，最新一期發表於美國心臟協會期刊的研究中，賓州大學的研究人員宣稱，每天攝取的核桃的受試者，升主動脈的血壓明顯降低，顯著減少了血壓對心臟造成的壓力。該項研究先讓受試者們採取模擬美國人平均飲食型態的膳食計畫，兩周之後再隨機分配進行測試。比較值得注意的是，其中一組測試者有攝取α-亞麻酸（ALA），是植物性Omega3脂肪酸的一種。另一組受試者則攝取整顆核桃。實驗發現攝取整顆核桃的受試者，其升主動脈的收縮壓、舒張壓、膽固醇、動脈硬化程度的改善幅度都最明顯。吃整顆核桃最多攝取植物性脂肪酸賓州大學營養學教授Penny Kris-Etherton表示，這次研究發現受試者以食用整顆核桃帶來的好處，比不吃堅果而攝取其他飽和脂肪酸的飲食效處，來得更有益處。Kris-Etherton教授解釋，核桃本身除了健康脂肪之外，還含有多酚、生物活性化合物以及纖維質等等，會比單獨攝取脂肪酸對人體來說得更健康。Kris-Etherton教授指出，這項實驗結果證明了，用核桃或植物油中的不飽和脂肪酸來替代飽和脂肪，確實對心血管健康有益。此外，要促進心臟健康的飲食原則，還包括了少吃高脂肪的紅肉或將全脂乳製品當作為零食，用脫脂牛奶和核桃來替代。從這方面來看，人體雖然必須攝取飽和脂肪，但核桃會是一個更好的替代品。</p>
+						<div style="text-align:right;"><button style="background-color:#80ADD7" type="button" class="btn btn-dark" onclick="window.location.href='PatientArticleSide.html'">閱讀</button><button style="background-color:#0ABDA0" type="button" class="btn btn-dark" >刪除</button></div>
+					</a><a href="#" class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+							<h5 class="mb-1">一周減肥食譜</h5>
+							<small>2小時前</small>
+						</div>
+						<p class="mb-1">繼之前的「三週減肥法」後，韓網最近又有一份一週減肥菜單爆紅，以高蛋白、低脂為主，一天熱量約只有1000卡左右，有網友分享自己照著吃、搭配簡單運動，竟然就瘦了6公斤！下面就是一週7天的菜單： #第一天 第一天以雞胸肉、地瓜為主要搭配，都是減脂、增肌很有幫助的食物！早餐：雞胸肉1片（約100g）上飲食不均、缺乏運動與生活作息型態，也不乏出現年輕型的心血管疾病死亡個案。要預防心臟病必須從作息、飲食兩者同步做起。最新的研究也發現，以核桃代替其他飽和脂肪，有助於降低心血管疾病風險。據國際科學媒體《Sciencedaily》報導，最新一期發表於美國心臟協會期刊的研究中，賓州大學的研究人員宣稱，每天攝取的核桃的受試者，升主動脈的血壓明顯降低，顯著減少了血壓對心臟造成的壓力。該項研究先讓受試者們採取模擬美國人平均飲食型態的膳食計畫，兩周之後再隨機分配進行測試。比較值得注意的是，其中一組測試者有攝取α-亞麻酸（ALA），是植物性Omega3脂肪酸的一種。另一組受試者則攝取整顆核桃。實驗發現攝取整顆核桃的受試者，其升主動脈的收縮壓、舒張壓、膽固醇、動脈硬化程度的改善幅度都最明顯。吃整顆核桃最多攝取植物性脂肪酸賓州大學營養學教授Penny Kris-Etherton表示，這次研究發現受試者以食用整顆核桃帶來的好處，比不吃堅果而攝取其他飽和脂肪酸的飲食效處，來得更有益處。Kris-Etherton教授解釋，核桃本身除了健康脂肪之外，還含有多酚、生物活性化合物以及纖維質等等，會比單獨攝取脂肪酸對人體來說得更健康。Kris-Etherton教授指出，這項實驗結果證明了，用核桃或植物油中的不飽和脂肪酸來替代飽和脂肪，確實對心血管健康有益。此外，要促進心臟健康的飲食原則，還包括了少吃高脂肪的紅肉或將全脂乳製品當作為零食，用脫脂牛奶和核桃來替代。從這方面來看，人體雖然必須攝取飽和脂肪，但核桃會是一個更好的替代品。</p>
+						<div style="text-align:right;"><button style="background-color:#80ADD7" type="button" class="btn btn-dark" onclick="window.location.href='PatientArticleSide.html'">閱讀</button><button style="background-color:#0ABDA0" type="button" class="btn btn-dark" >刪除</button></div>
+					</a><a href="#" class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+							<h5 class="mb-1">一周減肥食譜</h5>
+							<small>2小時前</small>
+						</div>
+						<p class="mb-1">繼之前的「三週減肥法」後，韓網最近又有一份一週減肥菜單爆紅，以高蛋白、低脂為主，一天熱量約只有1000卡左右，有網友分享自己照著吃、搭配簡單運動，竟然就瘦了6公斤！下面就是一週7天的菜單： #第一天 第一天以雞胸肉、地瓜為主要搭配，都是減脂、增肌很有幫助的食物！早餐：雞胸肉1片（約100g）上飲食不均、缺乏運動與生活作息型態，也不乏出現年輕型的心血管疾病死亡個案。要預防心臟病必須從作息、飲食兩者同步做起。最新的研究也發現，以核桃代替其他飽和脂肪，有助於降低心血管疾病風險。據國際科學媒體《Sciencedaily》報導，最新一期發表於美國心臟協會期刊的研究中，賓州大學的研究人員宣稱，每天攝取的核桃的受試者，升主動脈的血壓明顯降低，顯著減少了血壓對心臟造成的壓力。該項研究先讓受試者們採取模擬美國人平均飲食型態的膳食計畫，兩周之後再隨機分配進行測試。比較值得注意的是，其中一組測試者有攝取α-亞麻酸（ALA），是植物性Omega3脂肪酸的一種。另一組受試者則攝取整顆核桃。實驗發現攝取整顆核桃的受試者，其升主動脈的收縮壓、舒張壓、膽固醇、動脈硬化程度的改善幅度都最明顯。吃整顆核桃最多攝取植物性脂肪酸賓州大學營養學教授Penny Kris-Etherton表示，這次研究發現受試者以食用整顆核桃帶來的好處，比不吃堅果而攝取其他飽和脂肪酸的飲食效處，來得更有益處。Kris-Etherton教授解釋，核桃本身除了健康脂肪之外，還含有多酚、生物活性化合物以及纖維質等等，會比單獨攝取脂肪酸對人體來說得更健康。Kris-Etherton教授指出，這項實驗結果證明了，用核桃或植物油中的不飽和脂肪酸來替代飽和脂肪，確實對心血管健康有益。此外，要促進心臟健康的飲食原則，還包括了少吃高脂肪的紅肉或將全脂乳製品當作為零食，用脫脂牛奶和核桃來替代。從這方面來看，人體雖然必須攝取飽和脂肪，但核桃會是一個更好的替代品。</p>
+						<div style="text-align:right;"><button style="background-color:#80ADD7" type="button" class="btn btn-dark" onclick="window.location.href='PatientArticleSide.html'">閱讀</button><button style="background-color:#0ABDA0" type="button" class="btn btn-dark" >刪除</button></div>
+					</a><a href="#" class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+							<h5 class="mb-1">一周減肥食譜</h5>
+							<small>2小時前</small>
+						</div>
+						<p class="mb-1">繼之前的「三週減肥法」後，韓網最近又有一份一週減肥菜單爆紅，以高蛋白、低脂為主，一天熱量約只有1000卡左右，有網友分享自己照著吃、搭配簡單運動，竟然就瘦了6公斤！下面就是一週7天的菜單： #第一天 第一天以雞胸肉、地瓜為主要搭配，都是減脂、增肌很有幫助的食物！早餐：雞胸肉1片（約100g）上飲食不均、缺乏運動與生活作息型態，也不乏出現年輕型的心血管疾病死亡個案。要預防心臟病必須從作息、飲食兩者同步做起。最新的研究也發現，以核桃代替其他飽和脂肪，有助於降低心血管疾病風險。據國際科學媒體《Sciencedaily》報導，最新一期發表於美國心臟協會期刊的研究中，賓州大學的研究人員宣稱，每天攝取的核桃的受試者，升主動脈的血壓明顯降低，顯著減少了血壓對心臟造成的壓力。該項研究先讓受試者們採取模擬美國人平均飲食型態的膳食計畫，兩周之後再隨機分配進行測試。比較值得注意的是，其中一組測試者有攝取α-亞麻酸（ALA），是植物性Omega3脂肪酸的一種。另一組受試者則攝取整顆核桃。實驗發現攝取整顆核桃的受試者，其升主動脈的收縮壓、舒張壓、膽固醇、動脈硬化程度的改善幅度都最明顯。吃整顆核桃最多攝取植物性脂肪酸賓州大學營養學教授Penny Kris-Etherton表示，這次研究發現受試者以食用整顆核桃帶來的好處，比不吃堅果而攝取其他飽和脂肪酸的飲食效處，來得更有益處。Kris-Etherton教授解釋，核桃本身除了健康脂肪之外，還含有多酚、生物活性化合物以及纖維質等等，會比單獨攝取脂肪酸對人體來說得更健康。Kris-Etherton教授指出，這項實驗結果證明了，用核桃或植物油中的不飽和脂肪酸來替代飽和脂肪，確實對心血管健康有益。此外，要促進心臟健康的飲食原則，還包括了少吃高脂肪的紅肉或將全脂乳製品當作為零食，用脫脂牛奶和核桃來替代。從這方面來看，人體雖然必須攝取飽和脂肪，但核桃會是一個更好的替代品。</p>
+						<div style="text-align:right;"><button style="background-color:#80ADD7" type="button" class="btn btn-dark" onclick="window.location.href='PatientArticleSide.html'">閱讀</button><button style="background-color:#0ABDA0" type="button" class="btn btn-dark" >刪除</button></div>
+					</a><a href="#" class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+							<h5 class="mb-1">一周減肥食譜</h5>
+							<small>2小時前</small>
+						</div>
+						<p class="mb-1">繼之前的「三週減肥法」後，韓網最近又有一份一週減肥菜單爆紅，以高蛋白、低脂為主，一天熱量約只有1000卡左右，有網友分享自己照著吃、搭配簡單運動，竟然就瘦了6公斤！下面就是一週7天的菜單： #第一天 第一天以雞胸肉、地瓜為主要搭配，都是減脂、增肌很有幫助的食物！早餐：雞胸肉1片（約100g）上飲食不均、缺乏運動與生活作息型態，也不乏出現年輕型的心血管疾病死亡個案。要預防心臟病必須從作息、飲食兩者同步做起。最新的研究也發現，以核桃代替其他飽和脂肪，有助於降低心血管疾病風險。據國際科學媒體《Sciencedaily》報導，最新一期發表於美國心臟協會期刊的研究中，賓州大學的研究人員宣稱，每天攝取的核桃的受試者，升主動脈的血壓明顯降低，顯著減少了血壓對心臟造成的壓力。該項研究先讓受試者們採取模擬美國人平均飲食型態的膳食計畫，兩周之後再隨機分配進行測試。比較值得注意的是，其中一組測試者有攝取α-亞麻酸（ALA），是植物性Omega3脂肪酸的一種。另一組受試者則攝取整顆核桃。實驗發現攝取整顆核桃的受試者，其升主動脈的收縮壓、舒張壓、膽固醇、動脈硬化程度的改善幅度都最明顯。吃整顆核桃最多攝取植物性脂肪酸賓州大學營養學教授Penny Kris-Etherton表示，這次研究發現受試者以食用整顆核桃帶來的好處，比不吃堅果而攝取其他飽和脂肪酸的飲食效處，來得更有益處。Kris-Etherton教授解釋，核桃本身除了健康脂肪之外，還含有多酚、生物活性化合物以及纖維質等等，會比單獨攝取脂肪酸對人體來說得更健康。Kris-Etherton教授指出，這項實驗結果證明了，用核桃或植物油中的不飽和脂肪酸來替代飽和脂肪，確實對心血管健康有益。此外，要促進心臟健康的飲食原則，還包括了少吃高脂肪的紅肉或將全脂乳製品當作為零食，用脫脂牛奶和核桃來替代。從這方面來看，人體雖然必須攝取飽和脂肪，但核桃會是一個更好的替代品。</p>
+						<div style="text-align:right;"><button style="background-color:#80ADD7" type="button" class="btn btn-dark" onclick="window.location.href='PatientArticleSide.html'">閱讀</button><button style="background-color:#0ABDA0" type="button" class="btn btn-dark" >刪除</button></div>
+					</a><a href="#" class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+							<h5 class="mb-1">一周減肥食譜</h5>
+							<small>2小時前</small>
+						</div>
+						<p class="mb-1">繼之前的「三週減肥法」後，韓網最近又有一份一週減肥菜單爆紅，以高蛋白、低脂為主，一天熱量約只有1000卡左右，有網友分享自己照著吃、搭配簡單運動，竟然就瘦了6公斤！下面就是一週7天的菜單： #第一天 第一天以雞胸肉、地瓜為主要搭配，都是減脂、增肌很有幫助的食物！早餐：雞胸肉1片（約100g）上飲食不均、缺乏運動與生活作息型態，也不乏出現年輕型的心血管疾病死亡個案。要預防心臟病必須從作息、飲食兩者同步做起。最新的研究也發現，以核桃代替其他飽和脂肪，有助於降低心血管疾病風險。據國際科學媒體《Sciencedaily》報導，最新一期發表於美國心臟協會期刊的研究中，賓州大學的研究人員宣稱，每天攝取的核桃的受試者，升主動脈的血壓明顯降低，顯著減少了血壓對心臟造成的壓力。該項研究先讓受試者們採取模擬美國人平均飲食型態的膳食計畫，兩周之後再隨機分配進行測試。比較值得注意的是，其中一組測試者有攝取α-亞麻酸（ALA），是植物性Omega3脂肪酸的一種。另一組受試者則攝取整顆核桃。實驗發現攝取整顆核桃的受試者，其升主動脈的收縮壓、舒張壓、膽固醇、動脈硬化程度的改善幅度都最明顯。吃整顆核桃最多攝取植物性脂肪酸賓州大學營養學教授Penny Kris-Etherton表示，這次研究發現受試者以食用整顆核桃帶來的好處，比不吃堅果而攝取其他飽和脂肪酸的飲食效處，來得更有益處。Kris-Etherton教授解釋，核桃本身除了健康脂肪之外，還含有多酚、生物活性化合物以及纖維質等等，會比單獨攝取脂肪酸對人體來說得更健康。Kris-Etherton教授指出，這項實驗結果證明了，用核桃或植物油中的不飽和脂肪酸來替代飽和脂肪，確實對心血管健康有益。此外，要促進心臟健康的飲食原則，還包括了少吃高脂肪的紅肉或將全脂乳製品當作為零食，用脫脂牛奶和核桃來替代。從這方面來看，人體雖然必須攝取飽和脂肪，但核桃會是一個更好的替代品。</p>
+						<div style="text-align:right;"><button style="background-color:#80ADD7" type="button" class="btn btn-dark" onclick="window.location.href='PatientArticleSide.html'">閱讀</button><button style="background-color:#0ABDA0" type="button" class="btn btn-dark" >刪除</button></div>
+					</a><a href="#" class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+							<h5 class="mb-1">一周減肥食譜</h5>
+							<small>2小時前</small>
+						</div>
+						<p class="mb-1">繼之前的「三週減肥法」後，韓網最近又有一份一週減肥菜單爆紅，以高蛋白、低脂為主，一天熱量約只有1000卡左右，有網友分享自己照著吃、搭配簡單運動，竟然就瘦了6公斤！下面就是一週7天的菜單： #第一天 第一天以雞胸肉、地瓜為主要搭配，都是減脂、增肌很有幫助的食物！早餐：雞胸肉1片（約100g）上飲食不均、缺乏運動與生活作息型態，也不乏出現年輕型的心血管疾病死亡個案。要預防心臟病必須從作息、飲食兩者同步做起。最新的研究也發現，以核桃代替其他飽和脂肪，有助於降低心血管疾病風險。據國際科學媒體《Sciencedaily》報導，最新一期發表於美國心臟協會期刊的研究中，賓州大學的研究人員宣稱，每天攝取的核桃的受試者，升主動脈的血壓明顯降低，顯著減少了血壓對心臟造成的壓力。該項研究先讓受試者們採取模擬美國人平均飲食型態的膳食計畫，兩周之後再隨機分配進行測試。比較值得注意的是，其中一組測試者有攝取α-亞麻酸（ALA），是植物性Omega3脂肪酸的一種。另一組受試者則攝取整顆核桃。實驗發現攝取整顆核桃的受試者，其升主動脈的收縮壓、舒張壓、膽固醇、動脈硬化程度的改善幅度都最明顯。吃整顆核桃最多攝取植物性脂肪酸賓州大學營養學教授Penny Kris-Etherton表示，這次研究發現受試者以食用整顆核桃帶來的好處，比不吃堅果而攝取其他飽和脂肪酸的飲食效處，來得更有益處。Kris-Etherton教授解釋，核桃本身除了健康脂肪之外，還含有多酚、生物活性化合物以及纖維質等等，會比單獨攝取脂肪酸對人體來說得更健康。Kris-Etherton教授指出，這項實驗結果證明了，用核桃或植物油中的不飽和脂肪酸來替代飽和脂肪，確實對心血管健康有益。此外，要促進心臟健康的飲食原則，還包括了少吃高脂肪的紅肉或將全脂乳製品當作為零食，用脫脂牛奶和核桃來替代。從這方面來看，人體雖然必須攝取飽和脂肪，但核桃會是一個更好的替代品。</p>
+						<div style="text-align:right;"><button style="background-color:#80ADD7" type="button" class="btn btn-dark" onclick="window.location.href='PatientArticleSide.html'">閱讀</button><button style="background-color:#0ABDA0" type="button" class="btn btn-dark" >刪除</button></div>
+					</a><a href="#" class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+							<h5 class="mb-1">一周減肥食譜</h5>
+							<small>2小時前</small>
+						</div>
+						<p class="mb-1">繼之前的「三週減肥法」後，韓網最近又有一份一週減肥菜單爆紅，以高蛋白、低脂為主，一天熱量約只有1000卡左右，有網友分享自己照著吃、搭配簡單運動，竟然就瘦了6公斤！下面就是一週7天的菜單： #第一天 第一天以雞胸肉、地瓜為主要搭配，都是減脂、增肌很有幫助的食物！早餐：雞胸肉1片（約100g）上飲食不均、缺乏運動與生活作息型態，也不乏出現年輕型的心血管疾病死亡個案。要預防心臟病必須從作息、飲食兩者同步做起。最新的研究也發現，以核桃代替其他飽和脂肪，有助於降低心血管疾病風險。據國際科學媒體《Sciencedaily》報導，最新一期發表於美國心臟協會期刊的研究中，賓州大學的研究人員宣稱，每天攝取的核桃的受試者，升主動脈的血壓明顯降低，顯著減少了血壓對心臟造成的壓力。該項研究先讓受試者們採取模擬美國人平均飲食型態的膳食計畫，兩周之後再隨機分配進行測試。比較值得注意的是，其中一組測試者有攝取α-亞麻酸（ALA），是植物性Omega3脂肪酸的一種。另一組受試者則攝取整顆核桃。實驗發現攝取整顆核桃的受試者，其升主動脈的收縮壓、舒張壓、膽固醇、動脈硬化程度的改善幅度都最明顯。吃整顆核桃最多攝取植物性脂肪酸賓州大學營養學教授Penny Kris-Etherton表示，這次研究發現受試者以食用整顆核桃帶來的好處，比不吃堅果而攝取其他飽和脂肪酸的飲食效處，來得更有益處。Kris-Etherton教授解釋，核桃本身除了健康脂肪之外，還含有多酚、生物活性化合物以及纖維質等等，會比單獨攝取脂肪酸對人體來說得更健康。Kris-Etherton教授指出，這項實驗結果證明了，用核桃或植物油中的不飽和脂肪酸來替代飽和脂肪，確實對心血管健康有益。此外，要促進心臟健康的飲食原則，還包括了少吃高脂肪的紅肉或將全脂乳製品當作為零食，用脫脂牛奶和核桃來替代。從這方面來看，人體雖然必須攝取飽和脂肪，但核桃會是一個更好的替代品。</p>
+						<div style="text-align:right;"><button style="background-color:#80ADD7" type="button" class="btn btn-dark" onclick="window.location.href='PatientArticleSide.html'">閱讀</button><button style="background-color:#0ABDA0" type="button" class="btn btn-dark" >刪除</button></div>
+					</a>
+				</div>
+		</div>
+		<footer>
+		<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color:#BF9D7A;">
+			<div class="container">
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">首頁</strong></span></a>
+				</button>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='PatientClass.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">分類</strong></span>
+				</button>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" href="#">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">通知</strong></span>
+				</button>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='PatientSetting.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">設定</strong></span>
+				</button>
+			</div>
+		</nav>
+		</footer>
+	</body>
+</html>
+
+<!--
+**************************************************************************
+* (C) Copyright 1992-2012 by Deitel & Associates, Inc. and               *
+* Pearson Education, Inc. All Rights Reserved.                           *
+*                                                                        *
+* DISCLAIMER: The authors and publisher of this book have used their     *
+* best efforts in preparing the book. These efforts include the          *
+* development, research, and testing of the theories and programs        *
+* to determine their effectiveness. The authors and publisher make       *
+* no warranty of any kind, expressed or implied, with regard to these    *
+* programs or to the documentation contained in these books. The authors *
+* and publisher shall not be liable in any event for incidental or       *
+* consequential damages in connection with, or arising out of, the       *
+* furnishing, performance, or use of these programs.                     *
+**************************************************************************
+-->

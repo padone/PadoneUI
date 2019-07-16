@@ -1,0 +1,99 @@
+<html> 
+	<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+		crossorigin="anonymous">
+	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<style>
+		nav{
+			background-color:#BF9D7A;
+		}
+		body{
+			font-family:"微軟正黑體";
+			background-color:#EBF2EA;
+			margin-top:120px;
+		}
+		.container{
+			margin:155px;
+		}
+		.pic{
+			width:100px;
+		}
+		#top{
+				width:140px;
+				height:75px;
+			}
+		@media (max-width:480px){
+			.container{
+				margin:0px;
+				padding-top: 0px;
+				padding-bottom: 50px;
+			}
+			
+		}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-fixed-top">
+	<ul class="navbar-nav mr-auto">
+		<img src="https://i.imgur.com/pYX0gIi.png" id="top">
+	</ul>
+	<form style="text-align:right">
+		<a href="PatientSignup.html" style="color:#582A20"><span class="glyphicon glyphicon-user"></span><strong> 去註冊</strong></a>
+		<a href="#" style="color:#582A20"><span class="glyphicon glyphicon-globe"></span><strong> 忘記密碼</strong></a>
+	</form>
+</nav>
+<div class="container" >
+	<div>
+		<div class="row">
+			<div class="col-md-offset-4 col-md-4">
+			<form>
+				<div style="font-size:50px;text-align:center;" class="form-group">
+					<img src="patientPicture/123.png" class="pic"></img>
+				</div>
+				<div style="width:330px" class="form-group">
+					<label>身份證字號</label>
+					<input id="id" class="form-control" placeholder="輸入身份證字號">
+				</div>
+				<div style="width:330px" class="form-group">
+					<label>密碼</label>
+					<input id="password" type="password" class="form-control" placeholder="輸入密碼">
+				</div>
+				<div style="width:330px" class="form-group">
+					<label>身分</label>
+					<select style="height:34px;" class="form-control" id="inputGroupSelect01">
+						<option selected>病患</option>
+						<option value="1">家屬</option>
+						<option value="2">助理</option>
+						<option value="2">醫生</option>
+					</select>
+				</div>
+				<br>
+				<div style="text-align:center" class="form-group">
+					<button style="background-color:#BE9063"class="btn btn-outline-light" type="button" id="login">登入</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<nav style="background-color:#BF9D7A;" class="navbar navbar-default navbar-fixed-bottom">
+    <p style="position:absolute;right:20px;width:150px;">Made By 醫起來聊天</p>
+</nav>
+<script type="text/javascript" src="js/Login.js"></script>	<!-- Login.js -->
+</body>
+</html>
