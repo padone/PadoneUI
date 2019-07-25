@@ -3,13 +3,18 @@
 $(document).ready(function() {
 	var name;
 	name = sessionStorage.getItem('name');
-	var url = "http://140.121.196.23:3390/BBDPPatient/ArticleListServlet?pattern=author&name="+ name +"";
+	var url = "http://140.121.196.23:3390/BBDPPatient/ArticleListServlet";
+	$.post("http://140.121.196.23:3390/BBDPPatient/ArticleListServlet", {pattern:'author', name:'Jacky'}, function(result){
+		alert(JSON.stringify(result));
+	}).fail(function(){
+      console.log("error");
+	});
 	$.ajax({
 		type: "POST",
 		url : url,
 		data : {
 			pattern : "author",
-			author : name,
+			name : "Jacky",
 		},
 		dataType : "json",
 		success : function(response) {
