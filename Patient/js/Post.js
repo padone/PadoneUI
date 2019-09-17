@@ -1,5 +1,23 @@
 var url = "http://140.121.196.23:3390/PadoneAS/WriteArticleServlet";
-
+var url2 = "http://140.121.196.23:3390/HospitalCrawler/HospitalServlet";
+var userID;
+userID = sessionStorage.getItem('msg');
+$(document).ready(function() {
+	$.ajax({
+		url : url2,
+		dataType : "json",
+		success : function(response) {
+			for(var i = 0; i < response.length; i++){
+				$("#location").append(
+					'<option value="'+ i +'">' + response[i].county + '' + response[i].hospitalName + '</option>'
+				);
+			}
+		},
+		error : function() {
+			alert("失敗");
+		}
+	});
+});
 $(document).ready(function() {
 	$("#post").click(function() {
 			$.ajax({
@@ -11,7 +29,7 @@ $(document).ready(function() {
 					Image : $("#curlLabel").html(),
 					department : $("#class").val(),
 					tag : $("#label").val(),
-					author : $("#author").val()
+					userID : userID
 				},
 				dataType : "json",
 				success : function(response) {

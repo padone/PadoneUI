@@ -12,7 +12,7 @@ $(document).ready(function() {
 					Password : $("#password").val(),
 					name : $("#name").val(),
 					gender : $("#sex").val(),
-					mail : $("#mail").val()
+					mail : $("#mail").val()+$("#mailAddress").val()
 				},
 				dataType : "json",
 	
@@ -54,7 +54,7 @@ $(document).ready(function() {
 					Password : $("#password2").val(),
 					name : $("#name2").val(),
 					gender : $("#sex2").val(),
-					mail : $("#mail2").val(),
+					mail : $("#mail2").val()+$("#mailAddress2").val(),
 					phone : $("#phone2").val(),
 					backUpPhone : $("#backUpPhone2").val()
 				},
@@ -81,7 +81,7 @@ $(document).ready(function() {
 					alert("註冊失敗");
 				}
 			});
-		/*}*/
+		}
 	});
 });
 //病患檢查註冊

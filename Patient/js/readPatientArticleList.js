@@ -1,20 +1,14 @@
-//var url = "http://140.121.196.23:3390/BBDPPatient/ArticleListServlet?pattern=author&name=Jacky";
+var url = "http://140.121.196.23:3390/PadoneAS/AuthorArticleListServlet";
 
 $(document).ready(function() {
-	var name;
-	name = sessionStorage.getItem('name');
-	var url = "http://140.121.196.23:3390/BBDPPatient/ArticleListServlet";
-	$.post("http://140.121.196.23:3390/BBDPPatient/ArticleListServlet", {pattern:'author', name:'Jacky'}, function(result){
-		alert(JSON.stringify(result));
-	}).fail(function(){
-      console.log("error");
-	});
+	var userID;
+	userID = sessionStorage.getItem('msg');
+	
 	$.ajax({
-		type: "POST",
+		type: "GET",
 		url : url,
 		data : {
-			pattern : "author",
-			name : "Jacky",
+			id : userID,
 		},
 		dataType : "json",
 		success : function(response) {
@@ -33,6 +27,7 @@ $(document).ready(function() {
 			}
 		},
 		error : function() {
+			console.log(userID);
 			alert("失敗");
 		}
 	});

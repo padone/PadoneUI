@@ -44,28 +44,14 @@
 	</script>
 		<style type = "text/css">
 			body { 
-				padding-bottom: 70px;
 				margin-top:70px;
 				font-family:"微軟正黑體";
 				background-color:#EBF2EA;
+				padding-bottom: 70px;
 			}
 			#logo {
 				width:140px;
 				height:50px;
-			}
-			#title {
-				width:500px;
-			}
-			#description {
-				width:1200px;
-				height:300px;
-			}
-			#picture {
-				width:350px;
-				height:350px; 
-			}
-			#class , #label , #author {
-				width:300px;
 			}
 			#topfont1 ,#topfont2, #topfont3{
 				color:#582A20;
@@ -90,24 +76,18 @@
 				top:20px;
 				right:10px;
 			}
+			#introduction{
+				width:700px;
+				height:350px;
+			}
 			@media (max-width:480px){
 				body {
 					padding-bottom: 70px;
 					margin-top:120px;
 				}
-				#title {
-					width:300px;
-				}
-				#description {
-					width:300px;
-					height:300px;
-				}
-				#picture {
-					width:300px;
-					height:300px; 
-				}
-				#class , #label , #author {
-					width:300px;
+				#logo {
+					width:140px;
+					height:50px;
 				}
 				#bottom1{
 					width:25%;
@@ -158,6 +138,14 @@
 					top:55px;
 					right:8px;
 				}
+				#function1{
+					width:25%;
+					font-size:13px;
+				}
+				#introduction{
+					width:350px;
+					height:350px;
+				}
 			}
 		</style>
 	</head>
@@ -167,11 +155,11 @@
 			<div>
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<strong><a href = "Secretary.html" onclick="window.location.href='Patient.html'" id="topfont1"></a></strong>
+						<strong><a href = "Doctor.html" onclick="window.location.href='Doctor.html'" id="topfont1"></a></strong>
 					</li>
 					&nbsp;
 					<li class="nav-item">
-						<a href = "SecretaryMakePost.html" onclick="window.location.href='SecretaryMakePost.html'" id="topfont2"><strong>發佈文章</strong></a>
+						<a href = "DoctorMakePost.html" onclick="window.location.href='DoctorMakePost.html'" id="topfont2"><strong>發佈文章</strong></a>
 					</li>
 					&nbsp;
 					<li class="nav-item">
@@ -190,54 +178,49 @@
 					<a href="#" id="topsearchfont"><strong  style="color:#582A20">查詢</strong></a>
 				</form>
 			</div>
-		</nav>
-		<div class = "container-fluid">
-			<form>
+		</nav> 
+			<div class = "container-fluid">
+			<div class="nav-scroller py-1 mb-2">
+				<nav class="nav d-flex justify-content-between">
+					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='Doctor.html'"><strong>個人文章</strong></a></button>
+					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='EditGood.html'"><strong>編輯精華</strong></a></button>
+					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='DoctorInformation.html'"><strong>醫師資料</strong></a></button>
+					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="self.location.href='mailto:20bbdp20@Gmail.com';"><strong>信箱</strong></a></button>
+				</nav>
+				<button class="btn btn-outline-light" style="float:right;background-color:#BF9D7A" id="doctorSaveProfile">save</button>
+			</div>
+			<form id="getprofile">
 				<div class="form-group">
-					<label>標題</label><input class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A;" type="button" value="儲存" id ="post">
-					<input class="form-control" placeholder="輸入標題" id="title">
-					<small id="emailHelp" class="form-text text-muted">請輸入標題</small>
+					<label>姓名</label>
+					<input style="width:350px" class="form-control" placeholder="輸入姓名" id="name">
 				</div>
 				<div class="form-group">
-					<label>地點</label>
-					<select style="height:34px" class="form-control" id="location">
-						
-					</select>
-					<small id="emailHelp" class="form-text text-muted">請選擇地點</small>
+					<label>Gmail</label>
+					<input style="width:350px" class="form-control" placeholder="輸入信箱" id="mail">
 				</div>
 				<div class="form-group">
-					<label>內容</label>
-					<input class="form-control" placeholder="輸入內容" id="description">
+					<label>生日</label>
+					<input style="width:350px" class="form-control" placeholder="輸入生日 EX:20190101" id="birthday">
 				</div>
 				<div class="form-group">
-					<label>圖片\影片</label>
-					<input type="file" id="myFile" />
-					<input type="button" value="提交" onclick="makeImgurUrl('class')" />
-					<br>
-					<label id="cnoti" class="col-form-label"></label>
-					<br>
-					<label id="curlLabel"></label>
-				</div>
-				<div class="form-group">
-					<label>選擇類別及輸入標籤</label>					
-					<input class="form-control" placeholder="輸入標籤" id="tag">
-					<input class="form-control" placeholder="選擇類別" id="class">
+					<label>醫生介紹及專長</label>
+					<input class="form-control" placeholder="醫生介紹及專長" style="height:200px" id="introduction">
 				</div>
 			</form>
 		</div>
 		<footer>
 		<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color:#BF9D7A;">
 			<div class="container">
-				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='SecretaryHome.html'">
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='DoctorHome.html'">
 					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">首頁</strong></span></a>
 				</button>
-				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='SecretaryClass.html'">
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='DoctorClass.html'">
 					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">分類</strong></span>
 				</button>
 				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" href="#">
 					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">通知</strong></span>
 				</button>
-				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='SecretarySetting.html'">
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='DoctorSetting.html'">
 					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">設定</strong></span>
 				</button>
 			</div>

@@ -204,6 +204,7 @@
 					</div>
 				</div>
 			</div>
+			<div id='map'></div>
 		</div>
 		<footer>
 		<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color:#BF9D7A;">
@@ -223,6 +224,119 @@
 			</div>
 		</nav>
 		</footer>
+		<script>
+
+    var map;
+
+    function initMap() {
+        var markers = [];
+        var infoWindows = [];
+        var loaction;
+        var timer = [];
+        var infoWindowState = -1;
+        var geocoder = new google.maps.Geocoder();
+        var info_config = [
+            '<div id="infoDiv">' +
+            '  <h2>基隆署立醫院</h2>' +
+            '  <h3>地址:</h3>' +
+            '  <h4>創立時間:</h4>' +
+            '  <h5>首頁:</h5>' +
+            '  <span></span><br/>' +
+            '  <div></div>' +
+            '</div>'
+        ];
+
+        //建立地圖 marker 的集合
+        var marker_config = [{
+            address: '基隆署立醫院',
+            icon: 'http://example.oxxostudio.tw/it2016/it2016-day22-off.png'
+        }];
+
+        //geocoder主程式
+        function _geocoder(address, callback) {
+            geocoder.geocode({
+                address: address
+            }, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    loaction = results[0].geometry.location;
+                    callback(loaction); //用一個 callback 就不用每次多寫上面這段
+                }
+            });
+        }
+
+        //使用地址或名稱標出位置
+        _geocoder('基隆署立醫院', function(address) {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: address,
+                zoom: 14
+            });
+
+            //設定資訊視窗內容
+            info_config.forEach(function(e, i) {
+                infoWindows[i] = new google.maps.InfoWindow({
+                    content: e
+                });
+                google.maps.event.addListener(infoWindows[i], 'domready', function() {
+                    _content(i);
+                });
+            });
+
+            //標出 marker
+            marker_config.forEach(function(e, i) {
+                _geocoder(e.address, function(address) {
+                    var marker = {
+                        position: address,
+                        map: map,
+                        icon: e.icon
+                    };
+                    markers[i] = new google.maps.Marker(marker);
+                    markers[i].setMap(map);
+                    markers[i].addListener('click', function() {
+                        clearTimeout(timer[i]);
+                        infoWindowState = infoWindowState * -1;
+                        if (infoWindowState > 0) {
+                            infoWindows[i].open(map, markers[i]);
+                            _content(i);
+                        } else {
+                            infoWindows[i].close();
+                        }
+                    });
+                    _setIcon(markers[i], 'http://example.oxxostudio.tw/it2016/it2016-day22-on.png');
+                });
+            });
+        });
+        function _setIcon(e, icon) {
+            e.setIcon(icon);
+        }
+        /*Time
+        function _content(e) {
+            timer[e] = setInterval(function() {
+                $('#infoDiv span').text(getTime());
+            }, 1000);
+        }
+
+        function getTime() {
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            if (h < 10) {
+                h = '0' + h;
+            }
+            if (m < 10) {
+                m = '0' + m;
+            }
+            if (s < 10) {
+                s = '0' + s;
+            }
+            var now = h + ':' + m + ':' + s;
+            return now;
+        }*/
+
+    }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrD730hGMTn7AdaQTZuvV9BQuISMiefMQ&callback=initMap">
+    </script>
 		<script type="text/javascript" src="js/readTheArticle.js"></script>	<!-- ReadArticle.js -->
 	</body>
 </html>

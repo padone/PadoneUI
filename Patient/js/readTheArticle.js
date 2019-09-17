@@ -48,13 +48,13 @@ $(document).ready(function() {
 									'</ol>' + 
 									'<div class="carousel-inner">' + 
 										'<div class="carousel-item active">' + 
-											'<img class="d-block w-100" src="'+ response.image +'" alt="First slide">' + 
+											'<img class="d-block w-100" src="patientPicture/789.jpg" alt="First slide">' + 
 										'</div>' + 
 										'<div class="carousel-item">' + 
-											'<img class="d-block w-100" src="'+ response.image +'" alt="Second slide">' + 
+											'<img class="d-block w-100" src="patientPicture/789.jpg" alt="Second slide">' + 
 										'</div>' +
 										'<div class="carousel-item">' + 
-											'<img class="d-block w-100" src="'+ response.image +'" alt="Third slide">' + 
+											'<img class="d-block w-100" src="patientPicture/789.jpg" alt="Third slide">' + 
 										'</div>' +
 									'</div>' + 
 									'<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">' + 
@@ -116,16 +116,19 @@ function changeValue2(){
 //發留言
 var url2 = "http://140.121.196.23:3390/PadoneAS/WriteFeedbackServlet";
 function feedBack(){
+	var userID;
+	userID = sessionStorage.getItem('msg');
 	$.ajax({
 			type: "POST",
 			url : url2,
 			data : {
-				author : name123,
+				userID : userID,
 				message : $("#thetext").val(),
 				articleID : id
 			},
 			dataType : "json",
 			success : function() {
+				window.location.reload();
 				alert("成功");
 			},
 			error : function() {
@@ -148,7 +151,7 @@ $(document).ready(function() {
 			for(var i = 0; i < response.length; i++){
 				$("#getfeedback").append(
 					'<tr class="text-center" >' +
-						'<td style="width:5%">' + response[i].ID + '<td style="width:10%">' + response[i].author + '</td></td>' +
+						'<td style="width:5%"><button class="btn btn-light" onclick="deleteFeedback('+response[i].ID+')">X</button><td style="width:10%">' + response[i].author + '</td></td>' +
 						'<td style="vertical-align:middle;text-align:left">' + response[i].message + '<td style="width:8%">' + response[i].updateTime + '</td></td>' +
 					'</tr>'
 				);
@@ -159,3 +162,27 @@ $(document).ready(function() {
 		}
 	});
 });
+
+
+//刪留言
+var url4 = "http://140.121.196.23:3390/PadoneAS/DeleteFeedbackServlet"
+function deleteFeedback(feedbackID) {
+	var userID;
+	userID = sessionStorage.getItem('msg');
+	$.ajax({
+			type: "POST",
+			url : url4,
+			data : {
+				userID: userID,
+				feedbackID: feedbackID
+			},
+			dataType : "json",
+			success : function() {
+				window.location.reload();
+				alert("成功");
+			},
+			error : function() {
+				alert("失敗");
+			},
+		});
+}

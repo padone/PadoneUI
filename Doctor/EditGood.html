@@ -1,80 +1,189 @@
 <!DOCTYPE html>
 <html> 
 	<head>
-		<link rel="stylesheet"
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 		crossorigin="anonymous">
-		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-		<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-		<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-		crossorigin="anonymous"></script>
-		<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-		crossorigin="anonymous"></script>
-		<script src="jsmine.js" type="text/javascript"></script>
-		<style type = "text/css">
-			@media(max-width: 768px){
-				.navbar-right form{
-				display:none;
-				}
-			}
+	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 
-			@media(max-width: 568px){
-				.jumbotron{
-					text-align: center;
-				}
-				footer{
-					text-align: center;
-				}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	
+	<script>
+		function saveUserID()
+		{
+			var userID;
+			userID = sessionStorage.getItem('msg');
+			var name;
+			name = sessionStorage.getItem('name');
+			if (userID)
+			{
+				console.log(userID);
+				console.log(name);
+			}
+			else
+			{
+				alert("請先登入");
+				window.location.href = 'Patientlogin.html';
+			}
+			document.getElementById('topfont1').innerHTML = name;
+		}
+	</script>
+		<style type = "text/css">
+			p {
+				display : inline-block;
+				overflow : hidden;
+				text-overflow : ellipsis;
+				white-space : nowrap;
+				width : 240px;
 			}
 			body { 
-				padding-bottom: 70px; 
 				margin-top:70px;
+				font-family:"微軟正黑體";
+				background-color:#EBF2EA;
+				padding-bottom: 70px;
+			}
+			#logo {
+				width:140px;
+				height:50px;
+			}
+			#topfont1 ,#topfont2, #topfont3{
+				color:#582A20;
+				line-height:40px;
+			}
+			#toplogout{
+				position:absolute;
+				right:270px;
+			}
+			#topsearchicon{
+				position:absolute;
+				top:20px;
+				right:230px;
+			}
+			#topsearchinput{
+				position:absolute;
+				top:10px;
+				right:40px;
+			}
+			#topsearchfont{
+				position:absolute;
+				top:20px;
+				right:10px;
+			}
+			@media (max-width:480px){
+				body {
+					padding-bottom: 70px;
+					margin-top:120px;
+				}
+				#logo {
+					width:140px;
+					height:50px;
+				}
+				#bottom1{
+					width:25%;
+				}
+				#font1{
+					font-size:20px;
+				}
+				#top{
+					padding-right:189px;
+					width:375px;
+					height:101px;
+				}
+				#logo{
+					margin-right:200px;
+				}
+				#topfont1{
+					position:absolute;
+					top:0px;
+					left:140px;
+				}
+				#topfont2{
+					position:absolute;
+					top:0px;
+					left:200px;
+				}
+				#topfont3{
+					position:absolute;
+					top:0px;
+					left:260px;
+				}
+				#toplogout{
+					position:absolute;
+					top:10px;
+					right:8px;
+				}
+				#topsearchicon{
+					position:absolute;
+					left:100px;
+					top:50px;
+				}
+				#topsearchinput{
+					position:absolute;
+					top:50px;
+					width:200px;
+				}
+				#topsearchfont{
+					position:absolute;
+					top:55px;
+					right:8px;
+				}
+				#function1{
+					width:25%;
+					font-size:13px;
+				}
 			}
 		</style>
 	</head>
 	<body>
-		
-			<nav class="navbar navbar-expand-md navbar-light navbar-fixed-top bg-light">
-			<a class="navbar-brand">Padone</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarCollapse">
+		<nav class="navbar navbar-expand-md navbar-fixed-top" style="background-color:#BF9D7A;" id="top">
+			<img src="https://i.imgur.com/pYX0gIi.png" id = "logo">
+			<div>
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href = "Doctor.html" onclick="window.location.href='Doctor.html'">User<span class="sr-only">(current)</span></a>
+						<strong><a href = "Doctor.html" onclick="window.location.href='Doctor.html'" id="topfont1"></a></strong>
 					</li>
+					&nbsp;
 					<li class="nav-item">
-						<a class="nav-link" href = "DoctorMakePost.html" onclick="window.location.href='DoctorMakePost.html'">NewPost<span class="sr-only">(current)</span></a>
+						<a href = "DoctorMakePost.html" onclick="window.location.href='DoctorMakePost.html'" id="topfont2"><strong>發佈文章</strong></a>
 					</li>
+					&nbsp;
 					<li class="nav-item">
-						<a class="nav-link" href = "#" onclick="history.back()">Return<span class="sr-only">(current)</span></a>
+						<a href = "#" onclick="history.back()" id="topfont3"><strong>返回</strong></a>
 					</li>
-					<li class="nav-item" style="position:absolute;right:280px">
-						<a class="nav-link" href = "DoctorLogin.html">Sign out<span class="sr-only">(current)</span></a>
+					&nbsp;
+					<li class="nav-item" id="toplogout">
+						<a style="color:#582A20;line-height:40px;" href = "Patientlogin.html"><strong><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;登出</strong></a>
 					</li>
 				</ul>
-				<form class="form-inline mt-2 mt-md-0 navbar-right">
-					<a class="nav navbar-nav navbar-right">
+				<form class="form-inline mt-2 mt-md-0">
+					<a class="nav navbar-nav navbar-right" id="topsearchicon">
 						<svg xmlns="http://www.w3.org/2000/svg" width="40" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
 					</a>
-					<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go</button>
+					<input class="form-control mr-sm-2" type="text" placeholder="搜尋" aria-label="搜尋" id="topsearchinput">
+					<a href="#" id="topsearchfont"><strong  style="color:#582A20">查詢</strong></a>
 				</form>
 			</div>
 		</nav>
 			<div class = "container-fluid">
 			<div class="nav-scroller py-1 mb-2">
 				<nav class="nav d-flex justify-content-between">
-					<button style="font-family:'標楷體'" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='Doctor.html'">個人文章</a></button>
-					<button style="font-family:'標楷體'" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='EditGood.html'">編輯精華</a></button>
-					<button style="font-family:'標楷體'" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='DoctorInformation.html'">醫師資料</a></button>
-					<button style="font-family:'標楷體'" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="self.location.href='mailto:20bbdp20@Gmail.com';">信箱</a></button>
+					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='Doctor.html'"><strong>個人文章</strong></a></button>
+					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='EditGood.html'"><strong>編輯精華</strong></a></button>
+					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='DoctorInformation.html'"><strong>醫師資料</strong></a></button>
+					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="self.location.href='mailto:20bbdp20@Gmail.com';"><strong>信箱</strong></a></button>
 				</nav>
 			</div>
 			<div class="list-group">
@@ -86,62 +195,22 @@
 						<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
 						<small>Donec id elit non mi porta.<div style="text-align:right;"><button type="button" class="btn btn-info" onclick="window.location.href='DoctorArticleSide.html'">Read</button><button type="button" class="btn btn-warning" >Delete</button></div></small>
 					</a>
-					<a href="#" class="list-group-item list-group-item-action">
-						<div class="d-flex w-100 justify-content-between">
-							<h5 class="mb-1">List group item heading</h5>
-							<small class="text-muted">3 days ago</small>
-						</div>
-						<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-						<small class="text-muted">Donec id elit non mi porta.<div style="text-align:right;"><button type="button" class="btn btn-info" onclick="window.location.href='DoctorArticleSide.html'">Read</button><button type="button" class="btn btn-warning" >Delete</button></div></small>
-					</a>
-					<a href="#" class="list-group-item list-group-item-action">
-						<div class="d-flex w-100 justify-content-between">
-							<h5 class="mb-1">List group item heading</h5>
-							<small class="text-muted">3 days ago</small>
-						</div>
-						<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-						<small class="text-muted">Donec id elit non mi porta.<div style="text-align:right;"><button type="button" class="btn btn-info" onclick="window.location.href='DoctorArticleSide.html'">Read</button><button type="button" class="btn btn-warning" >Delete</button></div></small>
-					</a>
-					<a href="#" class="list-group-item list-group-item-action">
-						<div class="d-flex w-100 justify-content-between">
-							<h5 class="mb-1">List group item heading</h5>
-							<small>3 days ago</small>
-						</div>
-						<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-						<small class="text-muted">Donec id elit non mi porta.<div style="text-align:right;"><button type="button" class="btn btn-info" onclick="window.location.href='DoctorArticleSide.html'">Read</button><button type="button" class="btn btn-warning" >Delete</button></div></small>
-					</a>
-					<a href="#" class="list-group-item list-group-item-action">
-						<div class="d-flex w-100 justify-content-between">
-							<h5 class="mb-1">List group item heading</h5>
-							<small class="text-muted">3 days ago</small>
-						</div>
-						<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-						<small class="text-muted">Donec id elit non mi porta.<div style="text-align:right;"><button type="button" class="btn btn-info" onclick="window.location.href='DoctorArticleSide.html'">Read</button><button type="button" class="btn btn-warning" >Delete</button></div></small>
-					</a>
-					<a href="#" class="list-group-item list-group-item-action">
-						<div class="d-flex w-100 justify-content-between">
-							<h5 class="mb-1">List group item heading</h5>
-							<small class="text-muted">3 days ago</small>
-						</div>
-						<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-						<small class="text-muted">Donec id elit non mi porta.<div style="text-align:right;"><button type="button" class="btn btn-info" onclick="window.location.href='DoctorArticleSide.html'">Read</button><button type="button" class="btn btn-warning" >Delete</button></div></small>
-					</a>
 				</div>
 		</div>
 		<footer>
-		<nav class="navbar navbar-default navbar-fixed-bottom">
+		<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color:#BF9D7A;">
 			<div class="container">
-				<button type="button" class="col-md-3 btn btn-outline-info" onclick="window.location.href='DoctorHome.html'">
-					<span style="font-family:'標楷體'"class="h3 mx-1">首頁</span></a>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='DoctorHome.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">首頁</strong></span></a>
 				</button>
-				<button type="button" class="col-md-3 btn btn-outline-info" onclick="window.location.href='DoctorClass.html'">
-					<span style="font-family:'標楷體'"class="h3 mx-1">分類</span>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='DoctorClass.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">分類</strong></span>
 				</button>
-				<button type="button" class="col-md-3 btn btn-outline-info" href="#">
-					<span style="font-family:'標楷體'"class="h3 mx-1">通知</span>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" href="#">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">通知</strong></span>
 				</button>
-				<button type="button" class="col-md-3 btn btn-outline-info" onclick="window.location.href='DoctorSetting.html'">
-					<span style="font-family:'標楷體'"class="h3 mx-1">設定</span>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='DoctorSetting.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">設定</strong></span>
 				</button>
 			</div>
 		</nav>
