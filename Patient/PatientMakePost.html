@@ -195,7 +195,7 @@
 			<form>
 				<div class="form-group">
 					<label>標題</label><input class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A;" type="button" value="儲存" id ="post">
-					<input class="form-control" placeholder="輸入標題" id="title">
+					<input class="form-control" autocomplete="off" placeholder="輸入標題" id="title">
 					<small id="emailHelp" class="form-text text-muted">請輸入標題</small>
 				</div>
 				<div class="form-group">
@@ -207,7 +207,7 @@
 				</div>
 				<div class="form-group">
 					<label>內容</label>
-					<input class="form-control" placeholder="輸入內容" id="description">
+					<textarea class="form-control" autocomplete="off" placeholder="輸入內容" id="description"></textarea>
 				</div>
 				<div class="form-group">
 					<label>圖片\影片</label>
@@ -220,8 +220,21 @@
 				</div>
 				<div class="form-group">
 					<label>選擇類別及輸入標籤</label>					
-					<input class="form-control" placeholder="輸入標籤" id="tag">
-					<input class="form-control" placeholder="選擇類別" id="class">
+					<input class="form-control" autocomplete="off" placeholder="輸入標籤" id="tag">
+					<label>標籤</label>
+					<select style="height:34px" class="form-control" id="class">
+						<option selected>骨科</option>
+						<option value="1">耳鼻喉科</option>
+						<option value="2">婦產科</option>
+						<option value="3">眼科</option>
+						<option value="4">心臟科</option>
+						<option value="5">內科</option>
+						<option value="6">小兒科</option>
+						<option value="7">牙科</option>
+						<option value="8">精神科</option>
+						<option value="9">其他或健康運動資訊</option>
+					</select>
+					<small id="emailHelp" class="form-text text-muted">請選擇標籤</small>
 				</div>
 			</form>
 		</div>

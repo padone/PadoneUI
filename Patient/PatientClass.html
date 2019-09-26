@@ -41,6 +41,12 @@
 			}
 			document.getElementById('topfont1').innerHTML = name;
 		}
+		function getDepartmentList(department)
+		{
+			var departmentName = department;
+			sessionStorage.setItem('departmentNameInLocal', departmentName);
+			window.location.href = 'PatientDepartment.html';
+		}
 	</script>
 		<style type = "text/css">
 			nav{
@@ -188,32 +194,41 @@
 		</nav>   
 		<div class = "container-fluid">
 		<h1 style="text-align:center;color:#582A20"><strong><u>文章分類</u></strong></h1>
-			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light">
 				<span class="h3 mx-1"><strong style="color:black">熱門文章</strong></span></a>
 			</button>
-			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light">
 				<span class="h3 mx-1"><strong style="color:black">精華區</strong></span></a>
 			</button>
-			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="getDepartmentList('骨科')">
 				<span class="h3 mx-1"><strong style="color:black">骨科</strong></span></a>
 			</button>
-			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="getDepartmentList('耳鼻喉科')">
 				<span class="h3 mx-1"><strong style="color:black">耳鼻喉科</strong></span></a>
 			</button>
-			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="getDepartmentList('婦產科')">
 				<span class="h3 mx-1"><strong style="color:black">婦產科</strong></span></a>
 			</button>
-			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="getDepartmentList('眼科')">
 				<span class="h3 mx-1"><strong style="color:black">眼科</strong></span></a>
 			</button>
-			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
-				<span class="h3 mx-1"><strong style="color:black">飲食生活</strong></span></a>
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="getDepartmentList('心臟科')">
+				<span class="h3 mx-1"><strong style="color:black">心臟科</strong></span></a>
 			</button>
-			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
-				<span class="h3 mx-1"><strong style="color:black">運動健康</strong></span></a>
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="getDepartmentList('內科')">
+				<span class="h3 mx-1"><strong style="color:black">內科</strong></span></a>
 			</button>
-			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
-				<span class="h3 mx-1"><strong style="color:black">健康資訊</strong></span></a>
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="getDepartmentList('小兒科')">
+				<span class="h3 mx-1"><strong style="color:black">小兒科</strong></span></a>
+			</button>
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="getDepartmentList('牙科')">
+				<span class="h3 mx-1"><strong style="color:black">牙科</strong></span></a>
+			</button>
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="getDepartmentList('精神科')">
+				<span class="h3 mx-1"><strong style="color:black">精神科</strong></span></a>
+			</button>
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light">
+				<span class="h3 mx-1"><strong style="color:black">其他健康運動資訊</strong></span></a>
 			</button>
 		</div>
 		<footer>

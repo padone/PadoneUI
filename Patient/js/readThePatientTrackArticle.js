@@ -15,9 +15,9 @@ $(document).ready(function() {
 			var userID;
 			userID = sessionStorage.getItem('msg');
 			var articleID;
-			articleID = sessionStorage.getItem('articleid');
+			articleID = sessionStorage.getItem('patienttrackarticleid');
 			var author;
-			author = sessionStorage.getItem('author');
+			author = sessionStorage.getItem('patienttrackauthor');
 			var name;
 			name = sessionStorage.getItem('name');
 			if (userID)
@@ -48,7 +48,7 @@ $(document).ready(function() {
 			if(response[0].hospital == 'null'){
 				dataOfHospital[response[0].hospital] = ' ';
 			}
-			$("#Article").append(
+			$("#trackArticle").append(
 				'<div class="row">' + 
 					'<div class="col-6">' + 
 						'<div class="card" id="card">' + 

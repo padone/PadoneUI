@@ -16,14 +16,15 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-	
-			
+		
 	<script>
-		function saveUserID()
+		function start()
 		{
 			var userID;
 			userID = sessionStorage.getItem('msg');
@@ -42,21 +43,14 @@
 			document.getElementById('topfont1').innerHTML = name;
 		}
 	</script>
-		<style type = "text/css">
-			body { 
-				padding-bottom: 70px;
-				margin-top:70px;
-				font-family:"微軟正黑體";
-				background-color:#EBF2EA;
-			}
-			p {
-				display : inline-block;
-				overflow : hidden;
-				text-overflow : ellipsis;
-				white-space : nowrap;
-				width : 240px;
-			}
-			#logo {
+	<style type = "text/css">
+		body { 
+			padding-bottom: 70px;
+			margin-top:70px;
+			font-family:"微軟正黑體";
+			background-color:#EBF2EA;
+		}
+		#logo {
 				width:140px;
 				height:50px;
 			}
@@ -82,6 +76,10 @@
 				position:absolute;
 				top:20px;
 				right:10px;
+			}
+			#Article{
+				 margin-left:40px;
+				 height:600px;
 			}
 			@media (max-width:480px){
 				body {
@@ -141,15 +139,14 @@
 					top:55px;
 					right:8px;
 				}
-				#function1{
-					width:25%;
-					font-size:13px;
+				#Article{
+					width:300%;
 				}
 			}
-		</style>
+	</style>
 	</head>
-	<body onload="saveUserID();">
-	<nav class="navbar navbar-expand-md navbar-fixed-top" style="background-color:#BF9D7A;" id="top">
+	<body onload="start();">
+		<nav class="navbar navbar-expand-md navbar-fixed-top" style="background-color:#BF9D7A;" id="top">
 			<img src="https://i.imgur.com/pYX0gIi.png" id = "logo">
 			<div>
 				<ul class="navbar-nav mr-auto">
@@ -178,19 +175,36 @@
 				</form>
 			</div>
 		</nav>
-		<div class = "container-fluid">
-			<div class="nav-scroller py-1 mb-2">
-				<nav class="nav d-flex justify-content-between">
-					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='Patient.html'"><strong>個人文章</strong></a></button>
-					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='TrackPost.html'"><strong>追蹤文章</strong></a></button>
-					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='Diary.html'"><strong>日記</strong></a></button>
-					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='PatientProfile.html'"><strong>個人資料</strong></a></button>
-				</nav>
+		<div class = "container-fluid" id="Article">
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+				<div class="modal-dialog  modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+						</div>
+						<div class="modal-body" style="margin-top:500px;">
+							<form action="" role="form">
+								<div class="form-group">
+									<input type="text" id="thetext" placeholder="輸入留言" class="form-control">
+								</div>
+							</form>
+							<table class="table table-bordered table-hover">
+								<tbody  id="getfeedback">
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary" id="thetextbutton" onclick="feedBack()"><span>發送</span></button>
+						</div>
+					</div>
+				</div>
 			</div>
-			<button class="btn btn-default btn-sm"><a class="p-2 text-muted">個人追蹤</a></button>
-			<button class="btn btn-default btn-sm"><a class="p-2 text-muted">家屬建議</a></button>
-			<div class="list-group" id="trackList">
-			</div>
+			<div id='map'></div>
 		</div>
 		<footer>
 		<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color:#BF9D7A;">
@@ -210,7 +224,7 @@
 			</div>
 		</nav>
 		</footer>
-		<script type="text/javascript" src="js/readTrackArticleList.js"></script>	<!-- readArticleList.js -->
+		<script type="text/javascript" src="js/readThePatientArticle.js"></script>	<!-- ReadArticle.js -->
 	</body>
 </html>
 

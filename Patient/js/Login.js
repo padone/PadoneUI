@@ -17,6 +17,8 @@ $(document).ready(function() {
 						sessionStorage.setItem('msg', str);
 						var name = response.name;
 						sessionStorage.setItem('name', name);
+						var identity = $("#identity").val();
+						sessionStorage.setItem('identityGet', identity);
 						window.location.href = 'PatientHome.html';
 					}
 					else if (response.result == '沒有此使用者')

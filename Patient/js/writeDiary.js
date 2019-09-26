@@ -1,41 +1,59 @@
-var url = "http://140.121.196.23:3390/PadoneAS/WriteArticleServlet";
-var url2 = "http://140.121.196.23:3390/HospitalCrawler/HospitalServlet";
+var url = "http://140.121.196.23:3390/PadoneAS/WritePatientDiaryServlet";
+var url2 = "http://140.121.196.23:3390/PadoneAS/GetPatientDiaryServlet";
 var userID;
 userID = sessionStorage.getItem('msg');
+var identity;
+identity = sessionStorage.getItem('identityGet');
+
 $(document).ready(function() {
-	$.ajax({
-		url : url2,
-		dataType : "json",
-		success : function(response) {
-			for(var i = 0; i < response.length; i++){
-				$("#location").append(
-					'<option value="'+ i +'">' + response[i].county + '' + response[i].hospitalName + '</option>'
+	$("#diarySearch").click(function() {
+		var userID;
+		userID = sessionStorage.getItem('msg');
+		var date;
+		date = $("#date").val();
+		console.log(userID);
+		console.log(identity);
+		console.log(date);
+		$.ajax({
+			type: "GET",
+			url : url2,
+			data : {
+				date : date,
+				userID : userID
+			},
+			dataType : "json",
+			success : function(response) {
+				console.log(response);
+				$("#patientDiary").append(
+					response.patientDescription
 				);
-			}
-		},
-		error : function() {
-			alert("失敗");
-		}
+				$("#familyDiary").append(
+					response.familyDescription
+				);
+			},
+			error : function() {
+				alert("失敗");
+			},
+		});
 	});
 });
+
 $(document).ready(function() {
-	$("#post").click(function() {
+	$("#diaryPost").click(function() {
 			$.ajax({
-				type: "POST",
+				type: "GET",
 				url : url,
 				data : {
-					title : $("#title").val(),
-					hospital : $("#location").val(),
-					description : $("#description").val(),
-					picture : $("#curlLabel").html(),
-					department : $("#class").val(),
-					tag : $("#label").val(),
-					authorID : userID
+					date : $("#date").val(),
+					Image : $("#curlLabel").html(),
+					identity : identity,
+					patientDescription : $("#patientDiary").val(),
+					userID : userID
 				},
 				dataType : "json",
 				success : function(response) {
 					alert("新增成功！");
-					window.location.href = 'PatientHome.html';
+					window.location.href = 'Diary.html';
 				},
 				error : function() {
 					alert("失敗");
@@ -43,6 +61,7 @@ $(document).ready(function() {
 			});
 	});
 });
+
 //上傳圖片
 function makeImgurUrl(para) {
 	const id = 'cd39c2181d056c8'; // 填入 App 的 Client ID

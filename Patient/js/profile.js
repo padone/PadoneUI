@@ -36,12 +36,14 @@ $(document).ready(function() {
 	});
 });
 $(document).ready(function() {
+	var userID;
+	userID = sessionStorage.getItem('msg');
 	$("#patientSaveProfile").click(function() {
 		$.ajax({
 			type: "POST",
 			url : url,
 			data : {
-				userID : "6672",
+				userID : userID,
 				name : $("#name").val(),
 				mail : $("#mail").val(),
 				birthday : $("#birthday").val(),

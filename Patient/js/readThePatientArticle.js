@@ -15,9 +15,9 @@ $(document).ready(function() {
 			var userID;
 			userID = sessionStorage.getItem('msg');
 			var articleID;
-			articleID = sessionStorage.getItem('articleid');
+			articleID = sessionStorage.getItem('patientarticleid');
 			var author;
-			author = sessionStorage.getItem('author');
+			author = sessionStorage.getItem('patientauthor');
 			var name;
 			name = sessionStorage.getItem('name');
 			if (userID)
@@ -109,7 +109,6 @@ $(document).ready(function() {
 		}
 	});
 });
-
 function hi(){
 	alert("hi");
 }
@@ -120,8 +119,6 @@ function trackArticle(){
 	userID = sessionStorage.getItem('msg');
 	var articleID;
 	articleID = sessionStorage.getItem('articleid');
-	console.log(articleID);
-	console.log(userID);
 	$.ajax({
 			type: "GET",
 			url : url5,
@@ -189,9 +186,6 @@ $(document).ready(function() {
 		},
 		dataType : "json",
 		success : function(response) {
-			console.log(response);
-			console.table(response);
-			
 			for(var i = 0; i < response.length; i++){
 				if(response[i].authorID == userID){
 				$("#getfeedback").append(
@@ -206,8 +200,7 @@ $(document).ready(function() {
 						'<td style="width:5%">'+ countOtherFeedBack +'<td style="width:10%">' + response[i].author + '</td></td>' +
 						'<td style="vertical-align:middle;text-align:left">' + response[i].message + '<td style="width:8%">' + response[i].updateTime + '</td></td>' +
 					'</tr>'
-				);
-				countOtherFeedBack++;}
+				);countOtherFeedBack++;}
 			}
 		},
 		error : function() {
@@ -215,6 +208,7 @@ $(document).ready(function() {
 		}
 	});
 });
+
 
 //刪留言
 var url4 = "http://140.121.196.23:3390/PadoneAS/DeleteFeedbackServlet"

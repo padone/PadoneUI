@@ -17,7 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	
+
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	
@@ -43,11 +43,14 @@
 		}
 	</script>
 		<style type = "text/css">
-			body { 
+			body{
 				padding-bottom: 70px;
 				margin-top:70px;
 				font-family:"微軟正黑體";
 				background-color:#EBF2EA;
+			}
+			nav{
+				background-color:#BF9D7A;
 			}
 			p {
 				display : inline-block;
@@ -141,10 +144,6 @@
 					top:55px;
 					right:8px;
 				}
-				#function1{
-					width:25%;
-					font-size:13px;
-				}
 			}
 		</style>
 	</head>
@@ -179,17 +178,7 @@
 			</div>
 		</nav>
 		<div class = "container-fluid">
-			<div class="nav-scroller py-1 mb-2">
-				<nav class="nav d-flex justify-content-between">
-					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='Patient.html'"><strong>個人文章</strong></a></button>
-					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='TrackPost.html'"><strong>追蹤文章</strong></a></button>
-					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='Diary.html'"><strong>日記</strong></a></button>
-					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='PatientProfile.html'"><strong>個人資料</strong></a></button>
-				</nav>
-			</div>
-			<button class="btn btn-default btn-sm"><a class="p-2 text-muted">個人追蹤</a></button>
-			<button class="btn btn-default btn-sm"><a class="p-2 text-muted">家屬建議</a></button>
-			<div class="list-group" id="trackList">
+			<div class="list-group" id="departmentlist">
 			</div>
 		</div>
 		<footer>
@@ -210,7 +199,7 @@
 			</div>
 		</nav>
 		</footer>
-		<script type="text/javascript" src="js/readTrackArticleList.js"></script>	<!-- readArticleList.js -->
+		<script type="text/javascript" src="js/readDepartmentArticleList.js"></script>	<!-- readArticleList.js -->
 	</body>
 </html>
 
