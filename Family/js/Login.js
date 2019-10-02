@@ -22,7 +22,7 @@ $(document).ready(function() {
 							sessionStorage.setItem('name', name);
 							var identity = $("#identity").val();
 							sessionStorage.setItem('identityGet', identity);
-							window.location.href = 'PatientHome.html';
+							window.location.href = 'http://140.121.196.23:3390/PadoneUI0521/Patient/PatientHome.html';
 						}
 						else if($("#identity").val() == 2)
 						{

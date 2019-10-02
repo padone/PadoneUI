@@ -10,6 +10,7 @@ $(document).ready(function() {
 		url : url,
 		data : {
 			id : userID,
+			tableName : "trackarticle"
 		},
 		dataType : "json",
 		success : function(response) {
@@ -20,6 +21,33 @@ $(document).ready(function() {
 						'<div class="d-flex w-100 justify-content-between">' + 
 							'<h5 class="mb-1"><strong href="#" onclick="savePatientArticleID(' + response[i].articleID + ');">' + response[i].title + '</strong></h5>' + 
 							'<button type="button" class="close" aria-label="Close" onClick ="deleteTrackArticle(' + response[i].articleID + ')" data-dismiss="modal"><span aria-hidden="true">x</span></button>' + 
+						'</div>' + 
+						'<p class="mb-1">' + response[i].description + '</p>' + 
+						'<small style="float:right;">' + response[i].author + '  ' + response[i].postTime + '</small>' + 
+					'</a>'			 
+				);
+			}
+		},
+		error : function() {
+			console.log(userID);
+			alert("失敗");
+		}
+	});
+	$.ajax({
+		type: "GET",
+		url : url,
+		data : {
+			id : userID,
+			tableName : "suggestarticle"
+		},
+		dataType : "json",
+		success : function(response) {
+			console.log(response);
+			for(var i = 0; i < response.length; i++){
+				$("#suggestList").append(
+					'<a class="list-group-item list-group-item-action">' + 
+						'<div class="d-flex w-100 justify-content-between">' + 
+							'<h5 class="mb-1"><strong href="#" onclick="savePatientArticleID(' + response[i].articleID + ');">' + response[i].title + '</strong></h5>' + 
 						'</div>' + 
 						'<p class="mb-1">' + response[i].description + '</p>' + 
 						'<small style="float:right;">' + response[i].author + '  ' + response[i].postTime + '</small>' + 

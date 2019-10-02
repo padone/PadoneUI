@@ -21,8 +21,8 @@ $(document).ready(function() {
 			dataType : "json",
 			success : function(response) {
 				console.log(response);
-				$("#decription").append(
-					response.familyDescription
+				$("#description").append(
+					response.description
 				);
 			},
 			error : function() {

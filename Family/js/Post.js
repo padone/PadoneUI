@@ -38,7 +38,7 @@ $(document).ready(function() {
 				dataType : "json",
 				success : function(response) {
 					alert("新增成功！");
-					window.location.href = 'PatientHome.html';
+					window.location.href = 'FamilyHome.html';
 				},
 				error : function() {
 					alert("失敗");
@@ -89,4 +89,3 @@ function makeImgurUrl(para) {
 		urlLabel.html(JSON.parse(res).data.link);
 	});
 }
-

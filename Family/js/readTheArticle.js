@@ -15,9 +15,9 @@ $(document).ready(function() {
 			var userID;
 			userID = sessionStorage.getItem('msg');
 			var articleID;
-			articleID = sessionStorage.getItem('patientarticleid');
+			articleID = sessionStorage.getItem('articleid');
 			var author;
-			author = sessionStorage.getItem('patientauthor');
+			author = sessionStorage.getItem('author');
 			var name;
 			name = sessionStorage.getItem('name');
 			if (userID)
@@ -86,7 +86,7 @@ $(document).ready(function() {
 							'<div style="text-align:center">' + 
 								'<input type="button" class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A" id="s2" value="讚" onclick="changeValue2();">' + 
 								'<span style="float:right">&nbsp;</span>' + 
-								'<input type="button" class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A" id="s1" value="追蹤" onclick="trackArticle();">' + 
+								'<input type="button" class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A" id="s1" value="建議" onclick="trackArticle();">' + 
 								'<button type="button" style="float:left" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">留言區</button>' + 
 							'</div>' + 
 						'</div>' + 
@@ -109,24 +109,26 @@ $(document).ready(function() {
 		}
 	});
 });
+
 function hi(){
 	alert("hi");
 }
-//追蹤
+//建議
 var url5 = "http://140.121.196.23:3390/PadoneAS/TrackArticleServlet";
 function trackArticle(){
 	var userID;
 	userID = sessionStorage.getItem('msg');
 	var articleID;
-	articleID = sessionStorage.getItem('patientarticleid');
+	articleID = sessionStorage.getItem('articleid');
 	console.log(articleID);
+	console.log(userID);
 	$.ajax({
 			type: "GET",
 			url : url5,
 			data : {
 				userID : userID,
 				articleID : articleID,
-				tableName : "trackarticle"
+				tableName : "suggestarticle"
 			},
 			dataType : "json",
 			success : function() {
@@ -187,6 +189,9 @@ $(document).ready(function() {
 		},
 		dataType : "json",
 		success : function(response) {
+			console.log(response);
+			console.table(response);
+			
 			for(var i = 0; i < response.length; i++){
 				if(response[i].authorID == userID){
 				$("#getfeedback").append(
@@ -201,7 +206,8 @@ $(document).ready(function() {
 						'<td style="width:5%">'+ countOtherFeedBack +'<td style="width:10%">' + response[i].author + '</td></td>' +
 						'<td style="vertical-align:middle;text-align:left">' + response[i].message + '<td style="width:8%">' + response[i].updateTime + '</td></td>' +
 					'</tr>'
-				);countOtherFeedBack++;}
+				);
+				countOtherFeedBack++;}
 			}
 		},
 		error : function() {
@@ -209,7 +215,6 @@ $(document).ready(function() {
 		}
 	});
 });
-
 
 //刪留言
 var url4 = "http://140.121.196.23:3390/PadoneAS/DeleteFeedbackServlet"

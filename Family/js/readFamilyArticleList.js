@@ -16,7 +16,7 @@ $(document).ready(function() {
 		success : function(response) {
 			console.log(response);
 			for(var i = 0; i < response.length; i++){
-				$("#list").append(
+				$("#Familylist").append(
 					'<a class="list-group-item list-group-item-action">' + 
 						'<div class="d-flex w-100 justify-content-between">' + 
 							'<h5 class="mb-1"><strong href="#" onclick="savePatientArticleID(' + response[i].articleID + ');">' + response[i].title + '</strong></h5>' + 
@@ -40,7 +40,7 @@ function savePatientArticleID(num){
 	//var author = dataOfPatientAuthor[num];
 	sessionStorage.setItem('patientarticleid', str);
 	//sessionStorage.setItem('patientauthor', author);
-	window.location.href="PatientOwnArticleSide.html";
+	window.location.href="FamilyOwnArticleSide.html";
 }
 
 //刪除文章
@@ -56,7 +56,7 @@ function deleteArticle(ArticleID) {
 			},
 			dataType : "json",
 			success : function() {
-				window.location.href = 'Patient.html';
+				window.location.href = 'Family.html';
 				alert("成功");
 			},
 			error : function() {

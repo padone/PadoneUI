@@ -41,6 +41,12 @@
 			}
 			document.getElementById('topfont1').innerHTML = name;
 		}
+		function getDepartmentList(department)
+		{
+			var departmentName = department;
+			sessionStorage.setItem('departmentNameInLocal', departmentName);
+			window.location.href = 'FamilyDepartment.html';
+		}
 	</script>
 		<style type = "text/css">
 			nav{
@@ -156,7 +162,7 @@
 			}				
 		</style>
 	</head>
-	<body>
+	<body onload="saveUserID();">
 	<nav class="navbar navbar-expand-md navbar-fixed-top" style="background-color:#BF9D7A;" id="top">
 			<img src="https://i.imgur.com/pYX0gIi.png" id = "logo">
 			<div>
@@ -194,25 +200,25 @@
 			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='FamilyHome.html'">
 				<span class="h3 mx-1"><strong style="color:black">精華區</strong></span></a>
 			</button>
-			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='FamilyHome.html'">
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="getDepartmentList('骨科')">
 				<span class="h3 mx-1"><strong style="color:black">骨科</strong></span></a>
 			</button>
-			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='FamilyHome.html'">
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="getDepartmentList('耳鼻喉科')">
 				<span class="h3 mx-1"><strong style="color:black">耳鼻喉科</strong></span></a>
 			</button>
-			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='FamilyHome.html'">
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="getDepartmentList('婦產科')">
 				<span class="h3 mx-1"><strong style="color:black">婦產科</strong></span></a>
 			</button>
-			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='FamilyHome.html'">
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="getDepartmentList('眼科')">
 				<span class="h3 mx-1"><strong style="color:black">眼科</strong></span></a>
 			</button>
-			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='FamilyHome.html'">
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="getDepartmentList('飲食生活')">
 				<span class="h3 mx-1"><strong style="color:black">飲食生活</strong></span></a>
 			</button>
-			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='FamilyHome.html'">
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="getDepartmentList('運動健康')">
 				<span class="h3 mx-1"><strong style="color:black">運動健康</strong></span></a>
 			</button>
-			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="window.location.href='FamilyHome.html'">
+			<button id="bottom2" type="button" class="col-md-4 btn btn-outline-light" onclick="getDepartmentList('健康資訊')">
 				<span class="h3 mx-1"><strong style="color:black">健康資訊</strong></span></a>
 			</button>
 		</div>
@@ -235,6 +241,7 @@
 		</nav>
 		</footer>
 	</body>
+	<script type="text/javascript" src="js/readDepartmentArticleList.js"></script>	<!-- Login.js -->
 </html>
 
 <!--

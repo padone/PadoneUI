@@ -187,9 +187,17 @@
 					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='PatientProfile.html'"><strong>個人資料</strong></a></button>
 				</nav>
 			</div>
-			<button class="btn btn-default btn-sm"><a class="p-2 text-muted">個人追蹤</a></button>
-			<button class="btn btn-default btn-sm"><a class="p-2 text-muted">家屬建議</a></button>
-			<div class="list-group" id="trackList">
+			<button class="btn btn-default btn-sm"><a class="p-2 text-muted" id="one-tab" data-toggle="tab" href="#patient" role="tab" aria-controls="patient" aria-selected="true" style="color:#272424">個人追蹤</a></button>
+			<button class="btn btn-default btn-sm"><a class="p-2 text-muted" id="two-tab" data-toggle="tab" href="#doctor" role="tab" aria-controls="doctor" aria-selected="false" style="color:#272424">家屬建議</a></button>
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade active in" id="patient" role="tabpanel" aria-labelledby="one-tab">
+					<div class="list-group" id="trackList">
+					</div>
+				</div>
+				<div class="tab-pane fade" id="doctor" role="tabpanel" aria-labelledby="two-tab">
+					<div class="list-group" id="suggestList">
+					</div>
+				</div>
 			</div>
 		</div>
 		<footer>
