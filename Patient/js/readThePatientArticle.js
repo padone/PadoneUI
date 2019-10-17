@@ -84,7 +84,7 @@ $(document).ready(function() {
 								'<h5 class="card-title" style="text-align:left; font-size:72px">'+ response[0].title +'</h5>' +
 							'</div>' + 
 							'<div style="text-align:center">' + 
-								'<input type="button" class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A" id="s2" value="讚" onclick="changeValue2();">' + 
+								'<input type="button" class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A" id="s2" value="讚" onclick="great();">' + 
 								'<span style="float:right">&nbsp;</span>' + 
 								'<input type="button" class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A" id="s1" value="追蹤" onclick="trackArticle();">' + 
 								'<button type="button" style="float:left" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">留言區</button>' + 
@@ -139,7 +139,8 @@ function trackArticle(){
 	});
 }
 //按讚
-function changeValue2(){
+var urlGreat = "http://140.121.196.23:3390/PadoneAS/GreatServlet";
+function great(){
 	var btnVal=document.getElementById("s2");
 	if(btnVal.value=="讚")
 	{
@@ -147,6 +148,25 @@ function changeValue2(){
 	}
 	else
 		btnVal.value="讚";
+	var userID;
+	userID = sessionStorage.getItem('msg');
+	var articleID;
+	articleID = sessionStorage.getItem('articleid');
+	$.ajax({
+			type: "POST",
+			url : urlGreat,
+			data : {
+				userID : userID,
+				articleID : articleID
+			},
+			dataType : "json",
+			success : function() {
+				alert("成功");
+			},
+			error : function() {
+				alert("失敗");
+			},
+		});
 }
 //發留言
 var url2 = "http://140.121.196.23:3390/PadoneAS/WriteFeedbackServlet";
