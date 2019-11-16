@@ -23,6 +23,12 @@
 	
 			
 	<script>
+		function Search()
+		{
+			var searchTemp = document.getElementById("topsearchinput");
+			sessionStorage.setItem('searchTempTemp', searchTemp.value);
+			window.location.href = 'PatientSearch.html';
+		}
 		function saveUserID()
 		{
 			var userID;
@@ -75,7 +81,7 @@
 				width:140px;
 				height:50px;
 			}
-			#topfont1 ,#topfont2, #topfont3{
+			#topfont1 ,#topfont2, #topfont3, #topfont4{
 				color:#582A20;
 				line-height:40px;
 			}
@@ -139,6 +145,11 @@
 					top:0px;
 					left:260px;
 				}
+				#topfont4{
+					position:absolute;
+					top:0px;
+					left:320px;
+				}
 				#toplogout{
 					position:absolute;
 					top:10px;
@@ -179,6 +190,10 @@
 						<a href = "#" onclick="history.back()" id="topfont3"><strong>返回</strong></a>
 					</li>
 					&nbsp;
+					<li class="nav-item">
+						<a href = "padoneMap.html" onclick="window.location.href='padoneMap.html'" id="topfont4"><strong>PadoneMap</strong></a>
+					</li>
+					&nbsp;
 					<li class="nav-item" id="toplogout">
 						<a style="color:#582A20;line-height:40px;" href = "Patientlogin.html"><strong><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;登出</strong></a>
 					</li>
@@ -187,8 +202,8 @@
 					<a class="nav navbar-nav navbar-right" id="topsearchicon">
 						<svg xmlns="http://www.w3.org/2000/svg" width="40" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
 					</a>
-					<input class="form-control mr-sm-2" type="text" placeholder="搜尋" aria-label="搜尋" id="topsearchinput">
-					<a href="#" id="topsearchfont"><strong  style="color:#582A20">查詢</strong></a>
+					<input class="form-control mr-sm-2" type="text" placeholder="搜尋" autocomplete="off" aria-label="搜尋" id="topsearchinput">
+					<a href = "#" onclick="Search()" id="topsearchfont"><strong  style="color:#582A20">查詢</strong></a>
 				</form>
 			</div>
 		</nav>   

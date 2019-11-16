@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html> 
+	<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+		crossorigin="anonymous">
+	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	
+			
+	<script>
+		function Search()
+		{
+			var searchTemp = document.getElementById("topsearchinput");
+			sessionStorage.setItem('searchTempTemp', searchTemp.value);
+			window.location.href = 'DoctorSearch.html';
+		}
+		function saveUserID()
+		{
+			var userID;
+			userID = sessionStorage.getItem('msg');
+			var name;
+			name = sessionStorage.getItem('name');
+			var getSearchTemp;
+			getSearchTemp = sessionStorage.getItem('searchTempTemp');
+			searchInput.innerHTML = getSearchTemp;
+			if (userID)
+			{
+				console.log(userID);
+				console.log(name);
+			}
+			else
+			{
+				alert("請先登入");
+				window.location.href = 'Patientlogin.html';
+			}
+			document.getElementById('topfont1').innerHTML = name;
+		}
+	</script>
+		<style type = "text/css">
+			body { 
+				margin-top:70px;
+				font-family:"微軟正黑體";
+				background-color:#EBF2EA;
+				padding-bottom: 70px;
+			}
+			#logo {
+				width:140px;
+				height:50px;
+			}
+			#topfont1 ,#topfont2, #topfont3, #topfont4{
+				color:#582A20;
+				line-height:40px;
+			}
+			#toplogout{
+				position:absolute;
+				right:270px;
+			}
+			#topsearchicon{
+				position:absolute;
+				top:20px;
+				right:230px;
+			}
+			#topsearchinput{
+				position:absolute;
+				top:10px;
+				right:40px;
+			}
+			#topsearchfont{
+				position:absolute;
+				top:20px;
+				right:10px;
+			}
+			#introduction{
+				width:700px;
+				height:350px;
+			}
+			@media (max-width:480px){
+				body {
+					padding-bottom: 70px;
+					margin-top:120px;
+				}
+				#logo {
+					width:140px;
+					height:50px;
+				}
+				#bottom1{
+					width:25%;
+				}
+				#font1{
+					font-size:20px;
+				}
+				#top{
+					padding-right:189px;
+					width:375px;
+					height:101px;
+				}
+				#logo{
+					margin-right:200px;
+				}
+				#topfont1{
+					position:absolute;
+					top:0px;
+					left:140px;
+				}
+				#topfont2{
+					position:absolute;
+					top:0px;
+					left:200px;
+				}
+				#topfont3{
+					position:absolute;
+					top:0px;
+					left:260px;
+				}
+				#topfont4{
+					position:absolute;
+					top:0px;
+					left:320px;
+				}
+				#toplogout{
+					position:absolute;
+					top:10px;
+					right:8px;
+				}
+				#topsearchicon{
+					position:absolute;
+					left:100px;
+					top:50px;
+				}
+				#topsearchinput{
+					position:absolute;
+					top:50px;
+					width:200px;
+				}
+				#topsearchfont{
+					position:absolute;
+					top:55px;
+					right:8px;
+				}
+				#function1{
+					width:25%;
+					font-size:13px;
+				}
+				#introduction{
+					width:350px;
+					height:350px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-md navbar-fixed-top" style="background-color:#BF9D7A;" id="top">
+			<img src="https://i.imgur.com/pYX0gIi.png" id = "logo">
+			<div>
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<strong><a href = "Doctor.html" onclick="window.location.href='Doctor.html'" id="topfont1"></a></strong>
+					</li>
+					&nbsp;
+					<li class="nav-item">
+						<a href = "DoctorMakePost.html" onclick="window.location.href='DoctorMakePost.html'" id="topfont2"><strong>發佈文章</strong></a>
+					</li>
+					&nbsp;
+					<li class="nav-item">
+						<a href = "#" onclick="history.back()" id="topfont3"><strong>返回</strong></a>
+					</li>
+					&nbsp;
+					<li class="nav-item">
+						<a href = "padoneMap.html" onclick="window.location.href='padoneMap.html'" id="topfont4"><strong>PadoneMap</strong></a>
+					</li>
+					&nbsp;
+					<li class="nav-item" id="toplogout">
+						<a style="color:#582A20;line-height:40px;" href = "Patientlogin.html"><strong><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;登出</strong></a>
+					</li>
+				</ul>
+				<form class="form-inline mt-2 mt-md-0">
+					<a class="nav navbar-nav navbar-right" id="topsearchicon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="40" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+					</a>
+					<input class="form-control mr-sm-2" type="text" placeholder="搜尋" autocomplete="off" aria-label="搜尋" id="topsearchinput">
+					<a href = "#" onclick="Search()" id="topsearchfont"><strong  style="color:#582A20">查詢</strong></a>
+				</form>
+			</div>
+		</nav> 
+			<div class = "container-fluid" id="block">
+			<div class="nav-scroller py-1 mb-2">
+				<nav class="nav d-flex justify-content-between">
+					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='Doctor.html'"><strong>個人文章</strong></a></button>
+					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='EditGood.html'"><strong>編輯精華</strong></a></button>
+					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='DoctorInformation.html'"><strong>醫師資料</strong></a></button>
+					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="self.location.href='mailto:20bbdp20@Gmail.com';"><strong>信箱</strong></a></button>
+				</nav>
+								<button class="btn btn-outline-light" style="float:right;background-color:#BF9D7A" onclick = "window.location.href = 'DoctorRealInformation.html'">編輯</button>
+			</div>
+			<form id="getprofile">
+				<div class="form-group">
+					<label>追蹤對象</label>
+					<button style="background-color:#80ADD7" type="button" class="btn btn-outline-light">查看追蹤對象</button>
+				</div>
+				<div>
+					<label>我的助理</label>
+					<button style="background-color:#0ABDA0" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							查看我的助理
+					</button>
+					<div class="dropdown-menu" aria-labelledby="留言">
+							<p class="dropdown-item">Dan</p>
+							<p class="dropdown-item">Dan</p>
+							<p class="dropdown-item">Dan</p>
+					</div>
+				</div>
+			</form>
+		</div>
+		<footer>
+		<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color:#BF9D7A;">
+			<div class="container">
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='DoctorHome.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">首頁</strong></span></a>
+				</button>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='DoctorClass.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">分類</strong></span>
+				</button>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" href="#">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">通知</strong></span>
+				</button>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='DoctorSetting.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">設定</strong></span>
+				</button>
+			</div>
+		</nav>
+		</footer>
+		<script type="text/javascript" src="js/search.js"></script>	<!-- readArticleList.js -->
+	</body>
+</html>
+
+<!--
+**************************************************************************
+* (C) Copyright 1992-2012 by Deitel & Associates, Inc. and               *
+* Pearson Education, Inc. All Rights Reserved.                           *
+*                                                                        *
+* DISCLAIMER: The authors and publisher of this book have used their     *
+* best efforts in preparing the book. These efforts include the          *
+* development, research, and testing of the theories and programs        *
+* to determine their effectiveness. The authors and publisher make       *
+* no warranty of any kind, expressed or implied, with regard to these    *
+* programs or to the documentation contained in these books. The authors *
+* and publisher shall not be liable in any event for incidental or       *
+* consequential damages in connection with, or arising out of, the       *
+* furnishing, performance, or use of these programs.                     *
+**************************************************************************
+-->

@@ -16,8 +16,10 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	
@@ -28,7 +30,12 @@
 			laydate.render({
 			elem: '#date' //指定元素
 			});
-			
+		function Search()
+		{
+			var searchTemp = document.getElementById("topsearchinput");
+			sessionStorage.setItem('searchTempTemp', searchTemp.value);
+			window.location.href = 'PatientSearch.html';
+		}
 		function saveUserID()
 		{
 			var userID;
@@ -59,7 +66,7 @@
 				width:140px;
 				height:50px;
 			}
-			#topfont1 ,#topfont2, #topfont3{
+			#topfont1 ,#topfont2, #topfont3, #topfont4{
 				color:#582A20;
 				line-height:40px;
 			}
@@ -120,6 +127,11 @@
 					top:0px;
 					left:260px;
 				}
+				#topfont4{
+					position:absolute;
+					top:0px;
+					left:320px;
+				}
 				#toplogout{
 					position:absolute;
 					top:10px;
@@ -164,6 +176,10 @@
 						<a href = "#" onclick="history.back()" id="topfont3"><strong>返回</strong></a>
 					</li>
 					&nbsp;
+					<li class="nav-item">
+						<a href = "padoneMap.html" onclick="window.location.href='padoneMap.html'" id="topfont4"><strong>PadoneMap</strong></a>
+					</li>
+					&nbsp;
 					<li class="nav-item" id="toplogout">
 						<a style="color:#582A20;line-height:40px;" href = "Patientlogin.html"><strong><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;登出</strong></a>
 					</li>
@@ -172,8 +188,8 @@
 					<a class="nav navbar-nav navbar-right" id="topsearchicon">
 						<svg xmlns="http://www.w3.org/2000/svg" width="40" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
 					</a>
-					<input class="form-control mr-sm-2" type="text" placeholder="搜尋" aria-label="搜尋" id="topsearchinput">
-					<a href="#" id="topsearchfont"><strong  style="color:#582A20">查詢</strong></a>
+					<input class="form-control mr-sm-2" type="text" placeholder="搜尋" autocomplete="off" aria-label="搜尋" id="topsearchinput">
+					<a href = "#" onclick="Search()" id="topsearchfont"><strong  style="color:#582A20">查詢</strong></a>
 				</form>
 			</div>
 		</nav>
@@ -187,26 +203,18 @@
 				</nav>
 			</div>
 			<form>
-				<input class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A;" type="button" value="儲存" id ="diaryPost">
+				<input class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A;" type="button" value="編輯" onclick="window.location.href='PatientEditDiary.html'">
 				<input class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A;" type="button" value="搜尋" id ="diarySearch">
 				<input type="text" class="form-control mr-sm-2" placeholder="請選擇日期" id="date" style="width:200px;" autocomplete="off">
 				<br>
-				<div class="form-group">
-					<label>圖片\影片</label>
-					<input type="file" id="myFile" />
-					<input type="button" value="提交" onclick="makeImgurUrl('class')" />
-					<br>
-					<label id="cnoti" class="col-form-label"></label>
-					<br>
-					<label id="curlLabel"></label>
+				<div id="diaryPicture">
 				</div>
 				<div class="form-group">
-					<label>日記內容</label>
-					<textarea class="form-control" placeholder="日記內容" style="height:300px" id="patientDiary"></textarea>
+					<label id="patientDiary">日記內容</label>
 				</div>
 				<div class="form-group">
 					<label>家屬共筆日記</label>
-					<textarea class="form-control" placeholder="家屬共筆日記" style="height:300px" id="familyDiary"></textarea>
+					<textarea class="form-control" placeholder="家屬共筆日記" style="height:300px" id="familyDiary" readonly></textarea>
 				</div>
 			</form>
 		</div>

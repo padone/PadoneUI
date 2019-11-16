@@ -23,6 +23,12 @@
 	
 			
 	<script>
+		function Search()
+		{
+			var searchTemp = document.getElementById("topsearchinput");
+			sessionStorage.setItem('searchTempTemp', searchTemp.value);
+			window.location.href = 'FamilySearch.html';
+		}
 		function saveUserID()
 		{
 			var userID;
@@ -43,31 +49,67 @@
 		}
 	</script>
 		<style type = "text/css">
-			@media(max-width: 768px){
-				.navbar-right form{
-				display:none;
-				}
-			}
-
-			@media(max-width: 568px){
-				.jumbotron{
-					text-align: center;
-				}
-				footer{
-					text-align: center;
-				}
-			}
 			body { 
 				padding-bottom: 70px;
 				margin-top:70px;
 				font-family:"微軟正黑體";
 				background-color:#EBF2EA;
 			}
+			.switch_demo-checkbox {
+				display: none;
+			}
+			.switch_demo-label {
+				width:5%;
+				display: block;
+				overflow: hidden;
+				cursor: pointer;
+				border: 2px solid #BF9D7A;
+				border-radius: 20px;
+			}
+			.switch_demo-inner {
+				display: block;
+				width: 200%;
+				margin-left: -100%;
+				transition: margin 0.3s ease-in 0s;
+			}
+			.switch_demo-inner:before,
+			.switch_demo-inner:after {
+				display: block;
+				float: left;
+				width: 50%;
+				height: 30px;
+				padding: 0;
+				line-height: 30px;
+				font-size: 14px;
+				color: white;
+				font-family: Trebuchet, Arial, sans-serif;
+				font-weight: bold;
+				box-sizing: border-box;
+			}
+			.switch_demo-inner:before {
+				content: "開啟";
+				padding-left: 10px;
+				background-color:#80ADD7;
+				color: #FFFFFF;
+			}
+			.switch_demo-inner:after {
+				content: "關閉";
+				padding-right: 10px;
+				background-color: #EEEEEE;
+				color: #999999;
+				text-align: right;
+			}
+			.switch_demo-checkbox:checked + .switch_demo-label .switch_demo-inner {
+				margin-left: 0;
+			}
+			.switch_demo-checkbox:checked + .switch_demo-label .switch_demo-switch {
+				right: 0px;
+			}
 			#logo {
 				width:140px;
 				height:50px;
 			}
-			#topfont1 ,#topfont2, #topfont3{
+			#topfont1 ,#topfont2, #topfont3, #topfont4{
 				color:#582A20;
 				line-height:40px;
 			}
@@ -128,6 +170,11 @@
 					top:0px;
 					left:260px;
 				}
+				#topfont4{
+					position:absolute;
+					top:0px;
+					left:320px;
+				}
 				#toplogout{
 					position:absolute;
 					top:10px;
@@ -153,7 +200,7 @@
 					font-size:13px;
 				}
 			}
-		</style>
+			</style>
 	</head>
 	<body>
 	<nav class="navbar navbar-expand-md navbar-fixed-top" style="background-color:#BF9D7A;" id="top">
@@ -172,6 +219,10 @@
 						<a href = "#" onclick="history.back()" id="topfont3"><strong>返回</strong></a>
 					</li>
 					&nbsp;
+					<li class="nav-item">
+						<a href = "padoneMap.html" onclick="window.location.href='padoneMap.html'" id="topfont4"><strong>PadoneMap</strong></a>
+					</li>
+					&nbsp;
 					<li class="nav-item" id="toplogout">
 						<a style="color:#582A20;line-height:40px;" href = "Patientlogin.html"><strong><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;登出</strong></a>
 					</li>
@@ -180,8 +231,8 @@
 					<a class="nav navbar-nav navbar-right" id="topsearchicon">
 						<svg xmlns="http://www.w3.org/2000/svg" width="40" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
 					</a>
-					<input class="form-control mr-sm-2" type="text" placeholder="搜尋" aria-label="搜尋" id="topsearchinput">
-					<a href="#" id="topsearchfont"><strong  style="color:#582A20">查詢</strong></a>
+					<input class="form-control mr-sm-2" type="text" placeholder="搜尋" autocomplete="off" aria-label="搜尋" id="topsearchinput">
+					<a href = "#" onclick="Search()" id="topsearchfont"><strong  style="color:#582A20">查詢</strong></a>
 				</form>
 			</div>
 		</nav>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html> 
+	<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+		crossorigin="anonymous">
+	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		
+	<script>
+		function Search()
+		{
+			var searchTemp = document.getElementById("topsearchinput");
+			sessionStorage.setItem('searchTempTemp', searchTemp.value);
+			window.location.href = 'FamilySearch.html';
+		}
+		function start()
+		{
+			var userID;
+			userID = sessionStorage.getItem('msg');
+			var name;
+			name = sessionStorage.getItem('name');
+			if (userID)
+			{
+				console.log(userID);
+				console.log(name);
+			}
+			else
+			{
+				alert("請先登入");
+				window.location.href = 'Patientlogin.html';
+			}
+			document.getElementById('topfont1').innerHTML = name;
+		}
+	</script>
+	<style type = "text/css">
+		body { 
+			padding-bottom: 70px;
+			margin-top:70px;
+			font-family:"微軟正黑體";
+			background-color:#EBF2EA;
+		}
+		#logo {
+				width:140px;
+				height:50px;
+			}
+			#topfont1 ,#topfont2, #topfont3, #topfont4{
+				color:#582A20;
+				line-height:40px;
+			}
+			#toplogout{
+				position:absolute;
+				right:270px;
+			}
+			#topsearchicon{
+				position:absolute;
+				top:20px;
+				right:230px;
+			}
+			#topsearchinput{
+				position:absolute;
+				top:10px;
+				right:40px;
+			}
+			#topsearchfont{
+				position:absolute;
+				top:20px;
+				right:10px;
+			}
+			#Article{
+				 margin-left:40px;
+				 height:600px;
+			}
+			@media (max-width:480px){
+				body {
+					padding-bottom: 70px;
+					margin-top:120px;
+				}
+				#logo {
+					width:140px;
+					height:50px;
+				}
+				#bottom1{
+					width:25%;
+				}
+				#font1{
+					font-size:20px;
+				}
+				#top{
+					padding-right:189px;
+					width:375px;
+					height:101px;
+				}
+				#logo{
+					margin-right:200px;
+				}
+				#topfont1{
+					position:absolute;
+					top:0px;
+					left:140px;
+				}
+				#topfont2{
+					position:absolute;
+					top:0px;
+					left:200px;
+				}
+				#topfont3{
+					position:absolute;
+					top:0px;
+					left:260px;
+				}
+				#topfont4{
+					position:absolute;
+					top:0px;
+					left:320px;
+				}
+				#toplogout{
+					position:absolute;
+					top:10px;
+					right:8px;
+				}
+				#topsearchicon{
+					position:absolute;
+					left:100px;
+					top:50px;
+				}
+				#topsearchinput{
+					position:absolute;
+					top:50px;
+					width:200px;
+				}
+				#topsearchfont{
+					position:absolute;
+					top:55px;
+					right:8px;
+				}
+				#Article{
+					width:300%;
+				}
+			}
+	</style>
+	</head>
+	<body onload="start();">
+	<nav class="navbar navbar-expand-md navbar-fixed-top" style="background-color:#BF9D7A;" id="top">
+			<img src="https://i.imgur.com/pYX0gIi.png" id = "logo">
+			<div>
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<strong><a href = "Family.html" onclick="window.location.href='Family.html'" id="topfont1"></a></strong>
+					</li>
+					&nbsp;
+					<li class="nav-item">
+						<a href = "FamilyMakePost.html" onclick="window.location.href='FamilyMakePost.html'" id="topfont2"><strong>發佈文章</strong></a>
+					</li>
+					&nbsp;
+					<li class="nav-item">
+						<a href = "#" onclick="history.back()" id="topfont3"><strong>返回</strong></a>
+					</li>
+					&nbsp;
+					<li class="nav-item">
+						<a href = "padoneMap.html" onclick="window.location.href='padoneMap.html'" id="topfont4"><strong>PadoneMap</strong></a>
+					</li>
+					&nbsp;
+					<li class="nav-item" id="toplogout">
+						<a style="color:#582A20;line-height:40px;" href = "Patientlogin.html"><strong><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;登出</strong></a>
+					</li>
+				</ul>
+				<form class="form-inline mt-2 mt-md-0">
+					<a class="nav navbar-nav navbar-right" id="topsearchicon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="40" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+					</a>
+					<input class="form-control mr-sm-2" type="text" placeholder="搜尋" autocomplete="off" aria-label="搜尋" id="topsearchinput">
+					<a href = "#" onclick="Search()" id="topsearchfont"><strong  style="color:#582A20">查詢</strong></a>
+				</form>
+			</div>
+		</nav>
+		<div class = "container-fluid" id="Article">
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+				<div class="modal-dialog  modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+						</div>
+						<div class="modal-body" style="margin-top:200px;">
+							<form action="" role="form">
+								<div class="form-group">
+									<input type="text" id="thetext" placeholder="輸入留言" class="form-control">
+								</div>
+							</form>
+							<table class="table table-bordered table-hover">
+								<tbody  id="getfeedback">
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary" id="thetextbutton" onclick="feedBack()"><span>發送</span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id='map'></div>
+		</div>
+		<footer>
+		<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color:#BF9D7A;">
+			<div class="container">
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='FamilyHome.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">首頁</strong></span></a>
+				</button>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='FamilyClass.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">分類</strong></span>
+				</button>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" href="#">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">通知</strong></span>
+				</button>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='FamilySetting.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">設定</strong></span>
+				</button>
+			</div>
+		</nav>
+		</footer>
+		<script>
+
+    var map;
+
+    function initMap() {
+        var markers = [];
+        var infoWindows = [];
+        var loaction;
+        var timer = [];
+        var infoWindowState = -1;
+        var geocoder = new google.maps.Geocoder();
+        var info_config = [
+            '<div id="infoDiv">' +
+            '  <h2>基隆署立醫院</h2>' +
+            '  <h3>地址:</h3>' +
+            '  <h4>創立時間:</h4>' +
+            '  <h5>首頁:</h5>' +
+            '  <span></span><br/>' +
+            '  <div></div>' +
+            '</div>'
+        ];
+
+        //建立地圖 marker 的集合
+        var marker_config = [{
+            address: '基隆署立醫院',
+            icon: 'http://example.oxxostudio.tw/it2016/it2016-day22-off.png'
+        }];
+
+        //geocoder主程式
+        function _geocoder(address, callback) {
+            geocoder.geocode({
+                address: address
+            }, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    loaction = results[0].geometry.location;
+                    callback(loaction); //用一個 callback 就不用每次多寫上面這段
+                }
+            });
+        }
+
+        //使用地址或名稱標出位置
+        _geocoder('基隆署立醫院', function(address) {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: address,
+                zoom: 14
+            });
+
+            //設定資訊視窗內容
+            info_config.forEach(function(e, i) {
+                infoWindows[i] = new google.maps.InfoWindow({
+                    content: e
+                });
+                google.maps.event.addListener(infoWindows[i], 'domready', function() {
+                    _content(i);
+                });
+            });
+
+            //標出 marker
+            marker_config.forEach(function(e, i) {
+                _geocoder(e.address, function(address) {
+                    var marker = {
+                        position: address,
+                        map: map,
+                        icon: e.icon
+                    };
+                    markers[i] = new google.maps.Marker(marker);
+                    markers[i].setMap(map);
+                    markers[i].addListener('click', function() {
+                        clearTimeout(timer[i]);
+                        infoWindowState = infoWindowState * -1;
+                        if (infoWindowState > 0) {
+                            infoWindows[i].open(map, markers[i]);
+                            _content(i);
+                        } else {
+                            infoWindows[i].close();
+                        }
+                    });
+                    _setIcon(markers[i], 'http://example.oxxostudio.tw/it2016/it2016-day22-on.png');
+                });
+            });
+        });
+        function _setIcon(e, icon) {
+            e.setIcon(icon);
+        }
+        /*Time
+        function _content(e) {
+            timer[e] = setInterval(function() {
+                $('#infoDiv span').text(getTime());
+            }, 1000);
+        }
+
+        function getTime() {
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            if (h < 10) {
+                h = '0' + h;
+            }
+            if (m < 10) {
+                m = '0' + m;
+            }
+            if (s < 10) {
+                s = '0' + s;
+            }
+            var now = h + ':' + m + ':' + s;
+            return now;
+        }*/
+
+    }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrD730hGMTn7AdaQTZuvV9BQuISMiefMQ&callback=initMap">
+    </script>
+		<script type="text/javascript" src="js/readFamilyArticle.js"></script>	<!-- ReadArticle.js -->
+	</body>
+</html>
+
+<!--
+**************************************************************************
+* (C) Copyright 1992-2012 by Deitel & Associates, Inc. and               *
+* Pearson Education, Inc. All Rights Reserved.                           *
+*                                                                        *
+* DISCLAIMER: The authors and publisher of this book have used their     *
+* best efforts in preparing the book. These efforts include the          *
+* development, research, and testing of the theories and programs        *
+* to determine their effectiveness. The authors and publisher make       *
+* no warranty of any kind, expressed or implied, with regard to these    *
+* programs or to the documentation contained in these books. The authors *
+* and publisher shall not be liable in any event for incidental or       *
+* consequential damages in connection with, or arising out of, the       *
+* furnishing, performance, or use of these programs.                     *
+**************************************************************************
+-->

@@ -20,7 +20,7 @@ $(document).ready(function() {
 					'<a class="list-group-item list-group-item-action">' + 
 						'<div class="d-flex w-100 justify-content-between">' + 
 							'<h5 class="mb-1"><strong href="#" onclick="savePatientArticleID(' + response[i].articleID + ');">' + response[i].title + '</strong></h5>' + 
-							'<button type="button" class="close" aria-label="Close" onClick ="deleteArticle(' + response[i].articleID + ')" data-dismiss="modal"><span aria-hidden="true">x</span></button>' + 
+							'<button type="button" class="close" aria-label="Close" onClick ="surelyDelete(' + response[i].articleID + ')" data-dismiss="modal"><span aria-hidden="true">x</span></button>' + 
 						'</div>' + 
 						'<p class="mb-1">' + response[i].description + '</p>' + 
 						'<small style="float:right;">' + response[i].author + '  ' + response[i].postTime + '</small>' + 
@@ -38,12 +38,21 @@ $(document).ready(function() {
 function savePatientArticleID(num){
 	var str = num;
 	//var author = dataOfPatientAuthor[num];
-	sessionStorage.setItem('patientarticleid', str);
+	sessionStorage.setItem('familyownarticleid', str);
 	//sessionStorage.setItem('patientauthor', author);
 	window.location.href="FamilyOwnArticleSide.html";
 }
 
 //刪除文章
+function surelyDelete(ArticleID) {
+	var temp = confirm("確定刪除此文章嗎?");
+	if (temp == true){
+		deleteArticle(ArticleID);
+	}
+	else{
+		
+	}
+}
 function deleteArticle(ArticleID) {
 	var userID;
 	userID = sessionStorage.getItem('msg');

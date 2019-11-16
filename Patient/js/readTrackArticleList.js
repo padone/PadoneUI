@@ -1,4 +1,4 @@
-var url = "http://140.121.196.23:3390/PadoneAS/TrackingArticleListServlet";
+var url = "http://140.121.196.23:3390/PadoneCommunity/TrackingArticleListServlet";
 var url2 = "http://140.121.196.23:3390/PadoneAS/DeleteTrackArticleServlet";
 var dataOfPatientArticleID = new Array();
 var dataOfPatientAuthor = new Array();
@@ -10,7 +10,7 @@ $(document).ready(function() {
 		url : url,
 		data : {
 			id : userID,
-			tableName : "trackarticle"
+			tableName : "trackArticle"
 		},
 		dataType : "json",
 		success : function(response) {
@@ -20,7 +20,7 @@ $(document).ready(function() {
 					'<a class="list-group-item list-group-item-action">' + 
 						'<div class="d-flex w-100 justify-content-between">' + 
 							'<h5 class="mb-1"><strong href="#" onclick="savePatientArticleID(' + response[i].articleID + ');">' + response[i].title + '</strong></h5>' + 
-							'<button type="button" class="close" aria-label="Close" onClick ="deleteTrackArticle(' + response[i].articleID + ')" data-dismiss="modal"><span aria-hidden="true">x</span></button>' + 
+							'<button type="button" class="close" aria-label="Close" onClick ="surelyDelete(' + response[i].articleID + ')" data-dismiss="modal"><span aria-hidden="true">x</span></button>' + 
 						'</div>' + 
 						'<p class="mb-1">' + response[i].description + '</p>' + 
 						'<small style="float:right;">' + response[i].author + '  ' + response[i].postTime + '</small>' + 
@@ -38,7 +38,7 @@ $(document).ready(function() {
 		url : url,
 		data : {
 			id : userID,
-			tableName : "suggestarticle"
+			tableName : "suggestArticle"
 		},
 		dataType : "json",
 		success : function(response) {
@@ -71,6 +71,15 @@ function savePatientArticleID(num){
 }
 
 //刪除追蹤文章
+function surelyDelete(ArticleID) {
+	var temp = confirm("確定取消追蹤此文章嗎?");
+	if (temp == true){
+		deleteTrackArticle(ArticleID);
+	}
+	else{
+		
+	}
+}
 function deleteTrackArticle(ArticleID) {
 	var userID;
 	userID = sessionStorage.getItem('msg');
@@ -81,7 +90,7 @@ function deleteTrackArticle(ArticleID) {
 			data : {
 				userID: userID,
 				articleID: ArticleID,
-				tableName : "trackarticle"
+				tableName : "trackArticle"
 			},
 			dataType : "json",
 			success : function() {

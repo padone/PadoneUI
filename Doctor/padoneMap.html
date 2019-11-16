@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <style type="text/css">
+    body {
+        padding-bottom: 70px;
+        margin-top: 70px;
+        font-family: "微軟正黑體";
+        background-color: #EBF2EA;
+    }
+
+    #map {
+        height: 100%;
+    }
+
+    /* Optional: Makes the sample page fill the window. */
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    #logo {
+        width: 140px;
+        height: 50px;
+    }
+
+    #topfont1,
+    #topfont2,
+    #topfont3 {
+        color: #582A20;
+        line-height: 40px;
+    }
+
+    #toplogout {
+        position: absolute;
+        right: 270px;
+    }
+
+    #topsearchicon {
+        position: absolute;
+        top: 20px;
+        right: 230px;
+    }
+
+    #topsearchinput {
+        position: absolute;
+        top: 10px;
+        right: 40px;
+    }
+
+    #topsearchfont {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+    }
+
+    #Article {
+        margin-left: 40px;
+        height: 600px;
+    }
+
+    select {
+        width: 70px;
+        height: 37px;
+        text-align: center;
+        text-align-last: center;
+    }
+    </style>
+</head>
+
+<body onload="forGoogle()">
+    <div style="background-color: #CCDDFF;"class="col-md-3">
+        <div style="text-align:center;" class="form-group">
+            <br>
+            <label>地點</label>
+            <br>
+            <div style="text-align: center">
+                <select style="height:34px;width:100px;" id="title">
+                    <option selected>台北市</option>
+                    <option>新北市</option>
+                    <option>桃園市</option>
+                    <option>台中市</option>
+                    <option>台南市</option>
+                    <option>高雄市</option>
+                    <option>基隆市</option>
+                    <option>新竹市</option>
+                    <option>嘉義市</option>
+                    <option>新竹縣</option>
+                    <option>苗栗縣</option>
+                    <option>彰化縣</option>
+                    <option>南投縣</option>
+                    <option>雲林縣</option>
+                    <option>嘉義縣</option>
+                    <option>屏東縣</option>
+                    <option>宜蘭縣</option>
+                    <option>花蓮縣</option>
+                    <option>台東縣</option>
+                    <option>澎湖縣</option>
+                    <option>金門縣</option>
+                    <option>連江縣</option>
+                    <option>其他</option>
+                </select>
+            </div>
+            <small style="text-align:center;" class="form-text text-muted">請選擇地點</small>
+        </div>
+        <div style="background-color: #CCDDFF;text-align:center;">
+            <button style="color:white;" class="btn btn-info" onclick="local()">搜尋</button><br><br>
+            <button style="color:white;" class="btn btn-info" onclick="searchAll()">搜尋全部</button><br><br>
+            <button style="color:white;" class="btn btn-info" onclick="window.location.href='padoneMap.html'">重整</button><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <button style="color:white;" class="btn btn-info" onclick="window.location.href='PatientHome.html'">返回首頁</button><br><br>
+        </div>
+    </div>
+    <div style="height:101%;background-color: #CCDDFF;" class="col-md-9" id='map'></div>
+	<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+				<div class="modal-dialog  modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">文章列表</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+						</div>
+						<div class="modal-body" id="articleListHere">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+		</div>
+    <script>
+    var url = "http://140.121.196.23:3390/HospitalCrawler/HospitalServlet";
+    var count = 0;
+    var localCount = -1;
+    var map, geocoder;
+    var infowindow;
+	var localNumOfArticle;
+	var dataOfArticleID = new Array();
+	var dataOfAuthor = new Array();
+	
+    function forGoogle() {
+        //console.log("123");
+        geocoder = new google.maps.Geocoder();
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 8
+        });
+        map.setCenter({ lat: 25.04, lng: 121.512 });
+        infowindow = new google.maps.InfoWindow();
+        //initMap();
+    }
+
+    function action() {
+        count = count + 1;
+        setTimeout("initMap(count)", 1500);
+    }
+
+    function actionForAll() {
+        count = count + 1;
+        setTimeout("searchAll(count)", 1500);
+    }
+
+    function local() {
+        count = 0;
+        var local = document.getElementById('title');
+        //console.log(local.value);
+        if (local.value === "台北市") {
+            localCount = 1;
+            initMap(localCount);
+        } else if (local.value === "新北市") {
+            localCount = 2;
+            initMap(localCount);
+        } else if (local.value === "桃園市") {
+            localCount = 3;
+            initMap(localCount);
+        } else if (local.value === "台中市") {
+            localCount = 4;
+            initMap(localCount);
+        } else if (local.value === "台南市") {
+            localCount = 5;
+            initMap(localCount);
+        } else if (local.value === "高雄市") {
+            localCount = 6;
+            initMap(localCount);
+        } else if (local.value === "基隆市") {
+            localCount = 7;
+            initMap(localCount);
+        } else if (local.value === "新竹市") {
+            localCount = 8;
+            initMap(localCount);
+        } else if (local.value === "嘉義市") {
+            localCount = 9;
+            initMap(localCount);
+        } else if (local.value === "新竹縣") {
+            localCount = 10;
+            initMap(localCount);
+        } else if (local.value === "苗栗縣") {
+            localCount = 11;
+            initMap(localCount);
+        } else if (local.value === "彰化縣") {
+            localCount = 12;
+            initMap(localCount);
+        } else if (local.value === "南投縣") {
+            localCount = 13;
+            initMap(localCount);
+        } else if (local.value === "雲林縣") {
+            localCount = 14;
+            initMap(localCount);
+        } else if (local.value === "嘉義縣") {
+            localCount = 15;
+            initMap(localCount);
+        } else if (local.value === "屏東縣") {
+            localCount = 16;
+            initMap(localCount);
+        } else if (local.value === "宜蘭縣") {
+            localCount = 17;
+            initMap(localCount);
+        } else if (local.value === "花蓮縣") {
+            localCount = 18;
+            initMap(localCount);
+        } else if (local.value === "台東縣") {
+            localCount = 19;
+            initMap(localCount);
+        } else if (local.value === "澎湖縣") {
+            localCount = 20;
+            initMap(localCount);
+        } else if (local.value === "金門縣") {
+            localCount = 21;
+            initMap(localCount);
+        } else if (local.value === "連江縣") {
+            localCount = 22;
+            initMap(localCount);
+        } else if (local.value === "其他") {
+            localCount = 0;
+            initMap(localCount);
+        } else {
+
+        }
+    }
+	var connectArticleURL = "http://140.121.196.23:3390/PadoneCommunity/HospitalArticleListServlet";
+    function initMap() {
+        $.ajax({
+            url: url,
+            dataType: "json",
+            success: function(response) {
+                //console.log(localCount);
+                var countArrayNum = 0;
+                var countArray = [];
+                for (var q = 0; q < response.length; q++) {
+                    if (response[q].count == localCount) {
+                        countArray[countArrayNum] = response[q];
+                        countArrayNum++;
+                    }
+                }
+                for (var i = count; i < count + 1; i++) {
+                    if (i < countArrayNum) {
+                        geocoder.geocode({ 'address': countArray[i].county + countArray[i].hospitalName }, function(results, status) {
+                            if (status == 'OK') {
+                                var marker = new google.maps.Marker({
+                                    map: map,
+                                    position: results[0].geometry.location,
+                                    animation: google.maps.Animation.DROP,
+                                    stopCoords: '<div>' +
+                                        '<h2>名稱:' + countArray[i - 1].hospitalName + '</h2>' +
+                                        '<h2>地址:' + countArray[i - 1].address + '</h2>' +
+                                        '<h2>創立時間:' + countArray[i - 1].foundTime + '</h2>' +
+                                        '<h2>首頁:"<a href="' + countArray[i - 1].webUrl + '" target="_blank">' + countArray[i - 1].webUrl + '</a></h2>' +
+                                        '<h2>維基:"<a href="https://zh.wikipedia.org/wiki/' + countArray[i - 1].hospitalName + '" target="_blank">https://zh.wikipedia.org/wiki/' + countArray[i - 1].hospitalName + '</a></h2>' +
+                                        '<h2>GoogleMap:"<a href="https://www.google.com.tw/maps/search/' + countArray[i - 1].county + countArray[i - 1].hospitalName + '" target="_blank">https://www.google.com.tw/maps/search/' + countArray[i - 1].county + countArray[i - 1].hospitalName + '</a></h2>' +
+                                        '<h2 id="articleNum">文章:</h2>'
+                                });
+                                google.maps.event.addListener(marker, 'click', function() {
+									document.getElementById("articleListHere").innerHTML = "";
+									$.ajax({
+											type: "GET",
+											url : connectArticleURL,
+											data : {
+												hospital : countArray[i-1].county + countArray[i - 1].hospitalName
+											},
+											dataType : "json",
+											success : function(response) {
+												//console.log(countArray[i - 1].hospitalName);
+												//console.log(response.length);
+												localNumOfArticle = response.length;
+												$("#articleNum").append(
+													'<button class="btn btn-light" data-toggle="modal" data-target="#exampleModalLong"><strong>' + localNumOfArticle + '</strong></button>'
+												);
+												for(var i = 0; i < response.length; i++){
+													dataOfArticleID[i] = response[i].articleID;
+													dataOfAuthor[i] = response[i].author;
+													$("#articleListHere").append(
+														'<a class="list-group-item list-group-item-action">' + 
+															'<div class="d-flex w-100 justify-content-between">' + 
+																'<h5 class="mb-1"><strong href="#" onclick="saveArticleID(' + i + ');">' + response[i].title + '</strong></h5>' + 
+																'<small>' + response[i].authorName + '</small>' + 
+															'</div>' + 
+															'<p class="mb-1">' + response[i].description + '</p>' + 
+															'<small style="float:right;">' + response[i].postTime + '</small>' + 
+														'</a>'			
+													);
+												}
+											},
+											error : function() {
+												alert("失敗");
+											},
+									});
+                                    infowindow.setContent(marker.stopCoords);
+                                    infowindow.open(map, marker); //then opens the infowindow at the marker
+                                });
+                            } else {
+                                console.log(status);
+                            }
+                        });
+                    } else {
+                        //console.log("搜尋完畢");
+                    }
+                };
+                action();
+            },
+            error: function() {
+                alert("失敗");
+            }
+        });
+    }
+
+    function searchAll() {
+        /*$.ajax({
+            url: url,
+            dataType: "json",
+            success: function(response) {
+				var countArrayNum = 0;
+                var countArray = [];
+                for (var q = 0; q < response.length; q++) {
+                    if (response[q].count == localCount) {
+                        countArray[countArrayNum] = response[q];
+                        countArrayNum++;
+                    }
+                }
+                for (var i = count; i < count + 1; i++) {
+                    if (i < response.length) {
+                        geocoder.geocode({ 'address': countArray[i].county + countArray[i].hospitalName }, function(results, status) {
+                            if (status == 'OK') {
+                                var marker = new google.maps.Marker({
+                                    map: map,
+                                    position: results[0].geometry.location,
+                                    animation: google.maps.Animation.DROP,
+                                    stopCoords: '<div>' +
+                                        '<h2>名稱:' + response[i - 1].hospitalName + '</h2>' +
+                                        '<h2>地址:' + response[i - 1].address + '</h2>' +
+										'<h2>創立時間:' + countArray[i - 1].foundTime + '</h2>' +
+                                        '<h2>首頁"<a href="' + response[i - 1].webUrl + '" target="_blank">' + response[i - 1].webUrl + '</a></h2>' +
+                                        '<h2>維基"<a href="https://zh.wikipedia.org/wiki/' + response[i - 1].hospitalName + '" target="_blank">https://zh.wikipedia.org/wiki/' + response[i - 1].hospitalName + '</a></h2>' +
+                                        '<h2>GoogleMap:"<a href="https://www.google.com.tw/maps/search/' + countArray[i - 1].county + countArray[i - 1].hospitalName + '" target="_blank">https://www.google.com.tw/maps/search/' + countArray[i - 1].county + countArray[i - 1].hospitalName + '</a></h2>' +
+										'<h2 id="articleNum">文章:</h2>'
+                                });
+                                google.maps.event.addListener(marker, 'click', function() {
+									document.getElementById("articleListHere").innerHTML = "";
+									$.ajax({
+											type: "GET",
+											url : connectArticleURL,
+											data : {
+												hospital : countArray[i-1].county + countArray[i - 1].hospitalName
+											},
+											dataType : "json",
+											success : function(response) {
+												//console.log(countArray[i - 1].hospitalName);
+												//console.log(response.length);
+												localNumOfArticle = response.length;
+												$("#articleNum").append(
+													'<button class="btn btn-light" data-toggle="modal" data-target="#exampleModalLong"><strong>' + localNumOfArticle + '</strong></button>'
+												);
+												for(var i = 0; i < response.length; i++){
+													dataOfArticleID[i] = response[i].articleID;
+													dataOfAuthor[i] = response[i].author;
+													$("#articleListHere").append(
+														'<a class="list-group-item list-group-item-action">' + 
+															'<div class="d-flex w-100 justify-content-between">' + 
+																'<h5 class="mb-1"><strong href="#" onclick="saveArticleID(' + i + ');">' + response[i].title + '</strong></h5>' + 
+																'<small>' + response[i].authorName + '</small>' + 
+															'</div>' + 
+															'<p class="mb-1">' + response[i].description + '</p>' + 
+															'<small style="float:right;">' + response[i].postTime + '</small>' + 
+														'</a>'			
+													);
+												}
+											},
+											error : function() {
+												alert("失敗");
+											},
+									});
+                                    infowindow.setContent(marker.stopCoords);
+                                    infowindow.open(map, marker); //then opens the infowindow at the marker
+                                });
+                            } else {
+                                console.log(status);
+                            }
+                        });
+                    } else {
+                        //console.log("搜尋完畢");
+                    }
+                };
+                actionForAll();
+            },
+            error: function() {
+                alert("失敗");
+            }
+        });*/
+    }
+	function saveArticleID(num){
+		var str = dataOfArticleID[num];
+		var author = dataOfAuthor[num];
+		sessionStorage.setItem('articleid', str);
+		sessionStorage.setItem('author', author);
+		window.location.href="PatientArticleSide.html";
+	}
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrD730hGMTn7AdaQTZuvV9BQuISMiefMQ">
+    </script>
+</body>
+
+</html>
+<!--
+**************************************************************************
+* (C) Copyright 1992-2012 by Deitel & Associates, Inc. and               *
+* Pearson Education, Inc. All Rights Reserved.                           *
+*                                                                        *
+* DISCLAIMER: The authors and publisher of this book have used their     *
+* best efforts in preparing the book. These efforts include the          *
+* development, research, and testing of the theories and programs        *
+* to determine their effectiveness. The authors and publisher make       *
+* no warranty of any kind, expressed or implied, with regard to these    *
+* programs or to the documentation contained in these books. The authors *
+* and publisher shall not be liable in any event for incidental or       *
+* consequential damages in connection with, or arising out of, the       *
+* furnishing, performance, or use of these programs.                     *
+**************************************************************************
+-->

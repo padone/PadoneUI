@@ -14,34 +14,34 @@ $(document).ready(function() {
 				success : function(response) {
 					if(response.result == '登入成功')
 					{
-						if($("#identity").val() == 1)
+						if($("#identity").val() == 'patient')
 						{
 							var str = response.userID;
 							sessionStorage.setItem('msg', str);
 							var name = response.name;
 							sessionStorage.setItem('name', name);
 							var identity = $("#identity").val();
-							sessionStorage.setItem('identityGet', identity);
+							sessionStorage.setItem('identity', identity);
 							window.location.href = 'http://140.121.196.23:3390/PadoneUI0521/Patient/PatientHome.html';
 						}
-						else if($("#identity").val() == 2)
+						else if($("#identity").val() == 'family')
 						{
 							var str = response.userID;
 							sessionStorage.setItem('msg', str);
 							var name = response.name;
 							sessionStorage.setItem('name', name);
 							var identity = $("#identity").val();
-							sessionStorage.setItem('identityGet', identity);
+							sessionStorage.setItem('identity', identity);
 							window.location.href = 'http://140.121.196.23:3390/PadoneUI0521/Family/FamilyHome.html';
 						}
-						else if($("#identity").val() == 3)
+						else if($("#identity").val() == 'secretary')
 						{
 							var str = response.userID;
 							sessionStorage.setItem('msg', str);
 							var name = response.name;
 							sessionStorage.setItem('name', name);
 							var identity = $("#identity").val();
-							sessionStorage.setItem('identityGet', identity);
+							sessionStorage.setItem('identity', identity);
 							window.location.href = 'http://140.121.196.23:3390/PadoneUI0521/Secretary/SecretaryHome.html';
 						}
 					}

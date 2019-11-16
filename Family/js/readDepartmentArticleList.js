@@ -38,7 +38,7 @@ $(document).ready(function() {
 function saveArticleID(num){
 	var str = dataOfArticleID[num];
 	var author = dataOfAuthor[num];
-	sessionStorage.setItem('articleid', str);
-	sessionStorage.setItem('author', author);
+	sessionStorage.setItem('familyarticleid', str);
+	sessionStorage.setItem('familyauthor', author);
 	window.location.href="FamilyArticleSide.html";
 }

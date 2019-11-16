@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<body>
+<div id="weather"></div>
+<div id="test"></div>
+<script>
+function test(){
+	var a = 'keelung';
+	if(a == 'keelung'){a = '基隆市'}
+	var testes = document.querySelector("#test");
+    testes.innerHTML = a;
+}
+function makeRequest(){
+  xhr = new XMLHttpRequest();
+  xhr.open( 'POST','https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDIHHXeYB_Hsf21AAaQX8qd5Y2NDsckUbI');
+  xhr.onload = function(){
+    // do something
+    var response = JSON.parse(this.responseText);
+    console.log(response)
+  }
+  xhr.send();
+}
+test()
+makeRequest();
+var lat;
+var lon;
+
+function getWeather() {
+  xhr = new XMLHttpRequest();
+
+  xhr.onload = function() {
+    var response = JSON.parse(this.responseText);
+    var city = response.city.name + ", " + response.city.country;
+    var weatherTitle = response.list[0].weather[0].main;
+    var temp = response.list[0].main.temp + "C";
+
+    var weatherContainer = document.querySelector("#weather");
+    weatherContainer.innerHTML = city + "<br/>" + weatherTitle + "<br/>" + temp;
+  };
+  xhr.open(
+    "GET",
+    "https://api.openweathermap.org/data/2.5/forecast?APPID=9c39fa3ce9d953fdd507d7d9f77093ef&units=metric" +
+      lat +
+      lon,
+    true
+  );
+  xhr.send();
+}
+
+function getLocation() {
+  xhr = new XMLHttpRequest();
+  xhr.open(
+    "POST",
+    "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDIHHXeYB_Hsf21AAaQX8qd5Y2NDsckUbI",
+    true
+  );
+  xhr.onload = function() {
+    // do something
+    var response = JSON.parse(this.responseText);
+    lat = "&lat=" + response.location.lat;
+    lon = "&lon=" + response.location.lng;
+    getWeather();
+  };
+  xhr.send();
+}
+
+getLocation();
+</script>
+<script src="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCrD730hGMTn7AdaQTZuvV9BQuISMiefMQ"></script>
+</body>
+</html>

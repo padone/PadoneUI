@@ -3,7 +3,10 @@ var urlhospital = "http://140.121.196.23:3390/HospitalCrawler/HospitalServlet";
 var id = "";
 var author123 = "";
 var name123 = "";
+var greatStatus = "";
+var trackStatus = "";
 var dataOfHospital = new Array();
+var countOfPicture = new Array("First","Second","Third","Fourth","Fifth","Sixth","Seventh","Eighth","Ninth","Tenth");
 $(document).ready(function() {
 	$.ajax({
 		url : urlhospital,
@@ -20,6 +23,8 @@ $(document).ready(function() {
 			author = sessionStorage.getItem('author');
 			var name;
 			name = sessionStorage.getItem('name');
+			var identity;
+			identity = sessionStorage.getItem('identity');
 			if (userID)
 			{
 				console.log(userID);
@@ -39,14 +44,25 @@ $(document).ready(function() {
 		type: "GET",
 		url : url,
 		data : {
-			articleID : id
+			userID : userID,
+			articleID : id,
+			identity : identity
 		},
 		dataType : "json",
 		success : function(response) {
 			console.log(articleID);
 			console.table(response);
-			if(response[0].hospital == 'null'){
-				dataOfHospital[response[0].hospital] = ' ';
+			if(response[0].ifEvaluted == true){
+				greatStatus = '收回讚';
+			}
+			else{
+				greatStatus = '讚';
+			}
+			if(response[0].ifTracked == true){
+				trackStatus = '取消追蹤';
+			}
+			else{
+				trackStatus = '追蹤';
 			}
 			$("#Article").append(
 				'<div class="row">' + 
@@ -54,21 +70,9 @@ $(document).ready(function() {
 						'<div class="card" id="card">' + 
 							'<div class="card-body" id="cardbody">' + 
 								'<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">' + 
-									'<ol class="carousel-indicators">' + 
-										'<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>' + 
-										'<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>' + 
-										'<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>' + 
+									'<ol class="carousel-indicators" id=inputPicture>' + 
 									'</ol>' + 
-									'<div class="carousel-inner">' + 
-										'<div class="carousel-item active">' + 
-											'<img class="d-block w-100" src="patientPicture/789.jpg" alt="First slide">' + 
-										'</div>' + 
-										'<div class="carousel-item">' + 
-											'<img class="d-block w-100" src="patientPicture/789.jpg" alt="Second slide">' + 
-										'</div>' +
-										'<div class="carousel-item">' + 
-											'<img class="d-block w-100" src="patientPicture/789.jpg" alt="Third slide">' + 
-										'</div>' +
+									'<div class="carousel-inner" id="setPicture">' + 
 									'</div>' + 
 									'<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">' + 
 										'<span class="carousel-control-prev-icon" aria-hidden="true"></span>' +
@@ -80,13 +84,14 @@ $(document).ready(function() {
 									'</a>' + 
 								'</div>' +
 								'<strong style="float:right">'+ response[0].postTime +'</strong><br>' +
-								'<strong style="float:right">'+ dataOfHospital[(response[0].hospital)] +'</strong>' +
+								'<strong style="float:right">'+ response[0].hospital +'</strong><br>' +
+								'<strong style="float:right">'+ response[0].tag +'</strong>' +
 								'<h5 class="card-title" style="text-align:left; font-size:72px">'+ response[0].title +'</h5>' +
 							'</div>' + 
 							'<div style="text-align:center">' + 
-								'<input type="button" class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A" id="s2" value="讚" onclick="great();">' + 
+								'<input type="button" class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A" id="s2" value="'+ greatStatus +' '+ response[0].great +'" onclick="great();">' + 
 								'<span style="float:right">&nbsp;</span>' + 
-								'<input type="button" class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A" id="s1" value="追蹤" onclick="trackArticle();">' + 
+								'<input type="button" class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A" id="s1" value="'+ trackStatus +'" onclick="trackArticle();">' + 
 								'<button type="button" style="float:left" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">留言區</button>' + 
 							'</div>' + 
 						'</div>' + 
@@ -98,6 +103,31 @@ $(document).ready(function() {
 				'</div>' + 
 				'<br><br><br>'								
 			);
+			for(var g=0;g<response[0].imageNum;g++)
+			{
+				if(g == 0)
+				{
+					$("#inputPicture").append(
+						'<li data-target="#carouselExampleIndicators" data-slide-to="'+g+'" class="active"></li>'
+					);
+					$("#setPicture").append(
+						'<div class="carousel-item active">' + 
+							'<img class="d-block w-100" src="'+ response[0].imageURL[g] +'" alt="'+countOfPicture[g]+' slide">' + 
+						'</div>'
+					);
+				}
+				else
+				{
+					$("#inputPicture").append(
+						'<li data-target="#carouselExampleIndicators" data-slide-to="'+g+'"></li>'
+					);
+					$("#setPicture").append(
+						'<div class="carousel-item">' + 
+							'<img class="d-block w-100" src="'+ response[0].imageURL[g] +'" alt="'+countOfPicture[g]+' slide">' + 
+						'</div>'
+					);
+				}
+			}
 		},
 		error : function() {
 			alert("失敗");
@@ -120,6 +150,8 @@ function trackArticle(){
 	userID = sessionStorage.getItem('msg');
 	var articleID;
 	articleID = sessionStorage.getItem('articleid');
+	var identity;
+	identity = sessionStorage.getItem('identity');
 	console.log(articleID);
 	console.log(userID);
 	$.ajax({
@@ -128,6 +160,7 @@ function trackArticle(){
 			data : {
 				userID : userID,
 				articleID : articleID,
+				identity : identity,
 				tableName : "trackarticle"
 			},
 			dataType : "json",
@@ -143,13 +176,13 @@ function trackArticle(){
 //按讚
 var urlGreat = "http://140.121.196.23:3390/PadoneAS/GreatServlet";
 function great(){
-	var btnVal=document.getElementById("s2");
+	/*var btnVal=document.getElementById("s2");
 	if(btnVal.value=="讚")
 	{
 		btnVal.value="收回讚";
 	}
 	else
-		btnVal.value="讚";
+		btnVal.value="讚";*/
 	var userID;
 	userID = sessionStorage.getItem('msg');
 	var articleID;
@@ -163,6 +196,7 @@ function great(){
 			},
 			dataType : "json",
 			success : function() {
+				window.location.reload();
 				alert("成功");
 			},
 			error : function() {
@@ -216,7 +250,7 @@ $(document).ready(function() {
 				if(response[i].authorID == userID){
 				$("#getfeedback").append(
 					'<tr class="text-center" >' +
-						'<td style="width:5%"><button class="btn btn-light" onclick="deleteFeedback('+response[i].feedbackID+')">X</button><td style="width:10%">' + response[i].author + '</td></td>' +
+						'<td style="width:5%"><button class="btn btn-light" onclick="surelyDelete('+response[i].feedbackID+')">X</button><td style="width:10%">' + response[i].author + '</td></td>' +
 						'<td style="vertical-align:middle;text-align:left">' + response[i].message + '<td style="width:8%">' + response[i].updateTime + '</td></td>' +
 					'</tr>'
 				);}
@@ -237,6 +271,15 @@ $(document).ready(function() {
 });
 
 //刪留言
+function surelyDelete(feedbackID) {
+	var temp = confirm("確定刪除此留言嗎?");
+	if (temp == true){
+		deleteFeedback(feedbackID);
+	}
+	else{
+		
+	}
+}
 var url4 = "http://140.121.196.23:3390/PadoneAS/DeleteFeedbackServlet"
 function deleteFeedback(feedbackID) {
 	var userID;

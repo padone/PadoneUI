@@ -10,7 +10,7 @@ $(document).ready(function() {
 		url : url,
 		data : {
 			id : userID,
-			tableName : "suggestarticle"
+			tableName : "suggestArticle"
 		},
 		dataType : "json",
 		success : function(response) {
@@ -20,7 +20,7 @@ $(document).ready(function() {
 					'<a class="list-group-item list-group-item-action">' + 
 						'<div class="d-flex w-100 justify-content-between">' + 
 							'<h5 class="mb-1"><strong href="#" onclick="savePatientArticleID(' + response[i].articleID + ');">' + response[i].title + '</strong></h5>' + 
-							'<button type="button" class="close" aria-label="Close" onClick ="deleteTrackArticle(' + response[i].articleID + ')" data-dismiss="modal"><span aria-hidden="true">x</span></button>' + 
+							'<button type="button" class="close" aria-label="Close" onClick ="surelyDelete(' + response[i].articleID + ')" data-dismiss="modal"><span aria-hidden="true">x</span></button>' + 
 						'</div>' + 
 						'<p class="mb-1">' + response[i].description + '</p>' + 
 						'<small style="float:right;">' + response[i].author + '  ' + response[i].postTime + '</small>' + 
@@ -38,13 +38,22 @@ $(document).ready(function() {
 function savePatientArticleID(num){
 	var str = num;
 	var author = dataOfPatientAuthor[num];
-	sessionStorage.setItem('patienttrackarticleid', str);
-	sessionStorage.setItem('patienttrackauthor', author);
+	sessionStorage.setItem('familysuggestarticleid', str);
+	sessionStorage.setItem('familysuggestauthor', author);
 	window.location.href="FamilySuggestArticleSide.html";
 }
 
 //刪除建議文章
-function deleteTrackArticle(ArticleID) {
+function surelyDelete(ArticleID) {
+	var temp = confirm("確定取消建議此文章嗎?");
+	if (temp == true){
+		deleteSuggestArticle(ArticleID);
+	}
+	else{
+		
+	}
+}
+function deleteSuggestArticle(ArticleID) {
 	var userID;
 	userID = sessionStorage.getItem('msg');
 	console.log(ArticleID);
@@ -54,7 +63,7 @@ function deleteTrackArticle(ArticleID) {
 			data : {
 				userID: userID,
 				articleID: ArticleID,
-				tableName : "suggestarticle"
+				tableName : "suggestArticle"
 			},
 			dataType : "json",
 			success : function() {
