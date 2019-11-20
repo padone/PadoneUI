@@ -52,9 +52,6 @@ $(document).ready(function() {
 		success : function(response) {
 			console.log(articleID);
 			console.table(response);
-			if(response[0].hospital == 'null'){
-				response[0].hospital = ' ';
-			}
 			if(response[0].ifEvaluted == true){
 				greatStatus = '收回讚';
 			}

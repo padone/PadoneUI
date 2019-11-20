@@ -1,4 +1,4 @@
-var url = "http://140.121.196.23:3390/PadoneAS/DepartmentArticleListServlet";
+var url = "http://140.121.196.23:3390/PadoneCommunity/DepartmentArticleListServlet";
 var dataOfArticleID = new Array();
 var dataOfAuthor = new Array();
 $(document).ready(function() {
@@ -21,7 +21,7 @@ $(document).ready(function() {
 					'<a onclick="saveArticleID(' + i + ');" class="list-group-item list-group-item-action">' + 
 						'<div class="d-flex w-100 justify-content-between">' + 
 							'<h5 class="mb-1"><strong>' + response[i].title + '</strong></h5>' + 
-							'<small>' + response[i].author + '</small>' + 
+							'<small>' + response[i].authorName + '</small>' + 
 						'</div>' + 
 						'<p class="mb-1">' + response[i].description + '</p>' + 
 						'<small style="float:right;">' + response[i].postTime + '</small>' + 
@@ -38,7 +38,7 @@ $(document).ready(function() {
 function saveArticleID(num){
 	var str = dataOfArticleID[num];
 	var author = dataOfAuthor[num];
-	sessionStorage.setItem('articleid', str);
-	sessionStorage.setItem('author', author);
-	window.location.href="PatientArticleSide.html";
+	sessionStorage.setItem('patientdepartmentarticleid', str);
+	sessionStorage.setItem('patientdepartmentauthor', author);
+	window.location.href="PatientDepartmentArticleSide.html";
 }

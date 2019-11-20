@@ -52,9 +52,6 @@ $(document).ready(function() {
 		success : function(response) {
 			console.log(articleID);
 			console.table(response);
-			if(response[0].hospital == 'null'){
-				response[0].hospital = ' ';
-			}
 			if(response[0].ifEvaluted == true){
 				greatStatus = '收回讚';
 			}
@@ -62,10 +59,10 @@ $(document).ready(function() {
 				greatStatus = '讚';
 			}
 			if(response[0].ifTracked == true){
-				trackStatus = '取消追蹤';
+				trackStatus = '取消建議';
 			}
 			else{
-				trackStatus = '追蹤';
+				trackStatus = '加到建議';
 			}
 			$("#Article").append(
 				'<div class="row">' + 

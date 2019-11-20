@@ -18,9 +18,9 @@ $(document).ready(function() {
 			var userID;
 			userID = sessionStorage.getItem('msg');
 			var articleID;
-			articleID = sessionStorage.getItem('patienttrackarticleid');
+			articleID = sessionStorage.getItem('familymaparticleid');
 			var author;
-			author = sessionStorage.getItem('patienttrackauthor');
+			author = sessionStorage.getItem('familymapauthor');
 			var name;
 			name = sessionStorage.getItem('name');
 			var identity;
@@ -59,12 +59,12 @@ $(document).ready(function() {
 				greatStatus = '讚';
 			}
 			if(response[0].ifTracked == true){
-				trackStatus = '取消追蹤';
+				trackStatus = '取消建議';
 			}
 			else{
-				trackStatus = '追蹤';
+				trackStatus = '加到建議';
 			}
-			$("#trackArticle").append(
+			$("#Article").append(
 				'<div class="row">' + 
 					'<div class="col-6">' + 
 						'<div class="card" id="card">' + 
@@ -143,13 +143,13 @@ $(document).ready(function() {
 function hi(){
 	alert("hi");
 }
-//追蹤
+//建議
 var url5 = "http://140.121.196.23:3390/PadoneAS/TrackArticleServlet";
 function trackArticle(){
 	var userID;
 	userID = sessionStorage.getItem('msg');
 	var articleID;
-	articleID = sessionStorage.getItem('patienttrackarticleid');
+	articleID = sessionStorage.getItem('familymaparticleid');
 	var identity;
 	identity = sessionStorage.getItem('identity');
 	console.log(articleID);
@@ -161,7 +161,7 @@ function trackArticle(){
 				userID : userID,
 				articleID : articleID,
 				identity : identity,
-				tableName : "trackarticle"
+				tableName : "suggestarticle"
 			},
 			dataType : "json",
 			success : function() {
@@ -186,7 +186,7 @@ function great(){
 	var userID;
 	userID = sessionStorage.getItem('msg');
 	var articleID;
-	articleID = sessionStorage.getItem('patienttrackarticleid');
+	articleID = sessionStorage.getItem('familymaparticleid');
 	$.ajax({
 			type: "POST",
 			url : urlGreat,
@@ -232,7 +232,7 @@ var url3 = "http://140.121.196.23:3390/PadoneAS/GetFeedbackServlet"
 $(document).ready(function() {
 	var countOtherFeedBack = 0;
 	var articleID;
-	articleID = sessionStorage.getItem('patienttrackarticleid');
+	articleID = sessionStorage.getItem('familymaparticleid');
 	var userID;
 	userID = sessionStorage.getItem('msg');
 	$.ajax({

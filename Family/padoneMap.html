@@ -123,7 +123,7 @@
             <button style="color:white;" class="btn btn-info" onclick="local()">搜尋</button><br><br>
             <button style="color:white;" class="btn btn-info" onclick="searchAll()">搜尋全部</button><br><br>
             <button style="color:white;" class="btn btn-info" onclick="window.location.href='padoneMap.html'">重整</button><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <button style="color:white;" class="btn btn-info" onclick="window.location.href='PatientHome.html'">返回首頁</button><br><br>
+            <button style="color:white;" class="btn btn-info" onclick="window.location.href='FamilyHome.html'">返回首頁</button><br><br>
         </div>
     </div>
     <div style="height:101%;background-color: #CCDDFF;" class="col-md-9" id='map'></div>
@@ -424,9 +424,9 @@
 	function saveArticleID(num){
 		var str = dataOfArticleID[num];
 		var author = dataOfAuthor[num];
-		sessionStorage.setItem('articleid', str);
-		sessionStorage.setItem('author', author);
-		window.location.href="PatientArticleSide.html";
+		sessionStorage.setItem('familymaparticleid', str);
+		sessionStorage.setItem('familymapauthor', author);
+		window.location.href="FamilyMapArticleSide.html";
 	}
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrD730hGMTn7AdaQTZuvV9BQuISMiefMQ">

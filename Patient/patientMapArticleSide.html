@@ -28,7 +28,7 @@
 		{
 			var searchTemp = document.getElementById("topsearchinput");
 			sessionStorage.setItem('searchTempTemp', searchTemp.value);
-			window.location.href = 'DoctorSearch.html';
+			window.location.href = 'PatientSearch.html';
 		}
 		function start()
 		{
@@ -156,17 +156,17 @@
 			}
 	</style>
 	</head>
-	<body>
+	<body onload="start();">
 		<nav class="navbar navbar-expand-md navbar-fixed-top" style="background-color:#BF9D7A;" id="top">
 			<img src="https://i.imgur.com/pYX0gIi.png" id = "logo">
 			<div>
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<strong><a href = "Doctor.html" onclick="window.location.href='Doctor.html'" id="topfont1"></a></strong>
+						<strong><a href = "Patient.html" onclick="window.location.href='Patient.html'" id="topfont1"></a></strong>
 					</li>
 					&nbsp;
 					<li class="nav-item">
-						<a href = "DoctorMakePost.html" onclick="window.location.href='DoctorMakePost.html'" id="topfont2"><strong>發佈文章</strong></a>
+						<a href = "PatientMakePost.html" onclick="window.location.href='PatientMakePost.html'" id="topfont2"><strong>發佈文章</strong></a>
 					</li>
 					&nbsp;
 					<li class="nav-item">
@@ -201,7 +201,7 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 						</div>
-						<div class="modal-body" style="margin-top:200px;">
+						<div class="modal-body" style="margin-top:500px;">
 							<form action="" role="form">
 								<div class="form-group">
 									<input type="text" id="thetext" placeholder="輸入留言" class="form-control">
@@ -224,22 +224,22 @@
 		<footer>
 		<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color:#BF9D7A;">
 			<div class="container">
-				<button type="button" class="col-md-3 btn btn-outline-info" onclick="window.location.href='DoctorHome.html'">
-					<span style="color:#582A20" class="h3 mx-1" style="font-family:'標楷體'">首頁</span></a>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='PatientHome.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">首頁</strong></span></a>
 				</button>
-				<button type="button" class="col-md-3 btn btn-outline-info" onclick="window.location.href='DoctorClass.html'">
-					<span style="color:#582A20" class="h3 mx-1" style="font-family:'標楷體'">分類</span>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='PatientClass.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">分類</strong></span>
 				</button>
-				<button type="button" class="col-md-3 btn btn-outline-info" href="#">
-					<span style="color:#582A20" class="h3 mx-1" style="font-family:'標楷體'">通知</span>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" href="#">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">通知</strong></span>
 				</button>
-				<button type="button" class="col-md-3 btn btn-outline-info" onclick="window.location.href='DoctorSetting.html'">
-					<span style="color:#582A20" class="h3 mx-1" style="font-family:'標楷體'">設定</span>
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='PatientSetting.html'">
+					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">設定</strong></span>
 				</button>
 			</div>
 		</nav>
 		</footer>
-		<script type="text/javascript" src="js/readTheArticle.js"></script>	<!-- ReadArticle.js -->
+		<script type="text/javascript" src="js/readTheMapArticle.js"></script>	<!-- ReadArticle.js -->
 	</body>
 </html>
 

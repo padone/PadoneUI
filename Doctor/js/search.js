@@ -33,28 +33,6 @@ function searchUser(){
 			},
 	});
 }
-/*var beFamilyURL = "http://140.121.196.23:3390/Padone/PatientRelationshipServlet";
-function beFamily(id){
-	var userID;
-	userID = sessionStorage.getItem('msg');
-	$.ajax({
-			type: "POST",
-			url : beFamilyURL,
-			data : {
-				familyID : userID,
-				patientID : id,
-				identity : '病患'
-			},
-			dataType : "json",
-			success : function(response) {
-				console.log(response)
-				alert("成功");
-			},
-			error : function() {
-				alert("失敗");
-			},
-	});
-}*/
 var searchArticleURL = "http://140.121.196.23:3390/PadoneCommunity/FuzzySearchArticleServlet";
 //用標題搜尋文章
 function useTitleSearchArticle(){

@@ -1,5 +1,5 @@
 var url = "http://140.121.196.23:3390/Padone/LoginServlet";
-
+var loginFamilyURL = "http://140.121.196.23:3390/Padone/SwitchIdentityServlet";
 $(document).ready(function() {
 	$("#login").click(function() {
 			$.ajax({
@@ -22,7 +22,7 @@ $(document).ready(function() {
 							sessionStorage.setItem('name', name);
 							var identity = $("#identity").val();
 							sessionStorage.setItem('identity', identity);
-							window.location.href = 'PatientHome.html';
+							window.location.href = 'http://140.121.196.23:3390/PadoneUI0521/Patient/PatientHome.html';
 						}
 						else if($("#identity").val() == 'family')
 						{
@@ -32,7 +32,29 @@ $(document).ready(function() {
 							sessionStorage.setItem('name', name);
 							var identity = $("#identity").val();
 							sessionStorage.setItem('identity', identity);
-							window.location.href = 'http://140.121.196.23:3390/PadoneUI0521/Family/FamilyHome.html';
+							$.ajax({
+								type: "POST",
+								url : loginFamilyURL,
+								data : {
+									userID : str,
+									previous : 'patient',
+									next : '家屬'
+								},
+								dataType : "json",
+								success : function(response) {
+									if(response.result == "成功"){
+										console.log(response.result);
+										console.log(response.reason);
+										window.location.href = 'http://140.121.196.23:3390/PadoneUI0521/Family/FamilyHome.html';
+									}
+									else{
+										alert("沒有家屬身分");
+									}
+								},
+								error : function() {
+									alert("登入失敗");
+								},
+							});
 						}
 						else if($("#identity").val() == 'secretary')
 						{
@@ -42,7 +64,29 @@ $(document).ready(function() {
 							sessionStorage.setItem('name', name);
 							var identity = $("#identity").val();
 							sessionStorage.setItem('identity', identity);
-							window.location.href = 'http://140.121.196.23:3390/PadoneUI0521/Secretary/SecretaryHome.html';
+							$.ajax({
+								type: "POST",
+								url : loginFamilyURL,
+								data : {
+									userID : str,
+									previous : 'patient',
+									next : '助理'
+								},
+								dataType : "json",
+								success : function(response) {
+									if(response.result == "成功"){
+										console.log(response.result);
+										console.log(response.reason);
+										window.location.href = 'http://140.121.196.23:3390/PadoneUI0521/Secretary/SecretaryHome.html';
+									}
+									else{
+										alert("沒有助理身分");
+									}
+								},
+								error : function() {
+									alert("登入失敗");
+								},
+							});
 						}
 						else if($("#identity").val() == 'doctor')
 						{

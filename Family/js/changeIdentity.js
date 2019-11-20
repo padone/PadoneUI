@@ -15,7 +15,7 @@ function changeIdentity(){
 			dataType : "json",
 			success : function(response) {
 				console.log(response.result);
-				console.log(response.reason)
+				console.log(response.reason);
 			},
 			error : function() {
 				alert("失敗");

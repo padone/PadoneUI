@@ -111,6 +111,9 @@ $(document).ready(function() {
 					//console.log(cityEmp);
 				}
 			}
+			$("#location").append(
+				'<option>無</option>'
+			);
 		},
 		error : function() {
 			alert("失敗");

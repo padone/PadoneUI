@@ -18,9 +18,9 @@ $(document).ready(function() {
 			var userID;
 			userID = sessionStorage.getItem('msg');
 			var articleID;
-			articleID = sessionStorage.getItem('patienttrackarticleid');
+			articleID = sessionStorage.getItem('patientdepartmentarticleid');
 			var author;
-			author = sessionStorage.getItem('patienttrackauthor');
+			author = sessionStorage.getItem('patientdepartmentauthor');
 			var name;
 			name = sessionStorage.getItem('name');
 			var identity;
@@ -64,7 +64,7 @@ $(document).ready(function() {
 			else{
 				trackStatus = '追蹤';
 			}
-			$("#trackArticle").append(
+			$("#Article").append(
 				'<div class="row">' + 
 					'<div class="col-6">' + 
 						'<div class="card" id="card">' + 
@@ -73,7 +73,7 @@ $(document).ready(function() {
 									'<ol class="carousel-indicators" id=inputPicture>' + 
 									'</ol>' + 
 									'<div class="carousel-inner" id="setPicture">' + 
-									'</div>' +
+									'</div>' + 
 									'<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">' + 
 										'<span class="carousel-control-prev-icon" aria-hidden="true"></span>' +
 										'<span class="sr-only">Previous</span>' + 
@@ -89,7 +89,7 @@ $(document).ready(function() {
 								'<h5 class="card-title" style="text-align:left; font-size:72px">'+ response[0].title +'</h5>' +
 							'</div>' + 
 							'<div style="text-align:center">' + 
-								'<input type="button" class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A" id="s2" value="'+ greatStatus +' '+ response[0].great +'" onclick="great();">' + 
+								'<input type="button" class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A" id="s2" value="' + greatStatus + ' '+ response[0].great +'" onclick="great();">' + 
 								'<span style="float:right">&nbsp;</span>' + 
 								'<input type="button" class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A" id="s1" value="'+ trackStatus +'" onclick="trackArticle();">' + 
 								'<button type="button" style="float:left" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">留言區</button>' + 
@@ -139,7 +139,6 @@ $(document).ready(function() {
 		}
 	});
 });
-
 function hi(){
 	alert("hi");
 }
@@ -149,11 +148,10 @@ function trackArticle(){
 	var userID;
 	userID = sessionStorage.getItem('msg');
 	var articleID;
-	articleID = sessionStorage.getItem('patienttrackarticleid');
+	articleID = sessionStorage.getItem('patientdepartmentarticleid');
 	var identity;
 	identity = sessionStorage.getItem('identity');
 	console.log(articleID);
-	console.log(userID);
 	$.ajax({
 			type: "GET",
 			url : url5,
@@ -186,7 +184,7 @@ function great(){
 	var userID;
 	userID = sessionStorage.getItem('msg');
 	var articleID;
-	articleID = sessionStorage.getItem('patienttrackarticleid');
+	articleID = sessionStorage.getItem('patientdepartmentarticleid');
 	$.ajax({
 			type: "POST",
 			url : urlGreat,
@@ -232,7 +230,7 @@ var url3 = "http://140.121.196.23:3390/PadoneAS/GetFeedbackServlet"
 $(document).ready(function() {
 	var countOtherFeedBack = 0;
 	var articleID;
-	articleID = sessionStorage.getItem('patienttrackarticleid');
+	articleID = sessionStorage.getItem('patientdepartmentarticleid');
 	var userID;
 	userID = sessionStorage.getItem('msg');
 	$.ajax({
@@ -243,9 +241,6 @@ $(document).ready(function() {
 		},
 		dataType : "json",
 		success : function(response) {
-			console.log(response);
-			console.table(response);
-			
 			for(var i = 0; i < response.length; i++){
 				if(response[i].authorID == userID){
 				$("#getfeedback").append(
@@ -260,8 +255,7 @@ $(document).ready(function() {
 						'<td style="width:5%">'+ countOtherFeedBack +'<td style="width:10%">' + response[i].author + '</td></td>' +
 						'<td style="vertical-align:middle;text-align:left">' + response[i].message + '<td style="width:8%">' + response[i].updateTime + '</td></td>' +
 					'</tr>'
-				);
-				countOtherFeedBack++;}
+				);countOtherFeedBack++;}
 			}
 		},
 		error : function() {
@@ -269,6 +263,7 @@ $(document).ready(function() {
 		}
 	});
 });
+
 
 //刪留言
 function surelyDelete(feedbackID) {
