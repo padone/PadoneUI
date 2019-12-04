@@ -17,8 +17,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <style type="text/css">
     body {
-        padding-bottom: 70px;
-        margin-top: 70px;
         font-family: "微軟正黑體";
         background-color: #EBF2EA;
     }
@@ -33,41 +31,6 @@
         height: 100%;
         margin: 0;
         padding: 0;
-    }
-
-    #logo {
-        width: 140px;
-        height: 50px;
-    }
-
-    #topfont1,
-    #topfont2,
-    #topfont3 {
-        color: #582A20;
-        line-height: 40px;
-    }
-
-    #toplogout {
-        position: absolute;
-        right: 270px;
-    }
-
-    #topsearchicon {
-        position: absolute;
-        top: 20px;
-        right: 230px;
-    }
-
-    #topsearchinput {
-        position: absolute;
-        top: 10px;
-        right: 40px;
-    }
-
-    #topsearchfont {
-        position: absolute;
-        top: 20px;
-        right: 10px;
     }
 
     #Article {
@@ -85,7 +48,7 @@
 </head>
 
 <body onload="forGoogle()">
-    <div style="background-color: #CCDDFF;"class="col-md-3">
+    <div style="background-color: #CCDDFF;height:100%;"class="col-md-3">
         <div style="text-align:center;" class="form-group">
             <br>
             <label>地點</label>
@@ -121,12 +84,11 @@
         </div>
         <div style="background-color: #CCDDFF;text-align:center;">
             <button style="color:white;" class="btn btn-info" onclick="local()">搜尋</button><br><br>
-            <button style="color:white;" class="btn btn-info" onclick="searchAll()">搜尋全部</button><br><br>
             <button style="color:white;" class="btn btn-info" onclick="window.location.href='padoneMap.html'">重整</button><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <button style="color:white;" class="btn btn-info" onclick="window.location.href='FamilyHome.html'">返回首頁</button><br><br>
         </div>
     </div>
-    <div style="height:101%;background-color: #CCDDFF;" class="col-md-9" id='map'></div>
+    <div style="background-color: #CCDDFF;" class="col-md-9" id='map'></div>
 	<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
 				<div class="modal-dialog  modal-lg" role="document">
 					<div class="modal-content">

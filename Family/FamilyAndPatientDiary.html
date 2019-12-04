@@ -21,13 +21,18 @@
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	
-			
+	<!-- date  -->
+	<script src="js/laydate/laydate.js"></script>		
 	<script>
+	lay('#version').html('-v'+ laydate.v);
+			laydate.render({
+			elem: '#date' //指定元素
+			});
 		function Search()
 		{
 			var searchTemp = document.getElementById("topsearchinput");
 			sessionStorage.setItem('searchTempTemp', searchTemp.value);
-			window.location.href = 'DoctorSearch.html';
+			window.location.href = 'FamilySearch.html';
 		}
 		function saveUserID()
 		{
@@ -55,23 +60,59 @@
 				font-family:"微軟正黑體";
 				background-color:#EBF2EA;
 			}
+			.switch_demo-checkbox {
+				display: none;
+			}
+			.switch_demo-label {
+				width:5%;
+				display: block;
+				overflow: hidden;
+				cursor: pointer;
+				border: 2px solid #BF9D7A;
+				border-radius: 20px;
+			}
+			.switch_demo-inner {
+				display: block;
+				width: 200%;
+				margin-left: -100%;
+				transition: margin 0.3s ease-in 0s;
+			}
+			.switch_demo-inner:before,
+			.switch_demo-inner:after {
+				display: block;
+				float: left;
+				width: 50%;
+				height: 30px;
+				padding: 0;
+				line-height: 30px;
+				font-size: 14px;
+				color: white;
+				font-family: Trebuchet, Arial, sans-serif;
+				font-weight: bold;
+				box-sizing: border-box;
+			}
+			.switch_demo-inner:before {
+				content: "開啟";
+				padding-left: 10px;
+				background-color:#80ADD7;
+				color: #FFFFFF;
+			}
+			.switch_demo-inner:after {
+				content: "關閉";
+				padding-right: 10px;
+				background-color: #EEEEEE;
+				color: #999999;
+				text-align: right;
+			}
+			.switch_demo-checkbox:checked + .switch_demo-label .switch_demo-inner {
+				margin-left: 0;
+			}
+			.switch_demo-checkbox:checked + .switch_demo-label .switch_demo-switch {
+				right: 0px;
+			}
 			#logo {
 				width:140px;
 				height:50px;
-			}
-			#title {
-				width:500px;
-			}
-			#description {
-				width:1200px;
-				height:300px;
-			}
-			#picture {
-				width:350px;
-				height:350px; 
-			}
-			#class , #label , #author {
-				width:300px;
 			}
 			#topfont1 ,#topfont2, #topfont3, #topfont4{
 				color:#582A20;
@@ -101,19 +142,9 @@
 					padding-bottom: 70px;
 					margin-top:120px;
 				}
-				#title {
-					width:300px;
-				}
-				#description {
-					width:300px;
-					height:300px;
-				}
-				#picture {
-					width:300px;
-					height:300px; 
-				}
-				#class , #label , #author {
-					width:300px;
+				#logo {
+					width:140px;
+					height:50px;
 				}
 				#bottom1{
 					width:25%;
@@ -169,20 +200,24 @@
 					top:55px;
 					right:8px;
 				}
+				#function1{
+					width:25%;
+					font-size:13px;
+				}
 			}
-		</style>
+			</style>
 	</head>
-	<body>
+	<body onload="saveUserID();">
 	<nav class="navbar navbar-expand-md navbar-fixed-top" style="background-color:#BF9D7A;" id="top">
 			<img src="https://i.imgur.com/pYX0gIi.png" id = "logo">
 			<div>
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<strong><a href = "Doctor.html" onclick="window.location.href='Doctor.html'" id="topfont1"></a></strong>
+						<strong><a href = "Family.html" onclick="window.location.href='Family.html'" id="topfont1"></a></strong>
 					</li>
 					&nbsp;
 					<li class="nav-item">
-						<a href = "DoctorMakePost.html" onclick="window.location.href='DoctorMakePost.html'" id="topfont2"><strong>發佈文章</strong></a>
+						<a href = "FamilyMakePost.html" onclick="window.location.href='FamilyMakePost.html'" id="topfont2"><strong>發佈文章</strong></a>
 					</li>
 					&nbsp;
 					<li class="nav-item">
@@ -206,73 +241,42 @@
 				</form>
 			</div>
 		</nav>
-		<div class = "container-fluid">
+		<div class = "container">
 			<form>
-				<div class="form-group">
-					<label>標題</label><input class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A;" type="button" value="儲存" id ="post">
-					<input class="form-control" placeholder="輸入標題" id="title">
-					<small id="emailHelp" class="form-text text-muted">請輸入標題</small>
+				<input class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A;" type="button" value="編輯" onclick="window.location.href='FamilyEditPatientDiary.html'">
+				<input class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A;" type="button" value="搜尋" id ="diarySearch">
+				<input type="text" class="form-control mr-sm-2" placeholder="請選擇日期" id="date" style="width:200px;" autocomplete="off">
+				<br>
+				<div id="diaryPicture">
 				</div>
 				<div class="form-group">
-					<label>地點</label>
-					<select style="height:34px" class="form-control" id="location">
-						
-					</select>
-					<small id="emailHelp" class="form-text text-muted">請選擇地點</small>
+					<label id="patientDiary">日記內容</label>
 				</div>
 				<div class="form-group">
-					<label>內容</label>
-					<input class="form-control" placeholder="輸入內容" id="description">
-				</div>
-				<div class="form-group">
-					<label>圖片\影片</label>
-					<input type="file" id="myFile" />
-					<input type="button" value="提交" onclick="makeImgurUrl('class')" />
-					<br>
-					<label id="cnoti" class="col-form-label"></label>
-					<br>
-					<label id="curlLabel"></label>
-				</div>
-				<div class="form-group">
-					<label>輸入標籤</label>					
-					<input class="form-control" autocomplete="off" placeholder="輸入標籤(請用#隔開)" id="tag">
-					<small id="emailHelp" class="form-text text-muted">EX:左腹痛#脊椎痛#需要救援#20點....</small>
-					<label>選擇科別</label>
-					<select style="height:34px" class="form-control" id="class">
-						<option value="骨科">骨科</option>
-						<option value="耳鼻喉科">耳鼻喉科</option>
-						<option value="婦產科">婦產科</option>
-						<option value="眼科">眼科</option>
-						<option value="心臟科">心臟科</option>
-						<option value="內科">內科</option>
-						<option value="小兒科">小兒科</option>
-						<option value="牙科">牙科</option>
-						<option value="精神科">精神科</option>
-						<option value="其他或健康運動資訊">其他或健康運動資訊</option>
-					</select>
-					<small id="emailHelp" class="form-text text-muted">請選擇科別</small>
+					<label>家屬共筆日記</label>
+					<textarea class="form-control" placeholder="家屬共筆日記" style="height:300px" id="familyDiary" readonly></textarea>
 				</div>
 			</form>
 		</div>
 		<footer>
 		<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color:#BF9D7A;">
 			<div class="container">
-				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='DoctorHome.html'">
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='FamilyHome.html'">
 					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">首頁</strong></span></a>
 				</button>
-				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='DoctorClass.html'">
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='FamilyClass.html'">
 					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">分類</strong></span>
 				</button>
 				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" href="#">
 					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">通知</strong></span>
 				</button>
-				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='DoctorSetting.html'">
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='FamilySetting.html'">
 					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">設定</strong></span>
 				</button>
 			</div>
 		</nav>
 		</footer>
-		<script type="text/javascript" src="js/Post.js"></script>	<!-- Post.js -->
+		<script type="text/javascript" src="js/familyWriteDiaryOnPatient.js"></script>	<!-- readArticleList.js -->
 	</body>
 </html>
 

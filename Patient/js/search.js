@@ -19,8 +19,9 @@ function searchUser(){
 						'<div class="card" id="card">' + 
 							'<div class="card-body" id="cardbody">' + 
 								'<strong style="float:left">'+ response[i].gender +'</strong><br>' +
-								'<strong style="float:left">'+ response[i].id +'</strong>' +
-								'<button class="btn btn-light" style="float:right" onclick="beFamily('+response[i].id+');">成為家屬</button><br>' +
+								'<strong style="float:left">'+ response[i].id +'</strong><br>' +
+								'<button class="btn btn-light" style="float:right" onclick="beFamily('+response[i].id+');">邀請成為家屬</button><br><br>' +
+								'<button class="btn btn-light" style="float:right" onclick="goToPerson(\'' + response[i].id + '\',\'' + response[i].name + '\');">前往查看文章</button><br><br>' +
 								'<h1 style="font-size:36px">'+ response[i].name +'</h1>' +
 							'</div>' + 
 						'</div>' + 
@@ -42,8 +43,8 @@ function beFamily(id){
 			type: "POST",
 			url : beFamilyURL,
 			data : {
-				familyID : userID,
-				patientID : id,
+				familyID : id,
+				patientID : userID,
 				identity : '病患'
 			},
 			dataType : "json",
@@ -55,6 +56,12 @@ function beFamily(id){
 				alert("失敗");
 			},
 	});
+}
+
+function goToPerson(id , name){
+	sessionStorage.setItem('getPersonID', id);
+	sessionStorage.setItem('getPersonName', name);
+	window.location.href="lookPersonSide.html";
 }
 var searchArticleURL = "http://140.121.196.23:3390/PadoneCommunity/FuzzySearchArticleServlet";
 //用標題搜尋文章

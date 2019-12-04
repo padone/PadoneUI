@@ -202,7 +202,7 @@
 			}
 			</style>
 	</head>
-	<body>
+	<body onload="saveUserID();">
 	<nav class="navbar navbar-expand-md navbar-fixed-top" style="background-color:#BF9D7A;" id="top">
 			<img src="https://i.imgur.com/pYX0gIi.png" id = "logo">
 			<div>
@@ -244,20 +244,25 @@
 					<select style="height:34px;width:150px;" class="form-control" id="identity">
 						<option value="病患">病患</option>
 						<option value="家屬">家屬</option>
-						<option value="助理">助理</option>
 					</select>
+					<br>
+					<button onclick="" class="btn btn-light"style="float:left">前往查看</button>
+					<label style="float:left">追蹤對象列表　</label>
+					<select style="height:34px;width:150px;" class="form-control" id="myTrackPerson">
+					</select>
+					<br>
+					<button onclick="goToFamily();" class="btn btn-light"style="float:left">前往查看</button>
+					<label style="float:left">家屬病患列表　</label>
+					<select style="height:34px;width:150px;" class="form-control" id="myFamilyPatient">
+					</select>
+					
 				</div>
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item">
-						<input type="checkbox" name="switch_demo1" class="switch_demo-checkbox" id="switch_demo" checked>
-						<label class="switch_demo-label" for="switch_demo">
-						<span class="switch_demo-inner"></span>
-						</label><p style="text-align:center;"><strong>Line QR code</strong></p></li>
 					<li class="list-group-item">
 						<input type="checkbox" name="switch_demo2" class="switch_demo-checkbox" id="switch_demo" checked>
 						<label class="switch_demo-label" for="switch_demo">
 						<span class="switch_demo-inner"></span>
-						</label><p style="text-align:center;"><strong>建議文章</strong></p></li>
+						</label><p style="text-align:center;"><strong>姓名</strong></p></li>
 					<li class="list-group-item">
 						<input type="checkbox" name="switch_demo2" class="switch_demo-checkbox" id="switch_demo" checked>
 						<label class="switch_demo-label" for="switch_demo">
@@ -267,42 +272,17 @@
 						<input type="checkbox" name="switch_demo2" class="switch_demo-checkbox" id="switch_demo" checked>
 						<label class="switch_demo-label" for="switch_demo">
 						<span class="switch_demo-inner"></span>
-						</label><p style="text-align:center;"><strong>居住城市</strong></p></li>
-					<li class="list-group-item">
-						<input type="checkbox" name="switch_demo2" class="switch_demo-checkbox" id="switch_demo" checked>
-						<label class="switch_demo-label" for="switch_demo">
-						<span class="switch_demo-inner"></span>
 						</label><p style="text-align:center;"><strong>Gmail</strong></p></li>
 					<li class="list-group-item">
 						<input type="checkbox" name="switch_demo2" class="switch_demo-checkbox" id="switch_demo" checked>
 						<label class="switch_demo-label" for="switch_demo">
 						<span class="switch_demo-inner"></span>
-						</label><p style="text-align:center;"><strong>公開日記給所有人</strong></p></li>
+						</label><p style="text-align:center;"><strong>日記</strong></p></li>
 					<li class="list-group-item">
 						<input type="checkbox" name="switch_demo2" class="switch_demo-checkbox" id="switch_demo" checked>
 						<label class="switch_demo-label" for="switch_demo">
 						<span class="switch_demo-inner"></span>
-						</label><p style="text-align:center;"><strong>公開日記給病患家屬</strong></p></li>
-					<li class="list-group-item">
-						<input type="checkbox" name="switch_demo2" class="switch_demo-checkbox" id="switch_demo" checked>
-						<label class="switch_demo-label" for="switch_demo">
-						<span class="switch_demo-inner"></span>
-						</label><p style="text-align:center;"><strong>年齡</strong></p></li>
-					<li class="list-group-item">
-						<input type="checkbox" name="switch_demo2" class="switch_demo-checkbox" id="switch_demo" checked>
-						<label class="switch_demo-label" for="switch_demo">
-						<span class="switch_demo-inner"></span>
-						</label><p style="text-align:center;"><strong>追蹤對象</strong></p></li>
-					<li class="list-group-item">
-						<input type="checkbox" name="switch_demo2" class="switch_demo-checkbox" id="switch_demo" checked>
-						<label class="switch_demo-label" for="switch_demo">
-						<span class="switch_demo-inner"></span>
-						</label><p style="text-align:center;"><strong>我的病患家屬</strong></p></li>
-					<li class="list-group-item">
-						<input type="checkbox" name="switch_demo2" class="switch_demo-checkbox" id="switch_demo" checked>
-						<label class="switch_demo-label" for="switch_demo">
-						<span class="switch_demo-inner"></span>
-						</label><p style="text-align:center;"><strong>推撥通知</strong></p></li>
+						</label><p style="text-align:center;"><strong>自我介紹</strong></p></li>
 				</ul>
 			</div>
 		</div>

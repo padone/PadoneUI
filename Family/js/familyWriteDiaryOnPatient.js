@@ -1,5 +1,6 @@
 var url = "http://140.121.196.23:3390/PadoneAS/WritePatientDiaryServlet";
 var url2 = "http://140.121.196.23:3390/PadoneAS/GetPatientDiaryServlet";
+var url3 = "http://140.121.196.23:3390/PadoneAS/WriteFamilyDescription"
 var userID;
 userID = sessionStorage.getItem('msg');
 var identity;
@@ -8,11 +9,11 @@ var imgArray = new Array();
 var countOfPicture = new Array("First","Second","Third","Fourth","Fifth","Sixth","Seventh","Eighth","Ninth","Tenth");
 $(document).ready(function() {
 	$("#diarySearch").click(function() {
-		var userID;
-		userID = sessionStorage.getItem('msg');
+		var personID;
+		personID = sessionStorage.getItem('familyLookPatientID');
 		var date;
 		date = $("#date").val();
-		console.log(userID);
+		console.log(personID);
 		console.log(identity);
 		console.log(date);
 		$.ajax({
@@ -20,7 +21,7 @@ $(document).ready(function() {
 			url : url2,
 			data : {
 				date : date,
-				userID : userID
+				userID : personID
 			},
 			dataType : "json",
 			success : function(response) {
@@ -92,21 +93,24 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
+	var personID;
+	personID = sessionStorage.getItem('familyLookPatientID');
+	var userID;
+	userID = sessionStorage.getItem('msg');
 	$("#diaryPost").click(function() {
 			$.ajax({
 				type: "GET",
-				url : url,
+				url : url3,
 				data : {
 					date : $("#date").val(),
-					picture : JSON.stringify(imgArray),
-					identity : identity,
-					patientDescription : $("#patientDiary").val(),
-					userID : userID
+					familyDescription : $("#familyDiary").val(),
+					userID : personID,
+					familyID : userID
 				},
 				dataType : "json",
 				success : function(response) {
 					alert("新增成功！");
-					window.location.href = 'Diary.html';
+					window.location.href = 'FamilyAndPatientDiary.html';
 				},
 				error : function() {
 					alert("失敗");

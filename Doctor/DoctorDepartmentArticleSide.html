@@ -16,20 +16,21 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-	
-			
+		
 	<script>
 		function Search()
 		{
 			var searchTemp = document.getElementById("topsearchinput");
 			sessionStorage.setItem('searchTempTemp', searchTemp.value);
-			window.location.href = 'DoctorSearch.html';
+			window.location.href = 'PatientSearch.html';
 		}
-		function saveUserID()
+		function start()
 		{
 			var userID;
 			userID = sessionStorage.getItem('msg');
@@ -48,30 +49,16 @@
 			document.getElementById('topfont1').innerHTML = name;
 		}
 	</script>
-		<style type = "text/css">
-			body { 
-				padding-bottom: 70px;
-				margin-top:70px;
-				font-family:"微軟正黑體";
-				background-color:#EBF2EA;
-			}
-			#logo {
+	<style type = "text/css">
+		body { 
+			padding-bottom: 70px;
+			margin-top:70px;
+			font-family:"微軟正黑體";
+			background-color:#EBF2EA;
+		}
+		#logo {
 				width:140px;
 				height:50px;
-			}
-			#title {
-				width:500px;
-			}
-			#description {
-				width:1200px;
-				height:300px;
-			}
-			#picture {
-				width:350px;
-				height:350px; 
-			}
-			#class , #label , #author {
-				width:300px;
 			}
 			#topfont1 ,#topfont2, #topfont3, #topfont4{
 				color:#582A20;
@@ -96,24 +83,18 @@
 				top:20px;
 				right:10px;
 			}
+			#Article{
+				 margin-left:40px;
+				 height:600px;
+			}
 			@media (max-width:480px){
 				body {
 					padding-bottom: 70px;
 					margin-top:120px;
 				}
-				#title {
-					width:300px;
-				}
-				#description {
-					width:300px;
-					height:300px;
-				}
-				#picture {
-					width:300px;
-					height:300px; 
-				}
-				#class , #label , #author {
-					width:300px;
+				#logo {
+					width:140px;
+					height:50px;
 				}
 				#bottom1{
 					width:25%;
@@ -169,11 +150,14 @@
 					top:55px;
 					right:8px;
 				}
+				#Article{
+					width:300%;
+				}
 			}
-		</style>
+	</style>
 	</head>
-	<body>
-	<nav class="navbar navbar-expand-md navbar-fixed-top" style="background-color:#BF9D7A;" id="top">
+	<body onload="start();">
+		<nav class="navbar navbar-expand-md navbar-fixed-top" style="background-color:#BF9D7A;" id="top">
 			<img src="https://i.imgur.com/pYX0gIi.png" id = "logo">
 			<div>
 				<ul class="navbar-nav mr-auto">
@@ -206,53 +190,36 @@
 				</form>
 			</div>
 		</nav>
-		<div class = "container-fluid">
-			<form>
-				<div class="form-group">
-					<label>標題</label><input class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A;" type="button" value="儲存" id ="post">
-					<input class="form-control" placeholder="輸入標題" id="title">
-					<small id="emailHelp" class="form-text text-muted">請輸入標題</small>
+		<div class = "container-fluid" id="Article">
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+				<div class="modal-dialog  modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+						</div>
+						<div class="modal-body" style="margin-top:500px;">
+							<form action="" role="form">
+								<div class="form-group">
+									<input type="text" id="thetext" placeholder="輸入留言" class="form-control">
+								</div>
+							</form>
+							<table class="table table-bordered table-hover">
+								<tbody  id="getfeedback">
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary" id="thetextbutton" onclick="feedBack()"><span>發送</span></button>
+						</div>
+					</div>
 				</div>
-				<div class="form-group">
-					<label>地點</label>
-					<select style="height:34px" class="form-control" id="location">
-						
-					</select>
-					<small id="emailHelp" class="form-text text-muted">請選擇地點</small>
-				</div>
-				<div class="form-group">
-					<label>內容</label>
-					<input class="form-control" placeholder="輸入內容" id="description">
-				</div>
-				<div class="form-group">
-					<label>圖片\影片</label>
-					<input type="file" id="myFile" />
-					<input type="button" value="提交" onclick="makeImgurUrl('class')" />
-					<br>
-					<label id="cnoti" class="col-form-label"></label>
-					<br>
-					<label id="curlLabel"></label>
-				</div>
-				<div class="form-group">
-					<label>輸入標籤</label>					
-					<input class="form-control" autocomplete="off" placeholder="輸入標籤(請用#隔開)" id="tag">
-					<small id="emailHelp" class="form-text text-muted">EX:左腹痛#脊椎痛#需要救援#20點....</small>
-					<label>選擇科別</label>
-					<select style="height:34px" class="form-control" id="class">
-						<option value="骨科">骨科</option>
-						<option value="耳鼻喉科">耳鼻喉科</option>
-						<option value="婦產科">婦產科</option>
-						<option value="眼科">眼科</option>
-						<option value="心臟科">心臟科</option>
-						<option value="內科">內科</option>
-						<option value="小兒科">小兒科</option>
-						<option value="牙科">牙科</option>
-						<option value="精神科">精神科</option>
-						<option value="其他或健康運動資訊">其他或健康運動資訊</option>
-					</select>
-					<small id="emailHelp" class="form-text text-muted">請選擇科別</small>
-				</div>
-			</form>
+			</div>
+			<div id='map'></div>
 		</div>
 		<footer>
 		<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color:#BF9D7A;">
@@ -272,7 +239,95 @@
 			</div>
 		</nav>
 		</footer>
-		<script type="text/javascript" src="js/Post.js"></script>	<!-- Post.js -->
+		<script>
+
+    var map;
+
+    function initMap() {
+        var markers = [];
+        var infoWindows = [];
+        var loaction;
+        var timer = [];
+        var infoWindowState = -1;
+        var geocoder = new google.maps.Geocoder();
+        var info_config = [
+            '<div id="infoDiv">' +
+            '  <h2>基隆署立醫院</h2>' +
+            '  <h3>地址:</h3>' +
+            '  <h4>創立時間:</h4>' +
+            '  <h5>首頁:</h5>' +
+            '  <span></span><br/>' +
+            '  <div></div>' +
+            '</div>'
+        ];
+
+        //建立地圖 marker 的集合
+        var marker_config = [{
+            address: '基隆署立醫院',
+            icon: 'http://example.oxxostudio.tw/it2016/it2016-day22-off.png'
+        }];
+
+        //geocoder主程式
+        function _geocoder(address, callback) {
+            geocoder.geocode({
+                address: address
+            }, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    loaction = results[0].geometry.location;
+                    callback(loaction); //用一個 callback 就不用每次多寫上面這段
+                }
+            });
+        }
+
+        //使用地址或名稱標出位置
+        _geocoder('基隆署立醫院', function(address) {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: address,
+                zoom: 14
+            });
+
+            //設定資訊視窗內容
+            info_config.forEach(function(e, i) {
+                infoWindows[i] = new google.maps.InfoWindow({
+                    content: e
+                });
+                google.maps.event.addListener(infoWindows[i], 'domready', function() {
+                    _content(i);
+                });
+            });
+
+            //標出 marker
+            marker_config.forEach(function(e, i) {
+                _geocoder(e.address, function(address) {
+                    var marker = {
+                        position: address,
+                        map: map,
+                        icon: e.icon
+                    };
+                    markers[i] = new google.maps.Marker(marker);
+                    markers[i].setMap(map);
+                    markers[i].addListener('click', function() {
+                        clearTimeout(timer[i]);
+                        infoWindowState = infoWindowState * -1;
+                        if (infoWindowState > 0) {
+                            infoWindows[i].open(map, markers[i]);
+                            _content(i);
+                        } else {
+                            infoWindows[i].close();
+                        }
+                    });
+                    _setIcon(markers[i], 'http://example.oxxostudio.tw/it2016/it2016-day22-on.png');
+                });
+            });
+        });
+        function _setIcon(e, icon) {
+            e.setIcon(icon);
+        }
+    }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrD730hGMTn7AdaQTZuvV9BQuISMiefMQ&callback=initMap">
+    </script>
+		<script type="text/javascript" src="js/readTheDepartmentArticle.js"></script>	<!-- ReadArticle.js -->
 	</body>
 </html>
 

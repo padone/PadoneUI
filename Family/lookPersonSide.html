@@ -27,7 +27,7 @@
 		{
 			var searchTemp = document.getElementById("topsearchinput");
 			sessionStorage.setItem('searchTempTemp', searchTemp.value);
-			window.location.href = 'DoctorSearch.html';
+			window.location.href = 'FamilySearch.html';
 		}
 		function saveUserID()
 		{
@@ -49,29 +49,25 @@
 		}
 	</script>
 		<style type = "text/css">
-			body { 
+			body{
 				padding-bottom: 70px;
 				margin-top:70px;
 				font-family:"微軟正黑體";
 				background-color:#EBF2EA;
 			}
+			nav{
+				background-color:#BF9D7A;
+			}
+			p {
+				display : inline-block;
+				overflow : hidden;
+				text-overflow : ellipsis;
+				white-space : nowrap;
+				width : 240px;
+			}
 			#logo {
 				width:140px;
 				height:50px;
-			}
-			#title {
-				width:500px;
-			}
-			#description {
-				width:1200px;
-				height:300px;
-			}
-			#picture {
-				width:350px;
-				height:350px; 
-			}
-			#class , #label , #author {
-				width:300px;
 			}
 			#topfont1 ,#topfont2, #topfont3, #topfont4{
 				color:#582A20;
@@ -101,19 +97,9 @@
 					padding-bottom: 70px;
 					margin-top:120px;
 				}
-				#title {
-					width:300px;
-				}
-				#description {
-					width:300px;
-					height:300px;
-				}
-				#picture {
-					width:300px;
-					height:300px; 
-				}
-				#class , #label , #author {
-					width:300px;
+				#logo {
+					width:140px;
+					height:50px;
 				}
 				#bottom1{
 					width:25%;
@@ -172,17 +158,17 @@
 			}
 		</style>
 	</head>
-	<body>
+	<body onload="saveUserID()">
 	<nav class="navbar navbar-expand-md navbar-fixed-top" style="background-color:#BF9D7A;" id="top">
 			<img src="https://i.imgur.com/pYX0gIi.png" id = "logo">
 			<div>
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<strong><a href = "Doctor.html" onclick="window.location.href='Doctor.html'" id="topfont1"></a></strong>
+						<strong><a href = "Family.html" onclick="window.location.href='Family.html'" id="topfont1"></a></strong>
 					</li>
 					&nbsp;
 					<li class="nav-item">
-						<a href = "DoctorMakePost.html" onclick="window.location.href='DoctorMakePost.html'" id="topfont2"><strong>發佈文章</strong></a>
+						<a href = "FamilyMakePost.html" onclick="window.location.href='FamilyMakePost.html'" id="topfont2"><strong>發佈文章</strong></a>
 					</li>
 					&nbsp;
 					<li class="nav-item">
@@ -207,73 +193,30 @@
 			</div>
 		</nav>
 		<div class = "container-fluid">
-			<form>
-				<div class="form-group">
-					<label>標題</label><input class="btn btn-outline-light btn-sm" style="float:right;background-color:#BF9D7A;" type="button" value="儲存" id ="post">
-					<input class="form-control" placeholder="輸入標題" id="title">
-					<small id="emailHelp" class="form-text text-muted">請輸入標題</small>
-				</div>
-				<div class="form-group">
-					<label>地點</label>
-					<select style="height:34px" class="form-control" id="location">
-						
-					</select>
-					<small id="emailHelp" class="form-text text-muted">請選擇地點</small>
-				</div>
-				<div class="form-group">
-					<label>內容</label>
-					<input class="form-control" placeholder="輸入內容" id="description">
-				</div>
-				<div class="form-group">
-					<label>圖片\影片</label>
-					<input type="file" id="myFile" />
-					<input type="button" value="提交" onclick="makeImgurUrl('class')" />
-					<br>
-					<label id="cnoti" class="col-form-label"></label>
-					<br>
-					<label id="curlLabel"></label>
-				</div>
-				<div class="form-group">
-					<label>輸入標籤</label>					
-					<input class="form-control" autocomplete="off" placeholder="輸入標籤(請用#隔開)" id="tag">
-					<small id="emailHelp" class="form-text text-muted">EX:左腹痛#脊椎痛#需要救援#20點....</small>
-					<label>選擇科別</label>
-					<select style="height:34px" class="form-control" id="class">
-						<option value="骨科">骨科</option>
-						<option value="耳鼻喉科">耳鼻喉科</option>
-						<option value="婦產科">婦產科</option>
-						<option value="眼科">眼科</option>
-						<option value="心臟科">心臟科</option>
-						<option value="內科">內科</option>
-						<option value="小兒科">小兒科</option>
-						<option value="牙科">牙科</option>
-						<option value="精神科">精神科</option>
-						<option value="其他或健康運動資訊">其他或健康運動資訊</option>
-					</select>
-					<small id="emailHelp" class="form-text text-muted">請選擇科別</small>
-				</div>
-			</form>
+			<h1 id="person"></h1>
+			<div class="list-group" id="FamilyOtherlist">
+			</div>
 		</div>
 		<footer>
 		<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color:#BF9D7A;">
 			<div class="container">
-				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='DoctorHome.html'">
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='FamilyHome.html'">
 					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">首頁</strong></span></a>
 				</button>
-				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='DoctorClass.html'">
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='FamilyClass.html'">
 					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">分類</strong></span>
 				</button>
 				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" href="#">
 					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">通知</strong></span>
 				</button>
-				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='DoctorSetting.html'">
+				<button id="bottom1" type="button" class="col-md-3 btn btn-outline-light" onclick="window.location.href='FamilySetting.html'">
 					<span style="color:#582A20" class="h3 mx-1"><strong id="font1">設定</strong></span>
 				</button>
 			</div>
 		</nav>
 		</footer>
-		<script type="text/javascript" src="js/Post.js"></script>	<!-- Post.js -->
 	</body>
+	<script type="text/javascript" src="js/getPersonArticleList.js"></script>	<!-- readAllArticle.js -->
 </html>
 
 <!--

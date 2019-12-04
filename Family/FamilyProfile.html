@@ -160,7 +160,7 @@
 			}
 		</style>
 	</head>
-	<body>
+	<body onload="saveUserID();">
 	<nav class="navbar navbar-expand-md navbar-fixed-top" style="background-color:#BF9D7A;" id="top">
 			<img src="https://i.imgur.com/pYX0gIi.png" id = "logo">
 			<div>
@@ -203,24 +203,10 @@
 					<button id="function1" class="btn btn-default btn-lg"><a class="p-2 text-muted" onclick="window.location.href='FamilyProfile.html'"><strong>個人資料</strong></a></button>
 				</nav>
 			</div>
+			<button class="btn btn-outline-light" style="float:right;background-color:#BF9D7A" onclick = "window.location.href = 'FamilyRealProfile.html'">編輯</button>
 			<div class="row">
 			<div class="col-sm-4">
 			<form id="getprofile">
-				<div class="form-group">
-					<label>追蹤對象</label>
-					<button style="background-color:#80ADD7" type="button" class="btn btn-outline-light" onclick="window.location.href='PatientTrackTarget.html'">查看追蹤對象</button>
-				</div>
-				<div>
-					<label>我的病患家屬</label>
-					<button style="background-color:#0ABDA0" class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							查看我的病患家屬
-					</button>
-					<div class="dropdown-menu" aria-labelledby="留言">
-							<p class="dropdown-item" onclick="window.location.href='C:/Users/USER/Desktop/Padone_UI/Family/Family.html'">Dan</p>
-							<p class="dropdown-item" onclick="window.location.href='C:/Users/USER/Desktop/Padone_UI/Family/Family.html'">Ricky</p>
-							<p class="dropdown-item" onclick="window.location.href='C:/Users/USER/Desktop/Padone_UI/Family/Family.html'">Jack</p>
-					</div>
-				</div>
 			</form>
 			</div class="col-sm-4">
 		</div>
@@ -242,6 +228,7 @@
 			</div>
 		</nav>
 		</footer>
+		<script type="text/javascript" src="js/profile.js"></script>	<!-- profile.js -->
 	</body>
 </html>
 
