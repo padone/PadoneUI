@@ -1,4 +1,4 @@
-var url = "http://140.121.196.23:3390/PadoneAS/TrackingArticleListServlet";
+var url = "http://140.121.196.23:3390/PadoneCommunity/FamilyTrackingArticleListServlet";
 var url2 = "http://140.121.196.23:3390/PadoneAS/DeleteTrackArticleServlet";
 var dataOfPatientArticleID = new Array();
 var dataOfPatientAuthor = new Array();
@@ -23,7 +23,7 @@ $(document).ready(function() {
 							'<button type="button" class="close" aria-label="Close" onClick ="surelyDelete(' + response[i].articleID + ')" data-dismiss="modal"><span aria-hidden="true">x</span></button>' + 
 						'</div>' + 
 						'<p class="mb-1">' + response[i].description + '</p>' + 
-						'<small style="float:right;">' + response[i].author + '  ' + response[i].postTime + '</small>' + 
+						'<small style="float:right;">' + response[i].authorName + '  ' + response[i].postTime + '</small>' + 
 					'</a>'			 
 				);
 			}

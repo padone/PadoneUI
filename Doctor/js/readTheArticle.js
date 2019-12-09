@@ -58,7 +58,7 @@ $(document).ready(function() {
 			else{
 				greatStatus = '讚';
 			}
-			if(response[0].ifTracked == true){
+			if(response[0].ifSuggestedByDoctor == true){
 				trackStatus = '取消精華文章';
 			}
 			else{

@@ -58,7 +58,7 @@ $(document).ready(function() {
 			else{
 				greatStatus = '讚';
 			}
-			if(response[0].ifTracked == true){
+			if(response[0].ifS == true){
 				trackStatus = '取消建議';
 			}
 			else{

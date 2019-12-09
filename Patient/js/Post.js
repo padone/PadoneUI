@@ -121,10 +121,11 @@ $(document).ready(function() {
 	});
 });
 $(document).ready(function() {
-	//tag = ['1','2','3','4'];
 	$("#post").click(function() {
-		var totalTag = $("#tag").val();
+		var totalTag = "";
+		totalTag = $("#tag").val();
 		tag = totalTag.split("#");
+		console.log(tag);
 			$.ajax({
 				type: "POST",
 				url : url,

@@ -122,8 +122,10 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
 	$("#post").click(function() {
-		var totalTag = $("#tag").val();
+		var totalTag = "";
+		totalTag = $("#tag").val();
 		tag = totalTag.split("#");
+		console.log(tag);
 			$.ajax({
 				type: "POST",
 				url : url,

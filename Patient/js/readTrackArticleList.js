@@ -50,7 +50,7 @@ $(document).ready(function() {
 							'<h5 class="mb-1"><strong href="#" onclick="savePatientArticleID(' + response[i].articleID + ');">' + response[i].title + '</strong></h5>' + 
 						'</div>' + 
 						'<p class="mb-1">' + response[i].description + '</p>' + 
-						'<small style="float:right;">' + response[i].author + '  ' + response[i].postTime + '</small>' + 
+						'<small style="float:right;">' + response[i].authorName + '  ' + response[i].postTime + '</small>' + 
 					'</a>'			 
 				);
 			}

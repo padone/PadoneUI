@@ -1,5 +1,7 @@
 var changeIdentityURL = "http://140.121.196.23:3390/Padone/SwitchIdentityServlet";
-var getFamilyURL = "";
+var getFamilyURL = "http://140.121.196.23:3390/Padone/PatientGetFamilyServlet";
+var getFamilyIDAndName = new Array();
+
 function changeIdentity(){
 	var userID;
 	userID = sessionStorage.getItem('msg');
@@ -46,7 +48,7 @@ $(document).ready(function() {
 		success : function(response) {
 			for(var i = 0; i < response.length; i++){
 				$("#myFamilyPatient").append(
-					'<option></option>'			
+					'<option>'+response[i].familyName+' '+response[i].familyID+'</option>'				
 				);
 			}
 		},
@@ -55,3 +57,13 @@ $(document).ready(function() {
 		}
 	});
 });
+
+function goToFamily(){
+	var who;
+	who = $("#myFamilyPatient").val();
+	getFamilyIDAndName = who.split(" ",2);
+	console.log(getFamilyIDAndName);
+	sessionStorage.setItem('patientLookFamilyID', getFamilyIDAndName[1]);
+	sessionStorage.setItem('patientLookFamilyName', getFamilyIDAndName[0]);
+	window.location.href="patientLookFamilySide.html";
+}
